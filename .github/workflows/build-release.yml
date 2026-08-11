@@ -1,0 +1,70 @@
+name: Build & Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to upload assets to
+        required: true
+        default: v1.4.1
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            script: package:win
+            zip: LuLuneAutoClicker-Windows.zip
+          - os: macos-latest
+            script: package:mac:arm64
+            zip: LuLuneAutoClicker-macOS.zip
+          - os: ubuntu-latest
+            script: package:linux
+            zip: LuLuneAutoClicker-Linux.zip
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Linux build tools
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libx11-dev libxtst-dev libpng-dev
+
+      - name: Package app
+        run: npm run ${{ matrix.script }}
+
+      - name: Zip for downloads
+        run: npm run zip:downloads
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.zip }}
+          path: website/downloads/${{ matrix.zip }}
+          if-no-files-found: error
+
+      - name: Attach to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.release.tag_name || inputs.tag }}
+          files: website/downloads/${{ matrix.zip }}
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
