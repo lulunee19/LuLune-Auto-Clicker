@@ -23,5 +23,8 @@
     "@nut-tree-fork/nut-js": "4.2.6",
     "discord-rpc": "^4.0.1",
     "uiohook-napi": "^1.5.5"
+  },
+  "overrides": {
+    "register-scheme": "0.0.2"
   }
 }
