@@ -10,6 +10,9 @@ on:
         required: true
         default: v1.4.1
 
+permissions:
+  contents: write
+
 jobs:
   build:
     strategy:
