@@ -1,7 +1,7 @@
 {
   "name": "lulune-autoclicker",
   "version": "1.4.1",
-  "description": "LuLune AutoClicker - autoclicker avance multiplateforme (Windows, macOS, Linux)",
+  "description": "LuLune AutoClicker - advanced cross-platform autoclicker (Windows, macOS, Linux)",
   "main": "main.js",
   "author": "LuLune",
   "license": "MIT",

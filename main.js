@@ -114,7 +114,7 @@ const DEFAULT_SETTINGS = {
   mouseButton: 'left',
   doubleClick: false,
   dutyCycle: 0,
-  language: 'fr',
+  language: 'en',
   speedRandomization: { enabled: false, percent: 0 },
   limits: { enabled: false, mode: 'click', clicks: 1000, timeSeconds: 60 },
   maxCps: 1000,
@@ -1181,7 +1181,7 @@ ipcMain.handle('get-init-state', () => ({
   changelog: CHANGELOG,
   latestVersion: LATEST_VERSION,
   discordUser: 'LuLune0193',
-  language: settings.language || 'fr',
+  language: settings.language || 'en',
   slots: Object.keys(settingsSlots)
 }));
 
@@ -1253,7 +1253,7 @@ ipcMain.handle('delete-slot', (_e, name) => {
   saveJSON(SLOTS_FILE, settingsSlots);
   return { ok: true, slots: Object.keys(settingsSlots) };
 });
-ipcMain.handle('i18n-t', (_e, { lang, key, vars }) => t(lang || settings.language || 'fr', key, vars));
+ipcMain.handle('i18n-t', (_e, { lang, key, vars }) => t(lang || settings.language || 'en', key, vars));
 
 ipcMain.handle('save-preset', (e, preset) => {
   const idx = presets.findIndex(p => p.name === preset.name);

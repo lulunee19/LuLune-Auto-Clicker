@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,7 +17,7 @@
     </div>
     <div id="titlebar">
       <div id="titlebar-left">
-        <button class="icon-btn" id="nav-settings" title="Réglages" data-i18n-title="nav.settings" aria-label="Réglages">⚙</button>
+        <button class="icon-btn" id="nav-settings" title="Settings" data-i18n-title="nav.settings" aria-label="Settings">⚙</button>
         <button class="icon-btn" id="nav-macros" title="Macros" data-i18n-title="nav.macros" aria-label="Macros">
           <svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 6h16v2H4V6zm0 5h10v2H4v-2zm0 5h16v2H4v-2zm14-6.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
         </button>
@@ -25,16 +25,16 @@
           <svg class="nav-ico nav-ico-mouse" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c-3.3 0-6 2.5-6 5.6v8.8C6 19.5 8.7 22 12 22s6-2.5 6-5.6V7.6C18 4.5 15.3 2 12 2zm1 2.2c1.9.3 3.4 1.9 3.4 3.8v1.5H13V4.2zM10.6 4.2V9.5H7.6V7.6c0-1.9 1.5-3.5 3-3.8z"/></svg>
         </button>
         <button class="icon-btn" id="nav-zones" title="Zones" data-i18n-title="nav.zones" aria-label="Zones">○</button>
-        <button class="icon-btn" id="nav-points" title="Points de clic" data-i18n-title="nav.points" aria-label="Points">≡</button>
-        <button class="icon-btn" id="nav-cpstest" title="Test CPS" data-i18n-title="nav.cpstest" aria-label="Test CPS">
+        <button class="icon-btn" id="nav-points" title="Click points" data-i18n-title="nav.points" aria-label="Points">≡</button>
+        <button class="icon-btn" id="nav-cpstest" title="CPS test" data-i18n-title="nav.cpstest" aria-label="CPS test">
           <svg class="nav-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 3a1.2 1.2 0 0 1 1.2 1.2v5.1l3.4 2a1.2 1.2 0 1 1-1.2 2.1l-4-2.3a1.2 1.2 0 0 1-.6-1V6.2A1.2 1.2 0 0 1 12 5z"/></svg>
         </button>
       </div>
       <div id="titlebar-title">LuLune <span class="accent">AutoClicker</span></div>
       <div id="titlebar-right">
-        <button class="icon-btn" id="pin-btn" title="Épingler">📌</button>
-        <button class="icon-btn" id="min-btn" title="Réduire">–</button>
-        <button class="icon-btn" id="close-btn" title="Fermer">✕</button>
+        <button class="icon-btn" id="pin-btn" title="Pin">📌</button>
+        <button class="icon-btn" id="min-btn" title="Minimize">–</button>
+        <button class="icon-btn" id="close-btn" title="Close">✕</button>
       </div>
     </div>
 
@@ -43,64 +43,64 @@
         <div class="panel row-panel">
           <div class="field grow">
             <input type="number" id="cps-input" min="1" value="60" />
-            <label>Clics par</label>
+            <label>Clicks per</label>
           </div>
           <div class="field dropdown-field grow">
-            <button class="dropdown-btn" id="rate-unit-btn">Seconde ▾</button>
+            <button class="dropdown-btn" id="rate-unit-btn">Second ▾</button>
             <div class="dropdown-menu" id="rate-unit-menu">
-              <div data-val="second">Seconde</div>
+              <div data-val="second">Second</div>
               <div data-val="minute">Minute</div>
-              <div data-val="hour">Heure</div>
-              <div data-val="day">Jour</div>
+              <div data-val="hour">Hour</div>
+              <div data-val="day">Day</div>
             </div>
           </div>
           <div class="field dropdown-field grow">
-            <button class="dropdown-btn" id="rate-mode-btn">Taux ▾</button>
+            <button class="dropdown-btn" id="rate-mode-btn">Rate ▾</button>
             <div class="dropdown-menu" id="rate-mode-menu">
-              <div data-val="rate">Taux</div>
-              <div data-val="interval">Intervalle</div>
+              <div data-val="rate">Rate</div>
+              <div data-val="interval">Interval</div>
             </div>
           </div>
           <div class="field grow">
             <div class="hotkey-field">
               <input type="text" id="hotkey-input" maxlength="40" value="f6" readonly />
-              <button type="button" class="hotkey-capture-btn" id="hotkey-capture-btn" title="Capturer">⌨</button>
+              <button type="button" class="hotkey-capture-btn" id="hotkey-capture-btn" title="Capture">⌨</button>
             </div>
-            <label>Raccourci (ex: Shift+F)</label>
+            <label>Hotkey (e.g. Shift+F)</label>
           </div>
           <div class="field dropdown-field grow">
-            <button class="dropdown-btn" id="hotkey-mode-btn">Bascule ▾</button>
+            <button class="dropdown-btn" id="hotkey-mode-btn">Toggle ▾</button>
             <div class="dropdown-menu" id="hotkey-mode-menu">
-              <div data-val="toggle">Bascule</div>
-              <div data-val="hold">Maintien</div>
+              <div data-val="toggle">Toggle</div>
+              <div data-val="hold">Hold</div>
             </div>
           </div>
         </div>
 
         <div class="panel row-panel">
-          <button class="toggle-icon-btn active" id="clicker-type-btn" title="Souris">🖱</button>
-          <button class="toggle-icon-btn" id="clicker-type-kb-btn" title="Clavier">⌨</button>
+          <button class="toggle-icon-btn active" id="clicker-type-btn" title="Mouse">🖱</button>
+          <button class="toggle-icon-btn" id="clicker-type-kb-btn" title="Keyboard">⌨</button>
           <div class="segmented" id="mouse-btn-segment">
-            <button data-val="left" class="active">GAUCHE</button>
-            <button data-val="middle">MILIEU</button>
-            <button data-val="right">DROIT</button>
+            <button data-val="left" class="active">LEFT</button>
+            <button data-val="middle">MIDDLE</button>
+            <button data-val="right">RIGHT</button>
           </div>
           <div class="field grow">
-            <label>Maintien (0 = rapide)</label>
+            <label>Hold (0 = fast)</label>
             <div class="stepper"><input type="number" id="duty-cycle-input" value="0" min="0" max="100" />%</div>
           </div>
           <div class="field grow">
-            <label>Aléatoire</label>
+            <label>Random</label>
             <div class="stepper"><input type="number" id="speed-random-input" value="0" min="0" max="100" />%</div>
           </div>
         </div>
 
         <div class="panel status-panel">
-          <div id="big-status">Prêt — appuyez sur <b id="hotkey-display">F6</b> pour démarrer</div>
-          <div class="live-cps-row"><span data-i18n="live.cps">CPS live</span> : <b id="live-cps">0</b></div>
-          <button id="start-stop-btn" data-i18n="common.start">Démarrer</button>
+          <div id="big-status">Ready — press <b id="hotkey-display">F6</b> to start</div>
+          <div class="live-cps-row"><span data-i18n="live.cps">Live CPS</span> : <b id="live-cps">0</b></div>
+          <button id="start-stop-btn" data-i18n="common.start">Start</button>
           <div class="cps-cap-row">
-            <span>Plafond CPS :</span>
+            <span>CPS cap:</span>
             <div class="segmented small" id="max-cps-segment">
               <button data-val="500">500</button>
               <button data-val="1000" class="active">1000</button>
@@ -111,70 +111,70 @@
 
       <div id="view-advanced" class="view active">
         <div class="panel status-panel compact-status">
-          <div id="big-status-adv">Prêt — <b id="hotkey-display-adv">F6</b> pour démarrer</div>
-          <div class="live-cps-row"><span data-i18n="live.cps">CPS live</span> : <b id="live-cps-adv">0</b></div>
-          <button id="start-stop-btn-adv" class="start-btn" data-i18n="common.start">Démarrer</button>
-          <div class="active-btn-row">Bouton actif : <b id="active-mouse-label">Gauche</b></div>
+          <div id="big-status-adv">Ready — <b id="hotkey-display-adv">F6</b> to start</div>
+          <div class="live-cps-row"><span data-i18n="live.cps">Live CPS</span> : <b id="live-cps-adv">0</b></div>
+          <button id="start-stop-btn-adv" class="start-btn" data-i18n="common.start">Start</button>
+          <div class="active-btn-row">Active button: <b id="active-mouse-label">Left</b></div>
         </div>
         <div class="grid2">
           <div class="panel">
-            <div class="panel-head"><span>Vitesse</span></div>
-            <p class="hint">Clics par seconde (ou autre unité).</p>
+            <div class="panel-head"><span>Speed</span></div>
+            <p class="hint">Clicks per second (or other unit).</p>
             <div class="row">
-              <input type="number" id="adv-cps-input" value="60" min="1" /> <span>Clics par</span>
-              <button class="dropdown-btn small" id="adv-rate-unit-btn">Seconde ▾</button>
+              <input type="number" id="adv-cps-input" value="60" min="1" /> <span>Clicks per</span>
+              <button class="dropdown-btn small" id="adv-rate-unit-btn">Second ▾</button>
             </div>
-            <div class="hint" id="adv-interval-display">17ms d'intervalle</div>
+            <div class="hint" id="adv-interval-display">17ms interval</div>
           </div>
           <div class="panel">
-            <div class="panel-head"><span>Bouton souris</span></div>
-            <p class="hint">Choisissez clairement gauche / milieu / droit.</p>
+            <div class="panel-head"><span>Mouse button</span></div>
+            <p class="hint">Clearly choose left / middle / right.</p>
             <div class="segmented" id="adv-mouse-segment">
-              <button data-val="left" class="active">Gauche</button>
-              <button data-val="middle">Milieu</button>
-              <button data-val="right">Droit</button>
+              <button data-val="left" class="active">Left</button>
+              <button data-val="middle">Middle</button>
+              <button data-val="right">Right</button>
             </div>
             <div class="row" style="margin-top:10px">
-              <span>Double clic</span>
+              <span>Double click</span>
               <div class="segmented small" id="adv-dblclick"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div>
             </div>
           </div>
           <div class="panel">
-            <div class="panel-head"><span>Raccourci</span></div>
-            <p class="hint" id="hotkey-platform-hint">Exemple : Ctrl+1, Shift+F…</p>
-            <div class="segmented"><button data-val="toggle" class="active" id="adv-hkmode-toggle">Bascule</button><button data-val="hold" id="adv-hkmode-hold">Maintien</button></div>
+            <div class="panel-head"><span>Hotkey</span></div>
+            <p class="hint" id="hotkey-platform-hint">Example: Ctrl+1, Shift+F…</p>
+            <div class="segmented"><button data-val="toggle" class="active" id="adv-hkmode-toggle">Toggle</button><button data-val="hold" id="adv-hkmode-hold">Hold</button></div>
             <div class="row">
               <div class="hotkey-field grow-hotkey">
-                <input type="text" id="adv-hotkey-input" value="f6" readonly placeholder="ex: Shift+F" />
-                <button type="button" class="hotkey-capture-btn" id="adv-edit-hotkey">Capturer</button>
+                <input type="text" id="adv-hotkey-input" value="f6" readonly placeholder="e.g. Shift+F" />
+                <button type="button" class="hotkey-capture-btn" id="adv-edit-hotkey">Capture</button>
               </div>
             </div>
           </div>
           <div class="panel">
-            <div class="panel-head"><span>Limites</span></div>
-            <p class="hint">Arrêt auto après N clics ou un temps.</p>
+            <div class="panel-head"><span>Limits</span></div>
+            <p class="hint">Auto-stop after N clicks or a duration.</p>
             <div class="row">
               <div class="segmented small" id="adv-limits-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div>
               <input type="number" id="adv-limits-value" value="1000" />
-              <div class="segmented small" id="adv-limits-mode"><button data-val="click" class="active">Clics</button><button data-val="time">Temps</button></div>
+              <div class="segmented small" id="adv-limits-mode"><button data-val="click" class="active">Clicks</button><button data-val="time">Time</button></div>
             </div>
           </div>
           <div class="panel">
-            <div class="panel-head"><span>Options avancées</span></div>
-            <p class="hint">Laissez à 0 / OFF pour de meilleures perfs.</p>
-            <div class="row"><span>Maintien %</span><input type="number" id="adv-duty-input" value="0" min="0" max="100" /></div>
+            <div class="panel-head"><span>Advanced options</span></div>
+            <p class="hint">Leave at 0 / OFF for better performance.</p>
+            <div class="row"><span>Hold %</span><input type="number" id="adv-duty-input" value="0" min="0" max="100" /></div>
             <div class="row">
-              <span>Aléatoire</span>
+              <span>Random</span>
               <div class="segmented small" id="adv-randspeed-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div>
               <input type="number" id="adv-randspeed-input" value="0" min="0" max="100" />
               <span>%</span>
             </div>
-            <div class="segmented small" id="adv-duty-mode" style="display:none"><button data-val="click" class="active">Clic</button><button data-val="hold">Maintien</button></div>
-            <div class="segmented" style="display:none"><button data-val="rate" class="active" id="adv-rate-btn">Taux</button><button data-val="interval" id="adv-interval-btn">Intervalle</button></div>
+            <div class="segmented small" id="adv-duty-mode" style="display:none"><button data-val="click" class="active">Click</button><button data-val="hold">Hold</button></div>
+            <div class="segmented" style="display:none"><button data-val="rate" class="active" id="adv-rate-btn">Rate</button><button data-val="interval" id="adv-interval-btn">Interval</button></div>
           </div>
           <div class="panel">
-            <div class="panel-head"><span>Plateforme</span></div>
-            <p class="hint" id="platform-hint">Compatible Windows, macOS et Linux.</p>
+            <div class="panel-head"><span>Platform</span></div>
+            <p class="hint" id="platform-hint">Compatible with Windows, macOS, and Linux.</p>
             <div class="platform-badge" id="platform-badge-adv">…</div>
           </div>
         </div>
@@ -182,60 +182,60 @@
 
       <div id="view-zones" class="view">
         <div class="panel help-banner">
-          <div class="panel-head"><span>Zones d’arrêt — comment ça marche ?</span></div>
-          <p class="hint">Ces options coupent le clicker dès que la souris entre dans une zone dangereuse (menu, coin d’écran, inventaire…). Activez ce dont vous avez besoin, puis testez avec un CPS bas. Les valeurs sont en <b>pixels</b> depuis le bord de l’écran.</p>
+          <div class="panel-head"><span>Stop zones — how does it work?</span></div>
+          <p class="hint">These options stop the clicker as soon as the mouse enters a danger zone (menu, screen corner, inventory…). Enable what you need, then test at a low CPS. Values are in <b>pixels</b> from the screen edge.</p>
         </div>
         <div class="grid2">
           <div class="panel">
-            <div class="panel-head-row"><span>Arrêt coin</span><div class="segmented small" id="corner-stop-toggle"><button data-val="off">OFF</button><button data-val="on" class="active">ON</button></div></div>
-            <p class="hint">Si le curseur entre dans un <b>carré</b> au coin de l’écran, le clicker s’arrête. Utile pour paniquer vers un coin et stopper sans chercher le raccourci.</p>
+            <div class="panel-head-row"><span>Corner stop</span><div class="segmented small" id="corner-stop-toggle"><button data-val="off">OFF</button><button data-val="on" class="active">ON</button></div></div>
+            <p class="hint">If the cursor enters a <b>square</b> at a screen corner, the clicker stops. Useful to panic toward a corner and stop without hunting for the hotkey.</p>
             <div class="corners-grid labeled">
-              <label class="corner-cell"><span>Haut-gauche</span><input type="number" class="corner-input" data-i="0" value="50" /></label>
-              <label class="corner-cell"><span>Haut-droit</span><input type="number" class="corner-input" data-i="1" value="50" /></label>
-              <label class="corner-cell"><span>Bas-gauche</span><input type="number" class="corner-input" data-i="2" value="50" /></label>
-              <label class="corner-cell"><span>Bas-droit</span><input type="number" class="corner-input" data-i="3" value="50" /></label>
+              <label class="corner-cell"><span>Top-left</span><input type="number" class="corner-input" data-i="0" value="50" /></label>
+              <label class="corner-cell"><span>Top-right</span><input type="number" class="corner-input" data-i="1" value="50" /></label>
+              <label class="corner-cell"><span>Bottom-left</span><input type="number" class="corner-input" data-i="2" value="50" /></label>
+              <label class="corner-cell"><span>Bottom-right</span><input type="number" class="corner-input" data-i="3" value="50" /></label>
             </div>
           </div>
           <div class="panel">
-            <div class="panel-head-row"><span>Arrêt bord</span><div class="segmented small" id="edge-stop-toggle"><button data-val="off">OFF</button><button data-val="on" class="active">ON</button></div></div>
-            <p class="hint">Même idée sur les <b>bords</b> de l’écran (bandeau haut/bas/gauche/droite). Montez les valeurs si vous voulez une zone plus large, baissez-les si ça coupe trop souvent.</p>
+            <div class="panel-head-row"><span>Edge stop</span><div class="segmented small" id="edge-stop-toggle"><button data-val="off">OFF</button><button data-val="on" class="active">ON</button></div></div>
+            <p class="hint">Same idea on the screen <b>edges</b> (top/bottom/left/right strips). Raise the values for a wider zone, lower them if it stops too often.</p>
             <div class="corners-grid labeled">
-              <label class="corner-cell"><span>Haut</span><input type="number" class="edge-input" data-i="0" value="40" /></label>
-              <label class="corner-cell"><span>Droit</span><input type="number" class="edge-input" data-i="1" value="40" /></label>
-              <label class="corner-cell"><span>Bas</span><input type="number" class="edge-input" data-i="2" value="40" /></label>
-              <label class="corner-cell"><span>Gauche</span><input type="number" class="edge-input" data-i="3" value="40" /></label>
+              <label class="corner-cell"><span>Top</span><input type="number" class="edge-input" data-i="0" value="40" /></label>
+              <label class="corner-cell"><span>Right</span><input type="number" class="edge-input" data-i="1" value="40" /></label>
+              <label class="corner-cell"><span>Bottom</span><input type="number" class="edge-input" data-i="2" value="40" /></label>
+              <label class="corner-cell"><span>Left</span><input type="number" class="edge-input" data-i="3" value="40" /></label>
             </div>
           </div>
         </div>
         <div class="panel">
-          <div class="panel-head-row"><span>Zones d'arrêt personnalisées</span><div class="segmented small" id="custom-zones-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
-          <p class="hint">Dessinez un rectangle n’importe où sur l’écran. Dès que le curseur y entre pendant le clic, LuLune s’arrête. <b>Entrée</b> = valider le dessin, <b>Échap</b> = annuler. Pensez à laisser le toggle <b>ON</b> pour que la zone soit active.</p>
+          <div class="panel-head-row"><span>Custom stop zones</span><div class="segmented small" id="custom-zones-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
+          <p class="hint">Draw a rectangle anywhere on the screen. As soon as the cursor enters it while clicking, LuLune stops. <b>Enter</b> = confirm the drawing, <b>Esc</b> = cancel. Keep the toggle <b>ON</b> so the zone stays active.</p>
           <div class="empty-state">
-            <button id="add-zone-btn">Dessiner une zone</button>
+            <button id="add-zone-btn">Draw a zone</button>
             <div id="custom-zones-list" class="zones-list"></div>
-            <div class="empty-hint" id="zones-empty-hint">Aucune zone pour le moment — cliquez « Dessiner une zone » pour en créer une.</div>
+            <div class="empty-hint" id="zones-empty-hint">No zones yet — click “Draw a zone” to create one.</div>
           </div>
         </div>
       </div>
 
       <div id="view-points" class="view">
         <div class="panel">
-          <div class="panel-head-row"><span>Points de clic</span><div class="segmented small" id="click-points-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
-          <p class="hint">Enchaîne des clics à des positions précises (menus, boutons UI, farm). Activez le mode <b>ON</b>, ajoutez des points, puis démarrez le clicker normalement : LuLune clique chaque point l’un après l’autre.</p>
+          <div class="panel-head-row"><span>Click points</span><div class="segmented small" id="click-points-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
+          <p class="hint">Chains clicks at precise positions (menus, UI buttons, farm). Turn the mode <b>ON</b>, add points, then start the clicker normally: LuLune clicks each point one after another.</p>
           <ol class="howto-list">
-            <li>Cliquez <b>Commencer à choisir</b>.</li>
-            <li>Placez le curseur où vous voulez, puis faites un <b>clic droit</b> pour enregistrer le point.</li>
-            <li>Répétez pour chaque position. <b>Échap</b> pour quitter le mode choix.</li>
-            <li>Passez le toggle Points de clic sur <b>ON</b>, puis démarrez avec votre raccourci.</li>
+            <li>Click <b>Start picking</b>.</li>
+            <li>Place the cursor where you want, then <b>right-click</b> to record the point.</li>
+            <li>Repeat for each position. Press <b>Esc</b> to leave pick mode.</li>
+            <li>Set the Click points toggle to <b>ON</b>, then start with your hotkey.</li>
           </ol>
-          <button id="start-picking-btn">Commencer à choisir</button>
+          <button id="start-picking-btn">Start picking</button>
           <div id="points-list" class="points-list">
-            <div class="empty-hint">Aucun point de clic pour le moment. Utilisez le clic droit pendant le mode choix.</div>
+            <div class="empty-hint">No click points yet. Use right-click while in pick mode.</div>
           </div>
           <div class="row-panel small-row">
             <div>
-              <div><b>Arrêter une fois terminé</b></div>
-              <div class="hint">OFF = recommence la liste en boucle · ON = stop après le dernier point.</div>
+              <div><b>Stop when finished</b></div>
+              <div class="hint">OFF = loop the list · ON = stop after the last point.</div>
             </div>
             <div class="segmented small" id="points-stop-complete"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div>
           </div>
@@ -244,10 +244,10 @@
 
       <div id="view-cpstest" class="view">
         <div class="panel">
-          <div class="panel-head"><span>Test CPS</span></div>
-          <p class="hint">Choisissez une durée, puis cliquez le plus vite possible. Le chrono démarre au 1er clic.</p>
-          <div class="cps-source-badge" id="cps-source-badge" data-source="idle">Source : —</div>
-          <div class="segmented small wrap" id="cps-test-duration" role="group" aria-label="Durée du test">
+          <div class="panel-head"><span>CPS test</span></div>
+          <p class="hint">Pick a duration, then click as fast as you can. The timer starts on the first click.</p>
+          <div class="cps-source-badge" id="cps-source-badge" data-source="idle">Source: —</div>
+          <div class="segmented small wrap" id="cps-test-duration" role="group" aria-label="Test duration">
             <button type="button" data-sec="1">1 s</button>
             <button type="button" data-sec="5">5 s</button>
             <button type="button" data-sec="10" class="active">10 s</button>
@@ -255,9 +255,9 @@
             <button type="button" data-sec="30">30 s</button>
             <button type="button" data-sec="60">1 min</button>
           </div>
-          <button type="button" class="cps-test-pad" id="cps-test-pad" aria-label="Zone de test CPS">
-            <span class="cps-test-pad-title" id="cps-test-pad-title">Cliquez ici</span>
-            <span class="cps-test-pad-meta" id="cps-test-pad-meta">Durée : 10 s · prêt</span>
+          <button type="button" class="cps-test-pad" id="cps-test-pad" aria-label="CPS test pad">
+            <span class="cps-test-pad-title" id="cps-test-pad-title">Click here</span>
+            <span class="cps-test-pad-meta" id="cps-test-pad-meta">Duration: 10 s · ready</span>
             <span class="cps-test-pad-score" id="cps-test-pad-score">0.0 CPS</span>
           </button>
           <div class="stats-list" id="cps-test-scores">
@@ -269,8 +269,8 @@
             <div class="stats-row"><span class="stat-label">CPS 1 min</span><span class="stat-value" id="cps-test-60">0.0</span></div>
           </div>
           <div class="row cps-test-actions">
-            <button type="button" class="ghost-btn" id="cps-test-retry" hidden>Réessayer</button>
-            <button type="button" class="ghost-btn" id="cps-test-reset">Réinitialiser</button>
+            <button type="button" class="ghost-btn" id="cps-test-retry" hidden>Retry</button>
+            <button type="button" class="ghost-btn" id="cps-test-reset">Reset</button>
           </div>
         </div>
       </div>
@@ -279,53 +279,53 @@
         <div class="panel">
           <div class="panel-head"><span>Macros</span></div>
           <ol class="howto-list">
-            <li><b>1.</b> Donnez un nom.</li>
-            <li><b>2.</b> Ajoutez des étapes avec les boutons (pas besoin d’appuyer sur Enregistrer d’abord).</li>
-            <li><b>3.</b> Capturer un raccourci (ex. <b>Ctrl+1</b>), puis <b>Sauvegarder</b>.</li>
-            <li><b>4.</b> Lancez avec le raccourci ou ▶ Jouer.</li>
+            <li><b>1.</b> Give it a name.</li>
+            <li><b>2.</b> Add steps with the buttons (no need to press Record first).</li>
+            <li><b>3.</b> Capture a hotkey (e.g. <b>Ctrl+1</b>), then <b>Save</b>.</li>
+            <li><b>4.</b> Run it with the hotkey or ▶ Play.</li>
           </ol>
           <div class="row">
-            <input type="text" id="macro-name-input" placeholder="Nom de la macro" />
-            <button id="save-macro-btn" type="button">Sauvegarder</button>
-            <button id="macro-new-btn" type="button" class="ghost-btn">Nouvelle</button>
+            <input type="text" id="macro-name-input" placeholder="Macro name" />
+            <button id="save-macro-btn" type="button">Save</button>
+            <button id="macro-new-btn" type="button" class="ghost-btn">New</button>
           </div>
-          <p class="hint">Placez le curseur où vous voulez, puis cliquez <b>+ Clic</b>. Pour 3 touches d’affilée : tapez <code>a b enter</code> puis <b>+ Touches</b>.</p>
+          <p class="hint">Place the cursor where you want, then click <b>+ Click</b>. For 3 keys in a row: type <code>a b enter</code> then <b>+ Keys</b>.</p>
           <div class="macro-actions">
-            <button id="macro-add-click-btn" type="button">+ Clic (curseur)</button>
-            <button id="macro-add-right-btn" type="button">+ Clic droit</button>
-            <button id="macro-add-delay-btn" type="button">+ Délai 200ms</button>
-            <button id="macro-clear-btn" type="button">Vider</button>
+            <button id="macro-add-click-btn" type="button">+ Click (cursor)</button>
+            <button id="macro-add-right-btn" type="button">+ Right click</button>
+            <button id="macro-add-delay-btn" type="button">+ Delay 200ms</button>
+            <button id="macro-clear-btn" type="button">Clear</button>
           </div>
           <div class="row">
-            <input type="text" id="macro-key-input" placeholder="1 touche (ex: a, enter, f2)" />
-            <button id="macro-add-key-btn" type="button">+ Touche</button>
+            <input type="text" id="macro-key-input" placeholder="1 key (e.g. a, enter, f2)" />
+            <button id="macro-add-key-btn" type="button">+ Key</button>
           </div>
           <div class="row">
-            <input type="text" id="macro-sequence-input" placeholder="Plusieurs touches : a b enter" />
-            <button id="macro-add-sequence-btn" type="button">+ Touches</button>
+            <input type="text" id="macro-sequence-input" placeholder="Several keys: a b enter" />
+            <button id="macro-add-sequence-btn" type="button">+ Keys</button>
           </div>
           <div class="row">
-            <span>Raccourci</span>
+            <span>Hotkey</span>
             <div class="hotkey-field grow-hotkey">
-              <input type="text" id="macro-hotkey-input" placeholder="ex: Ctrl+Shift+1" readonly />
-              <button type="button" class="hotkey-capture-btn" id="macro-edit-hotkey">Capturer</button>
+              <input type="text" id="macro-hotkey-input" placeholder="e.g. Ctrl+Shift+1" readonly />
+              <button type="button" class="hotkey-capture-btn" id="macro-edit-hotkey">Capture</button>
             </div>
           </div>
-          <p class="hint">Astuce enregistrement live : <b>● Rec</b> puis <b>F8</b> = clic à la souris, <b>Shift+F8</b> = clic droit, <b>F9</b> = stop.</p>
+          <p class="hint">Live recording tip: <b>● Rec</b> then <b>F8</b> = mouse click, <b>Shift+F8</b> = right click, <b>F9</b> = stop.</p>
           <div class="row">
             <button id="record-macro-btn" type="button">● Rec (F8)</button>
           </div>
           <div class="row macro-share-row">
-            <button id="export-macros-btn" type="button">Exporter</button>
-            <button id="import-macros-btn" type="button">Importer</button>
-            <button id="macro-import-share-btn" type="button">Coller partage</button>
+            <button id="export-macros-btn" type="button">Export</button>
+            <button id="import-macros-btn" type="button">Import</button>
+            <button id="macro-import-share-btn" type="button">Paste share</button>
           </div>
-          <div id="macro-steps-preview" class="hint">Aucune étape — utilisez + Clic ou + Touches.</div>
+          <div id="macro-steps-preview" class="hint">No steps — use + Click or + Keys.</div>
           <div id="macro-steps-list"></div>
         </div>
         <div class="panel" id="macros-list-panel">
-          <div class="panel-head"><span>Macros enregistrées</span></div>
-          <p class="hint">▶ joue la macro · sans raccourci, utilisez ▶</p>
+          <div class="panel-head"><span>Saved macros</span></div>
+          <p class="hint">▶ plays the macro · with no hotkey, use ▶</p>
           <div id="macros-list" class="presets-list"></div>
         </div>
       </div>
@@ -333,15 +333,15 @@
       <div id="view-settings" class="view">
         <div class="settings-layout">
           <aside class="settings-sidebar">
-            <nav class="settings-nav" aria-label="Réglages">
-              <button type="button" class="settings-tab active" data-tab="general" data-i18n="settings.general">Général</button>
-              <button type="button" class="settings-tab" data-tab="engine" data-i18n="settings.engine">Moteur</button>
-              <button type="button" class="settings-tab" data-tab="behavior" data-i18n="settings.behavior">Comportement</button>
-              <button type="button" class="settings-tab" data-tab="appearance" data-i18n="settings.appearance">Apparence</button>
-              <button type="button" class="settings-tab" data-tab="keybinds" data-i18n="settings.keybinds">Raccourcis</button>
-              <button type="button" class="settings-tab" data-tab="processlist" data-i18n="settings.processlist">Processus</button>
-              <button type="button" class="settings-tab" data-tab="presets" data-i18n="settings.presets">Préréglages</button>
-              <button type="button" class="settings-tab" data-tab="slots" data-i18n="settings.slots">Sauvegardes</button>
+            <nav class="settings-nav" aria-label="Settings">
+              <button type="button" class="settings-tab active" data-tab="general" data-i18n="settings.general">General</button>
+              <button type="button" class="settings-tab" data-tab="engine" data-i18n="settings.engine">Engine</button>
+              <button type="button" class="settings-tab" data-tab="behavior" data-i18n="settings.behavior">Behavior</button>
+              <button type="button" class="settings-tab" data-tab="appearance" data-i18n="settings.appearance">Appearance</button>
+              <button type="button" class="settings-tab" data-tab="keybinds" data-i18n="settings.keybinds">Hotkeys</button>
+              <button type="button" class="settings-tab" data-tab="processlist" data-i18n="settings.processlist">Processes</button>
+              <button type="button" class="settings-tab" data-tab="presets" data-i18n="settings.presets">Presets</button>
+              <button type="button" class="settings-tab" data-tab="slots" data-i18n="settings.slots">Backups</button>
               <button type="button" class="settings-tab" data-tab="changelog" data-i18n="settings.changelog">Changelog</button>
               <button type="button" class="settings-tab" data-tab="maintenance" data-i18n="settings.maintenance">Maintenance</button>
             </nav>
@@ -349,153 +349,153 @@
           <div class="settings-content">
             <div class="settings-pane active" data-pane="general">
               <div class="panel">
-                <div class="panel-head"><span>À propos</span></div>
-                <p class="hint">LuLune AutoClicker v1.3 — clicker rapide, macros, zones dessinables, thèmes et overlay CPS. Tout reste local sur votre PC.</p>
+                <div class="panel-head"><span>About</span></div>
+                <p class="hint">LuLune AutoClicker v1.3 — fast clicker, macros, drawable zones, themes, and CPS overlay. Everything stays local on your PC.</p>
                 <div class="row"><b>LuLune AutoClicker</b> <span class="platform-badge" id="platform-badge">…</span></div>
                 <div class="row">Version <b id="app-version-label">v1.3.0</b></div>
-                <div class="row"><button id="check-updates-btn" type="button">Vérifier les mises à jour</button></div>
+                <div class="row"><button id="check-updates-btn" type="button">Check for updates</button></div>
               </div>
               <div class="panel">
-                <div class="panel-head"><span>Nouveautés v1.3.0</span></div>
+                <div class="panel-head"><span>What's new in v1.3.0</span></div>
                 <ul class="whats-new">
-                  <li><b>CPS live + badge overlay</b> — voyez votre vitesse en direct.</li>
-                  <li><b>Mode Maintien</b> — maintenez le raccourci pour cliquer, relâchez pour stop.</li>
-                  <li><b>Zones dessinables</b> — rectangle à l’écran pour couper le clicker.</li>
-                  <li><b>Thèmes & image de fond</b> — Vert / Bleu / Rouge / Clair + photo perso.</li>
-                  <li><b>Préréglages jeux</b>, import/export, macros partageables, Discord LuLune0193.</li>
+                  <li><b>Live CPS + overlay badge</b> — see your speed in real time.</li>
+                  <li><b>Hold mode</b> — hold the hotkey to click, release to stop.</li>
+                  <li><b>Drawable zones</b> — on-screen rectangle to cut the clicker.</li>
+                  <li><b>Themes & background image</b> — Green / Blue / Red / Light + custom photo.</li>
+                  <li><b>Game presets</b>, import/export, shareable macros, Discord LuLune0193.</li>
                 </ul>
-                <p class="hint">Détail complet dans l’onglet <b>Changelog</b> à gauche.</p>
+                <p class="hint">Full details in the <b>Changelog</b> tab on the left.</p>
               </div>
               <div class="panel">
-                <div class="panel-head"><span>Utilisation</span></div>
-                <p class="hint">Statistiques locales uniquement.</p>
+                <div class="panel-head"><span>Usage</span></div>
+                <p class="hint">Local statistics only.</p>
                 <div class="stats-list">
-                  <div class="stats-row"><span class="stat-label">Clics totaux</span><span class="stat-value" id="stat-total-clicks">0</span></div>
-                  <div class="stats-row"><span class="stat-label">Temps de clic total</span><span class="stat-value" id="stat-total-time">0s</span></div>
-                  <div class="stats-row"><span class="stat-label">Sessions de clic</span><span class="stat-value" id="stat-sessions">0</span></div>
-                  <div class="stats-row live-cps-stat"><span class="stat-label">CPS live</span><span class="stat-value" id="stat-live-cps">0</span></div>
+                  <div class="stats-row"><span class="stat-label">Total clicks</span><span class="stat-value" id="stat-total-clicks">0</span></div>
+                  <div class="stats-row"><span class="stat-label">Total click time</span><span class="stat-value" id="stat-total-time">0s</span></div>
+                  <div class="stats-row"><span class="stat-label">Click sessions</span><span class="stat-value" id="stat-sessions">0</span></div>
+                  <div class="stats-row live-cps-stat"><span class="stat-label">Live CPS</span><span class="stat-value" id="stat-live-cps">0</span></div>
                 </div>
                 <div class="stats-chart-wrap" id="stats-chart-wrap" hidden>
-                  <div class="stat-label">CLICS / JOUR (14 j)</div>
+                  <div class="stat-label">CLICKS / DAY (14 d)</div>
                   <div class="stats-chart-meta" id="stats-chart-meta"></div>
-                  <div class="stats-chart-bars" id="stats-chart-bars" role="img" aria-label="Clics par jour"></div>
+                  <div class="stats-chart-bars" id="stats-chart-bars" role="img" aria-label="Clicks per day"></div>
                 </div>
               </div>
               <div class="panel">
-                <div class="panel-head-row"><span data-i18n="goals.title">Objectifs</span><div class="segmented small" id="goals-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
-                <div class="row"><label data-i18n="goals.daily">Objectif quotidien</label><input type="number" id="goals-daily" min="0" value="10000" /></div>
+                <div class="panel-head-row"><span data-i18n="goals.title">Goals</span><div class="segmented small" id="goals-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
+                <div class="row"><label data-i18n="goals.daily">Daily goal</label><input type="number" id="goals-daily" min="0" value="10000" /></div>
                 <div class="goal-bar-wrap"><div class="goal-bar" id="goal-daily-bar"></div></div>
                 <div class="hint" id="goal-daily-label">0 / 10000</div>
-                <div class="row"><label data-i18n="goals.session">Objectif de session (0 = off)</label><input type="number" id="goals-session" min="0" value="0" /></div>
+                <div class="row"><label data-i18n="goals.session">Session goal (0 = off)</label><input type="number" id="goals-session" min="0" value="0" /></div>
               </div>
               <div class="panel">
-                <div class="panel-head"><span data-i18n="language.label">Langue</span></div>
+                <div class="panel-head"><span data-i18n="language.label">Language</span></div>
                 <div class="segmented" id="language-segment">
-                  <button data-val="fr" class="active">FR</button>
-                  <button data-val="en">EN</button>
+                  <button data-val="fr">FR</button>
+                  <button data-val="en" class="active">EN</button>
                 </div>
               </div>
             </div>
 
             <div class="settings-pane" data-pane="engine">
               <div class="panel">
-                <div class="panel-head-row"><span data-i18n="engine.ramp">Rampe CPS</span><div class="segmented small" id="cpsprofile-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
-                <p class="hint" data-i18n="engine.ramp.hint">Le CPS passe progressivement de → à pendant la session.</p>
-                <div class="row"><label>De</label><input type="number" id="cpsprofile-from" min="1" value="10" /><label>À</label><input type="number" id="cpsprofile-to" min="1" value="60" /><label>s</label><input type="number" id="cpsprofile-seconds" min="1" value="30" /></div>
+                <div class="panel-head-row"><span data-i18n="engine.ramp">CPS ramp</span><div class="segmented small" id="cpsprofile-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
+                <p class="hint" data-i18n="engine.ramp.hint">CPS gradually goes from → to during the session.</p>
+                <div class="row"><label>From</label><input type="number" id="cpsprofile-from" min="1" value="10" /><label>To</label><input type="number" id="cpsprofile-to" min="1" value="60" /><label>s</label><input type="number" id="cpsprofile-seconds" min="1" value="30" /></div>
               </div>
               <div class="panel">
-                <div class="panel-head-row"><span data-i18n="engine.burst">Rafale</span><div class="segmented small" id="burst-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
-                <p class="hint" data-i18n="engine.burst.hint">N clics rapides puis pause, en boucle.</p>
-                <div class="row"><label>Clics</label><input type="number" id="burst-clicks" min="1" value="5" /><label>Pause ms</label><input type="number" id="burst-pause" min="0" value="200" /></div>
+                <div class="panel-head-row"><span data-i18n="engine.burst">Burst</span><div class="segmented small" id="burst-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
+                <p class="hint" data-i18n="engine.burst.hint">N fast clicks then a pause, looping.</p>
+                <div class="row"><label>Clicks</label><input type="number" id="burst-clicks" min="1" value="5" /><label>Pause ms</label><input type="number" id="burst-pause" min="0" value="200" /></div>
               </div>
               <div class="panel">
-                <div class="panel-head-row"><span data-i18n="engine.pixel">Filtre couleur pixel</span><div class="segmented small" id="pixel-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
-                <p class="hint" data-i18n="engine.pixel.hint">Ne clique que si la couleur sous le curseur correspond.</p>
+                <div class="panel-head-row"><span data-i18n="engine.pixel">Pixel color filter</span><div class="segmented small" id="pixel-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
+                <p class="hint" data-i18n="engine.pixel.hint">Only clicks if the color under the cursor matches.</p>
                 <div class="row">
                   <label>R</label><input type="number" id="pixel-r" min="0" max="255" value="255" />
                   <label>G</label><input type="number" id="pixel-g" min="0" max="255" value="255" />
                   <label>B</label><input type="number" id="pixel-b" min="0" max="255" value="255" />
                   <label>±</label><input type="number" id="pixel-tol" min="0" max="255" value="30" />
-                  <button type="button" id="pixel-capture-btn" data-i18n="pixel.capture">Capturer couleur</button>
+                  <button type="button" id="pixel-capture-btn" data-i18n="pixel.capture">Capture color</button>
                 </div>
-                <div class="pixel-swatch" id="pixel-swatch" title="Couleur cible"></div>
+                <div class="pixel-swatch" id="pixel-swatch" title="Target color"></div>
               </div>
               <div class="panel">
-                <div class="panel-head-row"><span data-i18n="engine.failsafe">Failsafe curseur</span><div class="segmented small" id="failsafe-toggle"><button data-val="off">OFF</button><button data-val="on" class="active">ON</button></div></div>
-                <p class="hint" data-i18n="engine.failsafe.hint">Arrête si la souris ne bouge pas pendant N secondes.</p>
-                <div class="row"><label>Secondes</label><input type="number" id="failsafe-idle" min="1" value="10" /></div>
+                <div class="panel-head-row"><span data-i18n="engine.failsafe">Cursor failsafe</span><div class="segmented small" id="failsafe-toggle"><button data-val="off">OFF</button><button data-val="on" class="active">ON</button></div></div>
+                <p class="hint" data-i18n="engine.failsafe.hint">Stops if the mouse does not move for N seconds.</p>
+                <div class="row"><label>Seconds</label><input type="number" id="failsafe-idle" min="1" value="10" /></div>
               </div>
               <div class="panel">
-                <div class="panel-head-row"><span data-i18n="engine.timer">Minuteur de session</span><div class="segmented small" id="sessiontimer-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
-                <p class="hint" data-i18n="engine.timer.hint">Arrête automatiquement après N minutes.</p>
+                <div class="panel-head-row"><span data-i18n="engine.timer">Session timer</span><div class="segmented small" id="sessiontimer-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
+                <p class="hint" data-i18n="engine.timer.hint">Automatically stops after N minutes.</p>
                 <div class="row"><label>Minutes</label><input type="number" id="sessiontimer-minutes" min="1" value="30" /></div>
               </div>
               <div class="panel">
                 <div class="setting-row">
-                  <div><b data-i18n="confirm.highCps">Confirmer CPS élevé</b><div class="hint" data-i18n="confirm.highCps.hint">Demande confirmation avant de démarrer au-dessus du seuil.</div></div>
+                  <div><b data-i18n="confirm.highCps">Confirm high CPS</b><div class="hint" data-i18n="confirm.highCps.hint">Asks for confirmation before starting above the threshold.</div></div>
                   <label class="switch"><input type="checkbox" id="confirm-highcps" checked><span></span></label>
                 </div>
-                <div class="row"><label>Seuil</label><input type="number" id="confirm-threshold" min="1" value="100" /></div>
+                <div class="row"><label>Threshold</label><input type="number" id="confirm-threshold" min="1" value="100" /></div>
               </div>
             </div>
 
             <div class="settings-pane" data-pane="behavior">
               <div class="panel">
-                <div class="panel-head"><span>Comportement</span></div>
-                <div class="setting-row"><div><b>Toujours au premier plan</b><div class="hint">Fenêtre au-dessus des autres.</div></div><label class="switch"><input type="checkbox" id="behavior-alwaysontop"><span></span></label></div>
-                <div class="setting-row"><div><b>Superposition zone d'arrêt</b><div class="hint">Affiche les limites des zones.</div></div><label class="switch"><input type="checkbox" id="behavior-hitbox" checked><span></span></label></div>
-                <div class="setting-row"><div><b>Alerte raison d'arrêt</b><div class="hint">Notification à l'arrêt.</div></div><label class="switch"><input type="checkbox" id="behavior-stopalert" checked><span></span></label></div>
-                <div class="setting-row"><div><b>Modificateurs stricts</b><div class="hint">Exige les touches exactes.</div></div><label class="switch"><input type="checkbox" id="behavior-strict"><span></span></label></div>
-                <div class="setting-row"><div><b>Arrêt sur changement de fenêtre</b><div class="hint">Arrête en changeant d'app.</div></div><label class="switch"><input type="checkbox" id="behavior-alttab" checked><span></span></label></div>
-                <div class="setting-row"><div><b>Limite de vitesse étendue</b><div class="hint">Jusqu'à 1000 CPS.</div></div><label class="switch"><input type="checkbox" id="behavior-extended"><span></span></label></div>
-                <div class="setting-row"><div><b>Sons démarrer / arrêter</b><div class="hint">Bips courts via Web Audio.</div></div><label class="switch"><input type="checkbox" id="sounds-enabled"><span></span></label></div>
-                <div class="slider-row"><label data-i18n="sounds.volume">Volume des sons</label><input type="range" id="sounds-volume" min="0" max="100" value="50" /><span id="sounds-volume-val">50%</span></div>
-                <div class="setting-row"><div><b>Anti-détection légère</b><div class="hint">Jitter d'intervalle + micro-décalage souris.</div></div><label class="switch"><input type="checkbox" id="antidetect-enabled"><span></span></label></div>
-                <div class="setting-row"><div><b data-i18n="behavior.autoHide">Réduire la fenêtre au démarrage du clic</b></div><label class="switch"><input type="checkbox" id="appearance-autohide"><span></span></label></div>
-                <div class="setting-row"><div><b data-i18n="behavior.hideOverlayPaused">Masquer l’overlay en pause</b></div><label class="switch"><input type="checkbox" id="behavior-hideoverlaypaused" checked><span></span></label></div>
+                <div class="panel-head"><span>Behavior</span></div>
+                <div class="setting-row"><div><b>Always on top</b><div class="hint">Window above others.</div></div><label class="switch"><input type="checkbox" id="behavior-alwaysontop"><span></span></label></div>
+                <div class="setting-row"><div><b>Stop-zone overlay</b><div class="hint">Shows zone boundaries.</div></div><label class="switch"><input type="checkbox" id="behavior-hitbox" checked><span></span></label></div>
+                <div class="setting-row"><div><b>Stop-reason alert</b><div class="hint">Notification when stopping.</div></div><label class="switch"><input type="checkbox" id="behavior-stopalert" checked><span></span></label></div>
+                <div class="setting-row"><div><b>Strict modifiers</b><div class="hint">Requires exact modifier keys.</div></div><label class="switch"><input type="checkbox" id="behavior-strict"><span></span></label></div>
+                <div class="setting-row"><div><b>Stop on window change</b><div class="hint">Stops when switching apps.</div></div><label class="switch"><input type="checkbox" id="behavior-alttab" checked><span></span></label></div>
+                <div class="setting-row"><div><b>Extended speed limit</b><div class="hint">Up to 1000 CPS.</div></div><label class="switch"><input type="checkbox" id="behavior-extended"><span></span></label></div>
+                <div class="setting-row"><div><b>Start / stop sounds</b><div class="hint">Short beeps via Web Audio.</div></div><label class="switch"><input type="checkbox" id="sounds-enabled"><span></span></label></div>
+                <div class="slider-row"><label data-i18n="sounds.volume">Sound volume</label><input type="range" id="sounds-volume" min="0" max="100" value="50" /><span id="sounds-volume-val">50%</span></div>
+                <div class="setting-row"><div><b>Light anti-detection</b><div class="hint">Interval jitter + tiny mouse offset.</div></div><label class="switch"><input type="checkbox" id="antidetect-enabled"><span></span></label></div>
+                <div class="setting-row"><div><b data-i18n="behavior.autoHide">Minimize window when clicking starts</b></div><label class="switch"><input type="checkbox" id="appearance-autohide"><span></span></label></div>
+                <div class="setting-row"><div><b data-i18n="behavior.hideOverlayPaused">Hide overlay while paused</b></div><label class="switch"><input type="checkbox" id="behavior-hideoverlaypaused" checked><span></span></label></div>
               </div>
               <div class="panel">
-                <div class="panel-head"><span>Démarrage</span></div>
-                <div class="setting-row"><div><b>Réduire dans la barre système</b></div><label class="switch"><input type="checkbox" id="startup-tray"><span></span></label></div>
-                <div class="setting-row"><div><b>Mémoriser la position</b></div><label class="switch"><input type="checkbox" id="startup-remember" checked><span></span></label></div>
-                <div class="setting-row"><div><b>Lancer au démarrage</b></div><label class="switch"><input type="checkbox" id="startup-run"><span></span></label></div>
+                <div class="panel-head"><span>Startup</span></div>
+                <div class="setting-row"><div><b>Minimize to system tray</b></div><label class="switch"><input type="checkbox" id="startup-tray"><span></span></label></div>
+                <div class="setting-row"><div><b>Remember position</b></div><label class="switch"><input type="checkbox" id="startup-remember" checked><span></span></label></div>
+                <div class="setting-row"><div><b>Run on startup</b></div><label class="switch"><input type="checkbox" id="startup-run"><span></span></label></div>
               </div>
               <div class="panel">
                 <div class="panel-head-row"><span data-i18n="discord.title">Discord Rich Presence</span><div class="segmented small" id="discordrpc-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
-                <p class="hint" data-i18n="discord.hint">Le titre « Joue à … » et le logo viennent du Developer Portal Discord (pas seulement du Client ID).</p>
+                <p class="hint" data-i18n="discord.hint">The “Playing …” title and logo come from the Discord Developer Portal (not just the Client ID).</p>
                 <ol class="howto-list discord-setup">
-                  <li>Ouvre le portail → ton application → renomme en <b>LuLuneAutoClicker</b> (majuscules).</li>
-                  <li>Rich Presence → Art Assets → upload le logo → nom exact de l’asset : <b>logo</b>.</li>
-                  <li>Colle le Client ID ici, mets ON, relance Discord + l’app.</li>
+                  <li>Open the portal → your application → rename it to <b>LuLuneAutoClicker</b> (exact casing).</li>
+                  <li>Rich Presence → Art Assets → upload the logo → exact asset name: <b>logo</b>.</li>
+                  <li>Paste the Client ID here, set ON, then relaunch Discord + the app.</li>
                 </ol>
                 <div class="row bg-actions">
-                  <button type="button" id="discord-open-portal">Ouvrir le portail Discord</button>
-                  <button type="button" id="discord-open-logo" class="ghost-btn">Ouvrir le fichier logo</button>
+                  <button type="button" id="discord-open-portal">Open Discord portal</button>
+                  <button type="button" id="discord-open-logo" class="ghost-btn">Open logo file</button>
                 </div>
-                <div class="row"><label data-i18n="discord.clientId">Client ID</label><input type="text" id="discord-clientid" placeholder="ex: 1536534805938970654" style="flex:1;min-width:180px" /></div>
+                <div class="row"><label data-i18n="discord.clientId">Client ID</label><input type="text" id="discord-clientid" placeholder="e.g. 1536534805938970654" style="flex:1;min-width:180px" /></div>
               </div>
             </div>
 
             <div class="settings-pane" data-pane="appearance">
               <div class="panel">
-                <div class="panel-head"><span>Thème de couleur</span></div>
-                <p class="hint">Préréglages Vert / Bleu / Rouge / Clair. Une image grise ou une couleur perso peuvent prendre le dessus.</p>
+                <div class="panel-head"><span>Color theme</span></div>
+                <p class="hint">Green / Blue / Red / Light presets. A gray image or custom color can take over.</p>
                 <div class="segmented" id="theme-segment">
-                  <button data-val="green" class="active">Vert</button>
-                  <button data-val="blue">Bleu</button>
-                  <button data-val="red">Rouge</button>
-                  <button data-val="light">Clair</button>
+                  <button data-val="green" class="active">Green</button>
+                  <button data-val="blue">Blue</button>
+                  <button data-val="red">Red</button>
+                  <button data-val="light">Light</button>
                 </div>
               </div>
               <div class="panel">
                 <div class="panel-head-row">
-                  <span>Couleur personnalisée</span>
+                  <span>Custom color</span>
                   <div class="segmented small" id="custom-accent-toggle">
                     <button data-val="off" class="active">OFF</button>
                     <button data-val="on">ON</button>
                   </div>
                 </div>
-                <p class="hint">Activez pour forcer une couleur (prioritaire sur le thème et l’image). Cercle / teinte ci-dessous.</p>
+                <p class="hint">Enable to force a color (overrides theme and image). Use the circle / hue below.</p>
                 <div class="custom-accent-wrap" id="custom-accent-wrap">
                   <div class="color-wheel-row">
                     <label class="color-wheel">
@@ -503,72 +503,72 @@
                       <span class="color-wheel-ring" aria-hidden="true"></span>
                     </label>
                     <div class="color-wheel-meta">
-                      <div class="row"><label>Teinte</label><input type="range" id="appearance-accent-hue" min="0" max="360" value="210" /><span id="appearance-accent-hue-val">210°</span></div>
+                      <div class="row"><label>Hue</label><input type="range" id="appearance-accent-hue" min="0" max="360" value="210" /><span id="appearance-accent-hue-val">210°</span></div>
                       <div class="row"><label>Hex</label><input type="text" id="appearance-custom-hex" value="#9ca3af" maxlength="7" /></div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="panel">
-                <div class="panel-head"><span>Image de fond</span></div>
-                <p class="hint">PNG, JPG, WEBP, <b>GIF</b> ou BMP uniquement. Les GIF animés sont supportés.</p>
-                <div class="bg-preview" id="bg-preview"><span class="bg-preview-empty" id="bg-preview-label">Aucune image</span></div>
+                <div class="panel-head"><span>Background image</span></div>
+                <p class="hint">PNG, JPG, WEBP, <b>GIF</b>, or BMP only. Animated GIFs are supported.</p>
+                <div class="bg-preview" id="bg-preview"><span class="bg-preview-empty" id="bg-preview-label">No image</span></div>
                 <div class="row bg-actions">
-                  <button type="button" id="appearance-pick-image">Choisir une image / GIF…</button>
-                  <button type="button" id="appearance-clear-image" class="ghost-btn">Retirer</button>
+                  <button type="button" id="appearance-pick-image">Choose an image / GIF…</button>
+                  <button type="button" id="appearance-clear-image" class="ghost-btn">Remove</button>
                 </div>
-                <input type="text" id="appearance-bgimage" placeholder="URL image uniquement (https://… .png/.jpg/.gif…)" />
+                <input type="text" id="appearance-bgimage" placeholder="Image URL only (https://… .png/.jpg/.gif…)" />
                 <div class="panel-head" style="margin-top:12px"><span>Position</span></div>
                 <div class="segmented small wrap" id="bg-position-segment">
-                  <button type="button" data-val="center" class="active">Centre</button>
-                  <button type="button" data-val="top">Haut</button>
-                  <button type="button" data-val="bottom">Bas</button>
-                  <button type="button" data-val="left">Gauche</button>
-                  <button type="button" data-val="right">Droite</button>
+                  <button type="button" data-val="center" class="active">Center</button>
+                  <button type="button" data-val="top">Top</button>
+                  <button type="button" data-val="bottom">Bottom</button>
+                  <button type="button" data-val="left">Left</button>
+                  <button type="button" data-val="right">Right</button>
                 </div>
-                <div class="panel-head" style="margin-top:10px"><span>Affichage</span></div>
+                <div class="panel-head" style="margin-top:10px"><span>Fit</span></div>
                 <div class="segmented small" id="bg-fit-segment">
-                  <button type="button" data-val="cover" class="active">Remplir</button>
-                  <button type="button" data-val="contain">Centrer (entier)</button>
+                  <button type="button" data-val="cover" class="active">Fill</button>
+                  <button type="button" data-val="contain">Fit (full)</button>
                 </div>
-                <p class="hint">Remplir = zoom pour couvrir. Centrer (entier) = image complète au centre.</p>
-                <div class="slider-row"><label>Force du thème (fond coloré)</label><input type="range" id="appearance-bgopacity" min="0" max="100" value="100" /><span id="appearance-bgopacity-val">100%</span></div>
-                <div class="slider-row"><label>Visibilité de l’image</label><input type="range" id="appearance-bgimgopacity" min="0" max="100" value="70" /><span id="appearance-bgimgopacity-val">70%</span></div>
-                <div class="slider-row"><label>Opacité de l’interface</label><input type="range" id="appearance-panelopacity" min="10" max="100" value="100" /><span id="appearance-panelopacity-val">100%</span></div>
-                <div class="slider-row"><label>Flou des panneaux</label><input type="range" id="appearance-panelblur" min="0" max="24" value="0" /><span id="appearance-panelblur-val">0px</span></div>
+                <p class="hint">Fill = zoom to cover. Fit (full) = whole image centered.</p>
+                <div class="slider-row"><label>Theme strength (colored background)</label><input type="range" id="appearance-bgopacity" min="0" max="100" value="100" /><span id="appearance-bgopacity-val">100%</span></div>
+                <div class="slider-row"><label>Image visibility</label><input type="range" id="appearance-bgimgopacity" min="0" max="100" value="70" /><span id="appearance-bgimgopacity-val">70%</span></div>
+                <div class="slider-row"><label>Interface opacity</label><input type="range" id="appearance-panelopacity" min="10" max="100" value="100" /><span id="appearance-panelopacity-val">100%</span></div>
+                <div class="slider-row"><label>Panel blur</label><input type="range" id="appearance-panelblur" min="0" max="24" value="0" /><span id="appearance-panelblur-val">0px</span></div>
                 <div class="setting-row" style="margin-top:10px">
                   <div>
-                    <b>Couleurs depuis l’image</b>
-                    <div class="hint">Image grise → accents gris. Image colorée → accents de la photo. Désactivé si couleur perso ON.</div>
+                    <b>Colors from image</b>
+                    <div class="hint">Gray image → gray accents. Color image → photo accents. Disabled when custom color is ON.</div>
                     <div class="image-tint-swatch" id="image-tint-swatch" hidden>
                       <span class="swatch-dot" id="swatch-accent"></span>
                       <span class="swatch-dot" id="swatch-soft"></span>
                       <span class="swatch-dot" id="swatch-avg"></span>
-                      <span id="image-tint-label">Palette détectée</span>
+                      <span id="image-tint-label">Detected palette</span>
                     </div>
                   </div>
                   <label class="switch"><input type="checkbox" id="appearance-matchcolors" checked><span></span></label>
                 </div>
               </div>
               <div class="panel">
-                <div class="setting-row"><div><b>CPS live (dans l’app)</b><div class="hint">Affiche le compteur CPS dans les vues et la barre du bas.</div></div><label class="switch"><input type="checkbox" id="appearance-livecps" checked><span></span></label></div>
-                <div class="setting-row"><div><b>Badge overlay ON·CPS</b><div class="hint">Petit badge flottant uniquement pendant que le clicker tourne.</div></div><label class="switch"><input type="checkbox" id="appearance-overlaybadge" checked><span></span></label></div>
-                <div class="setting-row"><div><b>Icône active</b></div><label class="switch"><input type="checkbox" id="appearance-activeicon" checked><span></span></label></div>
-                <div class="setting-row"><div><b>Barre de statut</b></div><label class="switch"><input type="checkbox" id="appearance-statusbar" checked><span></span></label></div>
-                <div class="setting-row"><div><b>Pied de page</b></div><label class="switch"><input type="checkbox" id="appearance-footer" checked><span></span></label></div>
+                <div class="setting-row"><div><b>Live CPS (in app)</b><div class="hint">Shows the CPS counter in views and the bottom bar.</div></div><label class="switch"><input type="checkbox" id="appearance-livecps" checked><span></span></label></div>
+                <div class="setting-row"><div><b>ON·CPS overlay badge</b><div class="hint">Small floating badge only while the clicker is running.</div></div><label class="switch"><input type="checkbox" id="appearance-overlaybadge" checked><span></span></label></div>
+                <div class="setting-row"><div><b>Active icon</b></div><label class="switch"><input type="checkbox" id="appearance-activeicon" checked><span></span></label></div>
+                <div class="setting-row"><div><b>Status bar</b></div><label class="switch"><input type="checkbox" id="appearance-statusbar" checked><span></span></label></div>
+                <div class="setting-row"><div><b>Footer</b></div><label class="switch"><input type="checkbox" id="appearance-footer" checked><span></span></label></div>
               </div>
               <div class="panel">
-                <div class="panel-head"><span data-i18n="overlay.position">Position de l’overlay</span></div>
+                <div class="panel-head"><span data-i18n="overlay.position">Overlay position</span></div>
                 <div class="segmented" id="overlay-position-segment">
-                  <button data-val="top-left" data-i18n="tab.topLeft">Haut-gauche</button>
-                  <button data-val="top-right" class="active" data-i18n="tab.topRight">Haut-droit</button>
-                  <button data-val="bottom-left" data-i18n="tab.bottomLeft">Bas-gauche</button>
-                  <button data-val="bottom-right" data-i18n="tab.bottomRight">Bas-droit</button>
+                  <button data-val="top-left" data-i18n="tab.topLeft">Top-left</button>
+                  <button data-val="top-right" class="active" data-i18n="tab.topRight">Top-right</button>
+                  <button data-val="bottom-left" data-i18n="tab.bottomLeft">Bottom-left</button>
+                  <button data-val="bottom-right" data-i18n="tab.bottomRight">Bottom-right</button>
                 </div>
-                <div class="slider-row" style="margin-top:10px"><label data-i18n="overlay.opacity">Opacité overlay</label><input type="range" id="appearance-overlayopacity" min="0" max="100" value="90" /><span id="appearance-overlayopacity-val">90%</span></div>
+                <div class="slider-row" style="margin-top:10px"><label data-i18n="overlay.opacity">Overlay opacity</label><input type="range" id="appearance-overlayopacity" min="0" max="100" value="90" /><span id="appearance-overlayopacity-val">90%</span></div>
               </div>
               <div class="panel">
-                <div class="panel-head"><span data-i18n="uiMode.label">Mode interface</span></div>
+                <div class="panel-head"><span data-i18n="uiMode.label">UI mode</span></div>
                 <div class="segmented" id="uimode-segment">
                   <button data-val="normal" class="active" data-i18n="uiMode.normal">Normal</button>
                   <button data-val="minimal" data-i18n="uiMode.minimal">Minimal</button>
@@ -578,26 +578,26 @@
 
             <div class="settings-pane" data-pane="keybinds">
               <div class="panel">
-                <div class="panel-head"><span data-i18n="hotkeys.section">Raccourcis système</span></div>
-                <div class="setting-row"><div><b data-i18n="hotkeys.panic">Panic (arrêt urgent)</b></div>
+                <div class="panel-head"><span data-i18n="hotkeys.section">System hotkeys</span></div>
+                <div class="setting-row"><div><b data-i18n="hotkeys.panic">Panic (emergency stop)</b></div>
                   <div class="hotkey-field"><input type="text" id="hotkey-panic" value="F12" readonly /><button type="button" class="hotkey-capture-btn" id="hotkey-panic-capture">⌨</button></div>
                 </div>
-                <div class="setting-row"><div><b data-i18n="hotkeys.pause">Pause / reprise</b></div>
+                <div class="setting-row"><div><b data-i18n="hotkeys.pause">Pause / resume</b></div>
                   <div class="hotkey-field"><input type="text" id="hotkey-pause" value="F7" readonly /><button type="button" class="hotkey-capture-btn" id="hotkey-pause-capture">⌨</button></div>
                 </div>
               </div>
               <div class="panel">
-                <div class="panel-head"><span>Raccourcis de navigation</span></div>
-                <p class="hint" id="nav-hotkey-platform-hint">Cliquez un champ puis pressez une touche ou un combo (ex: Shift+F, Ctrl+1).</p>
-                <div class="setting-row"><div><b>Simple</b><div class="hint">Ouvre la vue simple</div></div><input class="kb-input" data-page="simple" value="1" readonly /></div>
-                <div class="setting-row"><div><b>Avancé</b><div class="hint">Ouvre la vue avancée</div></div><input class="kb-input" data-page="advanced" value="2" readonly /></div>
-                <div class="setting-row"><div><b>Zones</b><div class="hint">Ouvre les zones d'arrêt</div></div><input class="kb-input" data-page="zones" value="3" readonly /></div>
-                <div class="setting-row"><div><b>Points de clic</b><div class="hint">Ouvre les points</div></div><input class="kb-input" data-page="clickPoints" value="4" readonly /></div>
-                <div class="setting-row"><div><b>Réglages</b><div class="hint">Ouvre les réglages</div></div><input class="kb-input" data-page="settings" value="5" readonly /></div>
+                <div class="panel-head"><span>Navigation hotkeys</span></div>
+                <p class="hint" id="nav-hotkey-platform-hint">Click a field then press a key or combo (e.g. Shift+F, Ctrl+1).</p>
+                <div class="setting-row"><div><b>Simple</b><div class="hint">Opens the simple view</div></div><input class="kb-input" data-page="simple" value="1" readonly /></div>
+                <div class="setting-row"><div><b>Advanced</b><div class="hint">Opens the advanced view</div></div><input class="kb-input" data-page="advanced" value="2" readonly /></div>
+                <div class="setting-row"><div><b>Zones</b><div class="hint">Opens stop zones</div></div><input class="kb-input" data-page="zones" value="3" readonly /></div>
+                <div class="setting-row"><div><b>Click points</b><div class="hint">Opens click points</div></div><input class="kb-input" data-page="clickPoints" value="4" readonly /></div>
+                <div class="setting-row"><div><b>Settings</b><div class="hint">Opens settings</div></div><input class="kb-input" data-page="settings" value="5" readonly /></div>
               </div>
               <div class="panel support-panel-wide">
-                <div class="panel-head"><span>Soutenez LuLune</span></div>
-                <p class="hint">Retrouvez-moi sur ces plateformes — les liens s’ouvrent dans votre navigateur (Windows, macOS, Linux).</p>
+                <div class="panel-head"><span>Support LuLune</span></div>
+                <p class="hint">Find me on these platforms — links open in your browser (Windows, macOS, Linux).</p>
                 <div class="support-links wide">
                   <button type="button" class="support-link yt" data-url="https://www.youtube.com/@Ang3lGD"><span class="support-ico">▶</span><span>YouTube · @Ang3lGD</span></button>
                   <button type="button" class="support-link tw" data-url="https://www.twitch.tv/ang3lgd_"><span class="support-ico">◈</span><span>Twitch · ang3lgd_</span></button>
@@ -609,13 +609,13 @@
 
             <div class="settings-pane" data-pane="processlist">
               <div class="panel">
-                <div class="panel-head-row"><span>Liste de processus</span><div class="segmented small" id="processlist-enable"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
-                <p class="hint">Contrôle le clic selon l'application au premier plan (ex: minecraft, chrome).</p>
-                <div class="segmented" id="processlist-mode"><button data-val="whitelist" class="active">Liste blanche</button><button data-val="blacklist">Liste noire</button></div>
-                <div class="hint" id="processlist-warning">Mode liste blanche sans app sélectionnée bloque partout.</div>
+                <div class="panel-head-row"><span>Process list</span><div class="segmented small" id="processlist-enable"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
+                <p class="hint">Controls clicking based on the foreground app (e.g. minecraft, chrome).</p>
+                <div class="segmented" id="processlist-mode"><button data-val="whitelist" class="active">Whitelist</button><button data-val="blacklist">Blacklist</button></div>
+                <div class="hint" id="processlist-warning">Whitelist mode with no selected app blocks everywhere.</div>
                 <div class="row" style="margin-top:10px">
-                  <input type="text" id="process-name-input" placeholder="Nom du processus" />
-                  <button id="process-add-btn" type="button">Ajouter</button>
+                  <input type="text" id="process-name-input" placeholder="Process name" />
+                  <button id="process-add-btn" type="button">Add</button>
                 </div>
                 <div id="process-list" class="process-chips"></div>
               </div>
@@ -623,14 +623,14 @@
 
             <div class="settings-pane" data-pane="presets">
               <div class="panel">
-                <div class="panel-head"><span>Préréglages</span></div>
-                <p class="hint">Sauvegardez et restaurez une config rapidement.</p>
-                <div class="row"><input type="text" id="preset-name-input" placeholder="Nom du préréglage" /><button id="save-preset-btn">Sauvegarder</button></div>
+                <div class="panel-head"><span>Presets</span></div>
+                <p class="hint">Save and restore a config quickly.</p>
+                <div class="row"><input type="text" id="preset-name-input" placeholder="Preset name" /><button id="save-preset-btn">Save</button></div>
                 <div class="row">
-                  <button id="seed-game-presets-btn" type="button">Ajouter préréglages jeux</button>
-                  <button id="export-presets-btn" type="button">Exporter</button>
-                  <button id="import-presets-btn" type="button">Importer</button>
-                  <button id="copy-presets-btn" type="button">Copier JSON</button>
+                  <button id="seed-game-presets-btn" type="button">Add game presets</button>
+                  <button id="export-presets-btn" type="button">Export</button>
+                  <button id="import-presets-btn" type="button">Import</button>
+                  <button id="copy-presets-btn" type="button">Copy JSON</button>
                 </div>
                 <div id="presets-list" class="presets-list"></div>
               </div>
@@ -638,11 +638,11 @@
 
             <div class="settings-pane" data-pane="slots">
               <div class="panel">
-                <div class="panel-head"><span data-i18n="slots.title">Sauvegardes de réglages</span></div>
-                <p class="hint" data-i18n="slots.hint">Enregistrez plusieurs configs complètes et rechargez-les.</p>
+                <div class="panel-head"><span data-i18n="slots.title">Settings backups</span></div>
+                <p class="hint" data-i18n="slots.hint">Save multiple full configs and reload them.</p>
                 <div class="row">
-                  <input type="text" id="slot-name-input" data-i18n-placeholder="slots.name" placeholder="Nom de la sauvegarde" />
-                  <button id="save-slot-btn" type="button" data-i18n="common.save">Sauvegarder</button>
+                  <input type="text" id="slot-name-input" data-i18n-placeholder="slots.name" placeholder="Backup name" />
+                  <button id="save-slot-btn" type="button" data-i18n="common.save">Save</button>
                 </div>
                 <div id="slots-list" class="presets-list"></div>
               </div>
@@ -650,22 +650,22 @@
 
             <div class="settings-pane" data-pane="changelog">
               <div class="panel">
-                <div class="panel-head"><span>Journal des versions</span></div>
-                <p class="hint">Tout ce qui a changé depuis les premières versions — lisez surtout la v1.3.0 pour les nouvelles fonctions.</p>
+                <div class="panel-head"><span>Version history</span></div>
+                <p class="hint">Everything that changed since the early versions — read v1.3.0 especially for the new features.</p>
                 <div id="changelog-list" class="changelog-list"></div>
               </div>
             </div>
 
             <div class="settings-pane" data-pane="maintenance">
               <div class="panel">
-                <div class="panel-head"><span>Réinitialisation</span></div>
-                <div class="setting-row"><div><b>Réinitialiser tous les réglages</b><div class="hint">Remet les valeurs par défaut.</div></div><button class="danger-btn" id="reset-settings-btn">Réinitialiser</button></div>
-                <div class="setting-row"><div><b>Réinitialiser les données d'usage</b><div class="hint">Efface les statistiques.</div></div><button class="danger-btn" id="reset-stats-btn">Réinitialiser</button></div>
+                <div class="panel-head"><span>Reset</span></div>
+                <div class="setting-row"><div><b>Reset all settings</b><div class="hint">Restores default values.</div></div><button class="danger-btn" id="reset-settings-btn">Reset</button></div>
+                <div class="setting-row"><div><b>Reset usage data</b><div class="hint">Clears statistics.</div></div><button class="danger-btn" id="reset-stats-btn">Reset</button></div>
               </div>
               <div class="panel">
                 <div class="panel-head"><span>Diagnostics</span></div>
-                <div class="setting-row"><div><b>Diagnostics</b><div class="hint">Journaux et données locales.</div></div><button id="open-diag-btn">Ouvrir le dossier</button></div>
-                <div class="setting-row"><div><b>Mises à jour</b><div class="hint">Ouvre GitHub · lulunee19</div></div><button id="check-updates-btn-2">Vérifier</button></div>
+                <div class="setting-row"><div><b>Diagnostics</b><div class="hint">Logs and local data.</div></div><button id="open-diag-btn">Open folder</button></div>
+                <div class="setting-row"><div><b>Updates</b><div class="hint">Opens GitHub · lulunee19</div></div><button id="check-updates-btn-2">Check</button></div>
               </div>
             </div>
           </div>
@@ -674,8 +674,8 @@
     </div>
 
     <div id="statusbar">
-      <span id="statusbar-left">Aucun préréglage actif</span>
-      <span id="statusbar-mid">Arrêté • <span id="statusbar-clicks">0</span> clics<span id="statusbar-cps-wrap"> • <span id="statusbar-livecps">0</span> CPS</span></span>
+      <span id="statusbar-left">No active preset</span>
+      <span id="statusbar-mid">Stopped • <span id="statusbar-clicks">0</span> clicks<span id="statusbar-cps-wrap"> • <span id="statusbar-livecps">0</span> CPS</span></span>
       <span id="statusbar-right">v1.3.0</span>
     </div>
   </div>
@@ -683,29 +683,29 @@
   <div id="confirm-cps-modal" class="modal hidden" aria-hidden="true">
     <div class="modal-card">
       <div class="modal-kicker">CPS</div>
-      <h2 data-i18n="confirm.highCps">Confirmer CPS élevé</h2>
-      <p class="hint" id="confirm-cps-text">CPS élevé. Continuer ?</p>
+      <h2 data-i18n="confirm.highCps">Confirm high CPS</h2>
+      <p class="hint" id="confirm-cps-text">High CPS. Continue?</p>
       <div class="row" style="gap:10px;margin-top:14px">
-        <button type="button" id="confirm-cps-cancel" class="ghost-btn">Annuler</button>
-        <button type="button" id="confirm-cps-ok">Continuer</button>
+        <button type="button" id="confirm-cps-cancel" class="ghost-btn">Cancel</button>
+        <button type="button" id="confirm-cps-ok">Continue</button>
       </div>
     </div>
   </div>
 
   <div id="tutorial-modal" class="modal hidden" aria-hidden="true">
     <div class="modal-card">
-      <div class="modal-kicker">Bienvenue · v1.3.0</div>
+      <div class="modal-kicker">Welcome · v1.3.0</div>
       <h2>LuLune AutoClicker</h2>
-      <p class="hint">Petit tour des nouveautés pour bien démarrer.</p>
+      <p class="hint">A short tour of the new features to get started.</p>
       <ol class="tutorial-steps">
-        <li><b>Avancé</b> — réglez les CPS, le bouton (Gauche/Milieu/Droit) et le raccourci.</li>
-        <li><b>Bascule ou Maintien</b> — Bascule = appui pour ON/OFF · Maintien = cliquer seulement tant que la touche est enfoncée.</li>
-        <li><b>Zones</b> — coins, bords, ou dessinez une zone perso pour couper le clicker en urgence.</li>
-        <li><b>Apparence</b> — thèmes Vert/Bleu/Rouge/Clair + image de fond depuis votre PC.</li>
-        <li><b>Macros & préréglages</b> — enregistrez des combos, importez/exportez, ajoutez les profils jeux.</li>
-        <li><b>Discord</b> — dans Communauté, cliquez pour copier <b>LuLune0193</b>.</li>
+        <li><b>Advanced</b> — set CPS, the button (Left/Middle/Right), and the hotkey.</li>
+        <li><b>Toggle or Hold</b> — Toggle = press for ON/OFF · Hold = click only while the key is held.</li>
+        <li><b>Zones</b> — corners, edges, or draw a custom zone for an emergency stop.</li>
+        <li><b>Appearance</b> — Green/Blue/Red/Light themes + background image from your PC.</li>
+        <li><b>Macros & presets</b> — record combos, import/export, add game profiles.</li>
+        <li><b>Discord</b> — in Community, click to copy <b>LuLune0193</b>.</li>
       </ol>
-      <button id="tutorial-dismiss-btn" type="button">C’est parti</button>
+      <button id="tutorial-dismiss-btn" type="button">Let's go</button>
     </div>
   </div>
   <script src="renderer.js"></script>

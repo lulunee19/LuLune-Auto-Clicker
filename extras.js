@@ -26,85 +26,85 @@ const GAME_PRESETS = [
 const CHANGELOG = [
   {
     v: '1.4.1',
-    title: 'Polish UI, Discord Presence, opacité et builds',
+    title: 'UI polish, Discord Presence, opacity, and builds',
     items: [
-      'Opacité de l’interface (10 % → 100 %) : panneaux, barre de titre et barre de statut deviennent vraiment translucides pour laisser voir votre fond.',
-      'Couleurs depuis l’image corrigées : une photo grise teinte toute l’UI en gris (y compris le bouton Démarrer et les bordures) — plus de vert en dur qui restait collé.',
-      'Couleur personnalisée : cercle / teinte / hex pour forcer une couleur d’accent prioritaire sur le thème et l’image.',
-      'Discord Rich Presence clarifié : Client ID seul dans l’UI, logo asset « logo », boutons pour ouvrir le Developer Portal et le fichier logo ; le titre « Joue à LuLuneAutoClicker » se règle dans le portail Discord.',
-      'Capture de raccourci sécurisée : pendant que vous choisissez une nouvelle touche, F6 / Panic / Pause / macros sont coupés (Échap annule).',
-      'Fenêtre compacte uniquement sur la vue AutoClick (icône souris) ; les autres onglets repassent en grand format.',
-      'Icône AutoClick = souris (plus de trombone Clippy) ; macros = icône liste claire.',
-      'Hints de raccourcis selon l’OS : Windows voit Ctrl, macOS voit Cmd, Linux voit Ctrl — plus de ligne Windows/Linux/macOS mélangée.',
-      'Stats Utilisation réalignées (liste label / valeur) et graphique clics/jour refait en barres HTML (plus de canvas coupé / pavé bugué).',
-      'Boutons Maintenance / Apparence restylés (plus de boutons blancs système « Ouvrir le dossier », « Vérifier », « Retirer »).',
-      'Macros : tutoriel en 4 étapes + bouton ▶ Jouer ; message clair si pas de raccourci.',
-      'Sidebar Réglages : onglets qui ne s’écrasent plus (scroll correct, carte communauté retirée de la colonne).'
+      'Interface opacity (10% → 100%): panels, title bar, and status bar become truly translucent so your background shows through.',
+      'Colors from image fixed: a gray photo tints the whole UI gray (including the Start button and borders) — no more hard-coded green sticking around.',
+      'Custom color: circle / hue / hex to force an accent color that overrides the theme and image.',
+      'Discord Rich Presence clarified: Client ID alone in the UI, logo asset named "logo", buttons to open the Developer Portal and logo file; the "Playing LuLuneAutoClicker" title is set in the Discord portal.',
+      'Safe hotkey capture: while you choose a new key, F6 / Panic / Pause / macros are disabled (Esc cancels).',
+      'Compact window only on the AutoClick view (mouse icon); other tabs return to the large layout.',
+      'AutoClick icon = mouse (no more Clippy paperclip); macros = clear list icon.',
+      'Hotkey hints by OS: Windows shows Ctrl, macOS shows Cmd, Linux shows Ctrl — no mixed Windows/Linux/macOS line.',
+      'Usage stats realigned (label / value list) and clicks/day chart rebuilt as HTML bars (no more clipped / broken canvas tile).',
+      'Maintenance / Appearance buttons restyled (no more system-white "Open folder", "Check", "Remove" buttons).',
+      'Macros: 4-step tutorial + ▶ Play button; clear message when there is no hotkey.',
+      'Settings sidebar: tabs no longer crush each other (correct scroll, community card removed from the column).'
     ]
   },
   {
     v: '1.4.0',
-    title: 'Moteur avancé, Discord RPC, sauvegardes et i18n',
+    title: 'Advanced engine, Discord RPC, backups, and i18n',
     items: [
-      'Rampe CPS : démarrez lentement puis montez automatiquement jusqu’à un CPS cible sur N secondes (idéal warm-up PVP / idle).',
-      'Mode Rafale (Burst) : N clics rapides puis pause, en boucle — parfait pour des salves contrôlées.',
-      'Filtre couleur pixel : le clicker ne clique que si la couleur sous le curseur correspond (échantillon + tolérance).',
-      'Failsafe curseur : arrêt automatique si la souris ne bouge plus pendant N secondes.',
-      'Minuteur de session : stop après X minutes pour éviter de cliquer toute la nuit.',
-      'Confirmation CPS élevé : dialogue avant de démarrer au-dessus d’un seuil (ex. 100 CPS).',
-      'Hotkeys système Panic (F12) et Pause (F7), configurables — indépendants des préréglages.',
-      'Overlay repositionnable (4 coins) + opacité ; masqué en pause si l’option est active.',
-      'Mode interface Minimal : garde l’essentiel (start / CPS / hotkey) pour une fenêtre ultra légère.',
-      'Langue FR / EN dans toute l’interface (libellés principaux).',
-      'Discord Rich Presence : affiche Idle ou Clicking · CPS sur votre profil (nécessite un Client ID d’application Discord).',
-      'Objectifs : clics quotidiens et/ou de session avec barre de progression et notification.',
-      'Sauvegardes multiples (slots) : plusieurs configs complètes enregistrées / rechargées sans écraser la courante.',
-      'Volume des sons, réduction auto de la fenêtre au démarrage du clic, overlay masqué en pause.'
+      'CPS ramp: start slow then automatically climb to a target CPS over N seconds (great for PVP / idle warm-up).',
+      'Burst mode: N fast clicks then a pause, looping — perfect for controlled salvos.',
+      'Pixel color filter: the clicker only clicks if the color under the cursor matches (sample + tolerance).',
+      'Cursor failsafe: automatic stop if the mouse stops moving for N seconds.',
+      'Session timer: stop after X minutes so you do not click all night.',
+      'High CPS confirmation: dialog before starting above a threshold (e.g. 100 CPS).',
+      'System hotkeys Panic (F12) and Pause (F7), configurable — independent of presets.',
+      'Repositionable overlay (4 corners) + opacity; hidden while paused if the option is on.',
+      'Minimal UI mode: keeps the essentials (start / CPS / hotkey) for an ultra-light window.',
+      'FR / EN language across the main UI labels.',
+      'Discord Rich Presence: shows Idle or Clicking · CPS on your profile (requires a Discord application Client ID).',
+      'Goals: daily and/or session clicks with progress bar and notification.',
+      'Multiple backups (slots): several full configs saved / reloaded without overwriting the current one.',
+      'Sound volume, auto-minimize window when clicking starts, overlay hidden while paused.'
     ]
   },
   {
     v: '1.3.0',
-    title: 'Grande mise à jour — contrôle, style et sécurité',
+    title: 'Major update — control, style, and safety',
     items: [
-      'CPS live : compteur en temps réel dans l’app et dans la barre de statut, pour voir exactement votre vitesse de clic.',
-      'Badge overlay ON · CPS : petit indicateur flottant discret pendant que le clicker tourne (désactivable dans Apparence).',
-      'Mode Maintien réel : maintenez le raccourci pour cliquer, relâchez pour arrêter (via uiohook, pas seulement une bascule).',
-      'Zones d’arrêt dessinables : glissez un rectangle à l’écran, Entrée pour valider, Échap pour annuler — idéal en jeu.',
-      'Arrêt coin / bord mieux expliqué : tailles réglables pour chaque coin et chaque bord de l’écran.',
-      'Liste de processus : liste blanche ou noire selon l’appli au premier plan (ex. minecraft, chrome).',
-      'Préréglages jeux prêts à l’emploi : Minecraft PVP, Cookie Clicker, Idle/AFK, Burst 60 CPS.',
-      'Import / export des préréglages et macros (fichiers JSON), plus partage de macro en base64 via le presse-papiers.',
-      'Séquences de macros : tapez plusieurs touches d’un coup (ex. a b enter f2) pour construire une combo.',
-      'Thèmes Vert / Bleu / Rouge / Clair : le fond, les orbes et les accents suivent vraiment le thème choisi.',
-      'Image de fond : bouton « Choisir une image… », aperçu, curseurs de visibilité / transparence / flou des panneaux.',
-      'Couleurs depuis l’image : les accents de l’interface (boutons, lueurs, bordures) s’adaptent automatiquement à la palette de votre fond (option dans Apparence).',
-      'Sons optionnels au démarrage et à l’arrêt du clicker.',
-      'Anti-détection légère : petit jitter d’intervalle + micro-décalage souris (optionnel).',
-      'Tutoriel de premier lancement + journal des versions détaillé dans Réglages → Changelog.',
-      'Graphique des clics sur 14 jours et stats enrichies (CPS live, sessions, temps total).',
-      'Discord LuLune0193 : bouton pour copier le pseudo (pas de Ko-fi).',
-      'Vérifier les mises à jour : ouvre le GitHub du projet depuis l’app.',
-      'Fenêtre plus large et défilement corrigé pour que Zones, Points et Réglages affichent tout le contenu.'
+      'Live CPS: real-time counter in the app and status bar so you see exact click speed.',
+      'ON · CPS overlay badge: small discreet floating indicator while the clicker runs (can be disabled in Appearance).',
+      'Real Hold mode: hold the hotkey to click, release to stop (via uiohook, not just a toggle).',
+      'Drawable stop zones: drag a rectangle on screen, Enter to confirm, Esc to cancel — ideal in-game.',
+      'Corner / edge stop better explained: adjustable sizes for each corner and each screen edge.',
+      'Process list: whitelist or blacklist based on the foreground app (e.g. minecraft, chrome).',
+      'Ready-to-use game presets: Minecraft PVP, Cookie Clicker, Idle/AFK, Burst 60 CPS.',
+      'Import / export of presets and macros (JSON files), plus base64 macro sharing via the clipboard.',
+      'Macro sequences: type several keys at once (e.g. a b enter f2) to build a combo.',
+      'Green / Blue / Red / Light themes: background, orbs, and accents truly follow the chosen theme.',
+      'Background image: "Choose an image…" button, preview, visibility / transparency / panel blur sliders.',
+      'Colors from image: UI accents (buttons, glows, borders) automatically adapt to your background palette (Appearance option).',
+      'Optional sounds when the clicker starts and stops.',
+      'Light anti-detection: small interval jitter + tiny mouse offset (optional).',
+      'First-launch tutorial + detailed version history in Settings → Changelog.',
+      '14-day click chart and richer stats (live CPS, sessions, total time).',
+      'Discord LuLune0193: button to copy the username (no Ko-fi).',
+      'Check for updates: opens the project GitHub from the app.',
+      'Wider window and fixed scrolling so Zones, Points, and Settings show all content.'
     ]
   },
   {
     v: '1.2.0',
-    title: 'UI animée et combos',
+    title: 'Animated UI and combos',
     items: [
-      'Interface animée (orbes, transitions, carte communauté).',
-      'Raccourcis multi-touches (ex. Shift+F, Ctrl+1).',
-      'Correction du layout qui coupait le bas de certaines vues.',
-      'Page de téléchargement HTML pour Windows, macOS et Linux.'
+      'Animated interface (orbs, transitions, community card).',
+      'Multi-key hotkeys (e.g. Shift+F, Ctrl+1).',
+      'Layout fix that was clipping the bottom of some views.',
+      'HTML download page for Windows, macOS, and Linux.'
     ]
   },
   {
     v: '1.1.0',
-    title: 'Moteur de clic fiable',
+    title: 'Reliable click engine',
     items: [
-      'Fix du CPS plafonné ~25 (délais nut-js / libnut à zéro).',
-      'Clics gauches corrects (migration bouton souris + duty cycle).',
-      'Macros F8 / Shift+F8 / F9 avec lecture des étapes.',
-      'Compatibilité Windows, macOS et Linux.'
+      'Fixed CPS capped around ~25 (nut-js / libnut delays set to zero).',
+      'Correct left clicks (mouse button migration + duty cycle).',
+      'F8 / Shift+F8 / F9 macros with step playback.',
+      'Windows, macOS, and Linux compatibility.'
     ]
   }
 ];
@@ -247,23 +247,23 @@ function checkSafetyStops(settings, cursor, displayBounds) {
   const cs = settings.stopZones?.cornerStop;
   if (cs?.enabled) {
     const [tl, tr, bl, br] = cs.sizes || [50, 50, 50, 50];
-    if (x <= b.x + tl && y <= b.y + tl) return 'Coin haut-gauche';
-    if (x >= b.x + b.width - tr && y <= b.y + tr) return 'Coin haut-droit';
-    if (x <= b.x + bl && y >= b.y + b.height - bl) return 'Coin bas-gauche';
-    if (x >= b.x + b.width - br && y >= b.y + b.height - br) return 'Coin bas-droit';
+    if (x <= b.x + tl && y <= b.y + tl) return 'Top-left corner';
+    if (x >= b.x + b.width - tr && y <= b.y + tr) return 'Top-right corner';
+    if (x <= b.x + bl && y >= b.y + b.height - bl) return 'Bottom-left corner';
+    if (x >= b.x + b.width - br && y >= b.y + b.height - br) return 'Bottom-right corner';
   }
   const es = settings.stopZones?.edgeStop;
   if (es?.enabled) {
     const [top, right, bottom, left] = es.sizes || [40, 40, 40, 40];
-    if (y <= b.y + top) return 'Bord haut';
-    if (x >= b.x + b.width - right) return 'Bord droit';
-    if (y >= b.y + b.height - bottom) return 'Bord bas';
-    if (x <= b.x + left) return 'Bord gauche';
+    if (y <= b.y + top) return 'Top edge';
+    if (x >= b.x + b.width - right) return 'Right edge';
+    if (y >= b.y + b.height - bottom) return 'Bottom edge';
+    if (x <= b.x + left) return 'Left edge';
   }
   const cz = settings.stopZones?.customZones;
   if (cz?.enabled && Array.isArray(cz.zones)) {
     for (const z of cz.zones) {
-      if (pointInZone(x, y, z)) return z.action === 'start' ? null : (z.name || 'Zone personnalisée');
+      if (pointInZone(x, y, z)) return z.action === 'start' ? null : (z.name || 'Custom zone');
     }
   }
   return null;

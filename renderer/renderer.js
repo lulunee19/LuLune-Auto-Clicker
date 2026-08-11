@@ -65,7 +65,7 @@ async function init() {
         const cpsPart = showCps
           ? ` <span id="statusbar-cps-wrap">• <span id="statusbar-livecps">${state.stats?.liveCps || 0}</span> CPS</span>`
           : '';
-        mid.innerHTML = `${d.reason} • ${d.sessionClicks || 0} clics${cpsPart}`;
+        mid.innerHTML = `${d.reason} • ${d.sessionClicks || 0} clicks${cpsPart}`;
       }
     }
     applyHudVisibility();
@@ -78,8 +78,8 @@ async function init() {
     }
   });
   window.api.onGoalReached?.((d) => {
-    const lang = state.settings?.language || 'fr';
-    const msg = window.i18n?.t(lang, 'goals.reached') || 'Objectif quotidien atteint !';
+    const lang = state.settings?.language || 'en';
+    const msg = window.i18n?.t(lang, 'goals.reached') || 'Daily goal reached!';
     const mid = $('#statusbar-mid');
     if (mid) mid.textContent = `${msg} (${d?.clicks || 0})`;
   });
@@ -91,15 +91,15 @@ async function init() {
   });
   window.api.onMacroRan((d) => {
     if (d && d.ok === false) {
-      $('#statusbar-mid').textContent = `Macro échouée: ${d.error || 'erreur'}`;
+      $('#statusbar-mid').textContent = `Macro failed: ${d.error || 'error'}`;
     } else if (d && d.ok) {
-      $('#statusbar-mid').textContent = 'Macro exécutée';
+      $('#statusbar-mid').textContent = 'Macro executed';
     }
   });
   enhanceNumberInputs();
 }
 
-function lang() { return state.settings?.language === 'en' ? 'en' : 'fr'; }
+function lang() { return state.settings?.language === 'fr' ? 'fr' : 'en'; }
 
 function tr(key, vars) {
   return window.i18n?.t(lang(), key, vars) || key;
@@ -284,7 +284,7 @@ function applyImageTint(palette, sourceLabel) {
     if (label) {
       const gray = saturationOf(accent) < 0.14;
       label.textContent = sourceLabel
-        || (gray ? 'Palette grise (image)' : 'Palette de l’image appliquée');
+        || (gray ? 'Gray palette (image)' : 'Image palette applied');
     }
   }
 }
@@ -404,12 +404,12 @@ async function applyAppearance(livePartial) {
       preview.style.backgroundImage = 'none';
       preview.classList.remove('has-image');
     }
-    if (previewLabel) previewLabel.textContent = 'Aucune image';
+    if (previewLabel) previewLabel.textContent = 'No image';
   }
 
   // Accent priority: custom picker > image palette > theme presets
   if (customOn && customRgb) {
-    applyImageTint({ accent: customRgb, avg: customRgb }, 'Couleur personnalisée');
+    applyImageTint({ accent: customRgb, avg: customRgb }, 'Custom color');
   } else if (cssUrl && matchColors) {
     if (cssUrl !== lastTintUrl || !lastTintPalette) {
       lastTintUrl = cssUrl;
@@ -419,7 +419,7 @@ async function applyAppearance(livePartial) {
     if (lastTintPalette) {
       applyImageTint(
         lastTintPalette,
-        lastTintPalette.grayscale ? 'Palette grise (image)' : 'Palette de l’image appliquée'
+        lastTintPalette.grayscale ? 'Gray palette (image)' : 'Image palette applied'
       );
     } else clearImageTint();
   } else {
@@ -485,21 +485,21 @@ function updatePlatformBadge(platform) {
   });
   const hint = $('#platform-hint');
   if (hint) {
-    if (platform === 'darwin') hint.textContent = 'macOS : autorisez Accessibilité dans Réglages → Confidentialité.';
-    else if (platform === 'linux') hint.textContent = 'Linux : session X11 recommandée (Wayland peut bloquer les clics).';
-    else hint.textContent = 'Windows : lancez via Launch-Windows.bat si SmartScreen apparaît.';
+    if (platform === 'darwin') hint.textContent = 'macOS: allow Accessibility in Settings → Privacy.';
+    else if (platform === 'linux') hint.textContent = 'Linux: X11 session recommended (Wayland may block clicks).';
+    else hint.textContent = 'Windows: launch via Launch-Windows.bat if SmartScreen appears.';
   }
   const hkHint = $('#hotkey-platform-hint');
   if (hkHint) {
-    if (platform === 'darwin') hkHint.textContent = 'macOS : Cmd+… (ex: Cmd+1, Shift+F)';
-    else if (platform === 'linux') hkHint.textContent = 'Linux : Ctrl+… (ex: Ctrl+1, Shift+F)';
-    else hkHint.textContent = 'Windows : Ctrl+… (ex: Ctrl+1, Shift+F)';
+    if (platform === 'darwin') hkHint.textContent = 'macOS: Cmd+… (e.g. Cmd+1, Shift+F)';
+    else if (platform === 'linux') hkHint.textContent = 'Linux: Ctrl+… (e.g. Ctrl+1, Shift+F)';
+    else hkHint.textContent = 'Windows: Ctrl+… (e.g. Ctrl+1, Shift+F)';
   }
   const navHk = $('#nav-hotkey-platform-hint');
   if (navHk) {
-    if (platform === 'darwin') navHk.textContent = 'Cliquez un champ puis pressez une touche ou un combo (ex: Shift+F, Cmd+1).';
-    else if (platform === 'linux') navHk.textContent = 'Cliquez un champ puis pressez une touche ou un combo (ex: Shift+F, Ctrl+1).';
-    else navHk.textContent = 'Cliquez un champ puis pressez une touche ou un combo (ex: Shift+F, Ctrl+1).';
+    if (platform === 'darwin') navHk.textContent = 'Click a field then press a key or combo (e.g. Shift+F, Cmd+1).';
+    else if (platform === 'linux') navHk.textContent = 'Click a field then press a key or combo (e.g. Shift+F, Ctrl+1).';
+    else navHk.textContent = 'Click a field then press a key or combo (e.g. Shift+F, Ctrl+1).';
   }
 }
 
@@ -537,10 +537,10 @@ function updateStartStopUI(clicking, paused) {
 }
 
 function updateActiveMouseLabel() {
-  const map = { left: 'Gauche', middle: 'Milieu', right: 'Droit' };
+  const map = { left: 'Left', middle: 'Middle', right: 'Right' };
   const btn = state.settings?.mouseButton || 'left';
   const el = $('#active-mouse-label');
-  if (el) el.textContent = map[btn] || 'Gauche';
+  if (el) el.textContent = map[btn] || 'Left';
 }
 
 function syncSegment(containerId, value) {
@@ -566,7 +566,7 @@ function renderStatsChart() {
   const last = days[days.length - 1];
   if (metaEl) {
     metaEl.textContent = last
-      ? `${last.day} · ${(Number(last.clicks) || 0).toLocaleString()} clics`
+      ? `${last.day} · ${(Number(last.clicks) || 0).toLocaleString()} clicks`
       : '';
   }
   barsEl.innerHTML = days.map((d) => {
@@ -663,21 +663,21 @@ function updateCpsSourceBadge() {
   if (retry) retry.hidden = !cpsTest.done || cpsTest.active;
 
   let source = 'idle';
-  let label = 'Source : —';
+  let label = 'Source: —';
   if (cpsTest.active || cpsTest.done) {
     source = 'manual';
     label = cpsTest.active
-      ? 'Source : clics manuels (test en cours)'
-      : 'Source : clics manuels (dernier test)';
+      ? 'Source: manual clicks (test in progress)'
+      : 'Source: manual clicks (last test)';
   } else if (state.stats?.clicking && !state.stats?.paused) {
     source = 'auto';
-    label = 'Source : Autoclicker ON';
+    label = 'Source: Autoclicker ON';
   } else if (state.stats?.clicking && state.stats?.paused) {
     source = 'auto';
-    label = 'Source : Autoclicker en pause';
+    label = 'Source: Autoclicker paused';
   } else {
     source = 'idle';
-    label = 'Source : Autoclicker OFF';
+    label = 'Source: Autoclicker OFF';
   }
   cpsTest.source = source;
   if (badge) {
@@ -699,17 +699,17 @@ function updateCpsTestPadUI(now = Date.now()) {
     const elapsed = Math.max(0, (now - cpsTest.startAt) / 1000);
     const left = Math.max(0, cpsTest.duration - elapsed);
     const cps = elapsed > 0 ? cpsTest.clicks / elapsed : 0;
-    if (title) title.textContent = 'Test en cours…';
-    if (meta) meta.textContent = `${left.toFixed(1)} s restantes · ${cpsTest.clicks} clics`;
+    if (title) title.textContent = 'Test in progress…';
+    if (meta) meta.textContent = `${left.toFixed(1)} s left · ${cpsTest.clicks} clicks`;
     if (score) score.textContent = `${fmtCps(cps)} CPS`;
   } else if (cpsTest.done) {
     const cps = cpsTest.duration > 0 ? cpsTest.clicks / cpsTest.duration : 0;
-    if (title) title.textContent = 'Terminé';
-    if (meta) meta.textContent = `${cpsTest.clicks} clics en ${cpsWindowLabel(cpsTest.duration)}`;
+    if (title) title.textContent = 'Done';
+    if (meta) meta.textContent = `${cpsTest.clicks} clicks in ${cpsWindowLabel(cpsTest.duration)}`;
     if (score) score.textContent = `${fmtCps(cps)} CPS`;
   } else {
-    if (title) title.textContent = 'Cliquez ici';
-    if (meta) meta.textContent = `Durée : ${cpsWindowLabel(cpsTest.duration)} · prêt`;
+    if (title) title.textContent = 'Click here';
+    if (meta) meta.textContent = `Duration: ${cpsWindowLabel(cpsTest.duration)} · ready`;
     if (score) score.textContent = '0.0 CPS';
   }
   updateCpsSourceBadge();
@@ -1044,7 +1044,7 @@ function bindAdvanced() {
 function syncAdvIntervalDisplay() {
   const cps = state.settings.cps || 60;
   const el = $('#adv-interval-display');
-  if (el) el.textContent = `${Math.round(1000 / cps)}ms d'intervalle`;
+  if (el) el.textContent = `${Math.round(1000 / cps)}ms interval`;
 }
 
 function keyTokenFromEvent(e) {
@@ -1111,7 +1111,7 @@ function captureNextKey(inputSel, onDone) {
   const input = typeof inputSel === 'string' ? $(inputSel) : inputSel;
   if (!input) return;
   const prev = input.value;
-  input.value = 'Appuyez une touche… (Échap = annuler)';
+  input.value = 'Press a key… (Esc = cancel)';
   input.classList.add('capturing');
   // Coupe F6 / panic / pause / macros le temps de choisir la nouvelle touche
   window.api.setHotkeyCapture?.(true);
@@ -1159,7 +1159,7 @@ function bindDiscord() {
   if (label) label.textContent = user;
   const copy = async () => {
     const ok = await window.api.copyText(user);
-    $('#statusbar-mid').textContent = ok ? `Discord copié : ${user}` : 'Copie Discord échouée';
+    $('#statusbar-mid').textContent = ok ? `Discord copied: ${user}` : 'Discord copy failed';
   };
   $('#discord-copy-btn')?.addEventListener('click', copy);
   $('#discord-copy-btn-wide')?.addEventListener('click', copy);
@@ -1192,7 +1192,7 @@ function bindZones() {
       state.settings = r.settings;
       renderCustomZones();
       syncSegment('custom-zones-toggle', 'on');
-      $('#statusbar-mid').textContent = 'Zone personnalisée ajoutée';
+      $('#statusbar-mid').textContent = 'Custom zone added';
     }
   });
 }
@@ -1234,7 +1234,7 @@ function bindPoints() {
   bindSegmented('points-stop-complete', (v) => pushSettings({ clickPoints: { ...state.settings.clickPoints, stopWhenComplete: v === 'on' } }));
   $('#start-picking-btn').addEventListener('click', async () => {
     picking = !picking;
-    $('#start-picking-btn').textContent = picking ? 'Clic droit pour ajouter (Échap pour arrêter)' : 'Commencer à choisir';
+    $('#start-picking-btn').textContent = picking ? 'Right-click to add (Esc to stop)' : 'Start picking';
     if (picking) armPicking();
   });
 }
@@ -1249,14 +1249,14 @@ async function armPicking() {
   };
   document.addEventListener('contextmenu', onContext);
   document.addEventListener('keydown', function esc(e) {
-    if (e.key === 'Escape') { picking = false; $('#start-picking-btn').textContent = 'Commencer à choisir'; document.removeEventListener('keydown', esc); }
+    if (e.key === 'Escape') { picking = false; $('#start-picking-btn').textContent = 'Start picking'; document.removeEventListener('keydown', esc); }
   });
 }
 function renderPoints() {
   const list = $('#points-list');
   const pts = state.settings.clickPoints?.points || [];
   if (!list) return;
-  if (!pts.length) { list.innerHTML = '<div class="empty-hint">Aucun point de clic pour le moment.</div>'; return; }
+  if (!pts.length) { list.innerHTML = '<div class="empty-hint">No click points yet.</div>'; return; }
   list.innerHTML = pts.map((p, i) => `<div class="point-item"><span>Point ${i + 1}: (${p.x}, ${p.y})</span><button data-i="${i}">✕</button></div>`).join('');
   list.querySelectorAll('button').forEach(b => b.addEventListener('click', async () => {
     const points = state.settings.clickPoints.points.filter((_, idx) => idx !== Number(b.dataset.i));
@@ -1279,7 +1279,7 @@ function bindMacrosUI() {
     $('#macro-hotkey-input').value = '';
     updateMacroRecordingUI();
     updateMacroPreview();
-    $('#statusbar-mid').textContent = 'Nouvelle macro';
+    $('#statusbar-mid').textContent = 'New macro';
   });
   $('#macro-edit-hotkey')?.addEventListener('click', () => {
     captureNextKey('#macro-hotkey-input', (combo) => { $('#macro-hotkey-input').value = combo; });
@@ -1305,7 +1305,7 @@ function bindMacrosUI() {
   $('#macro-add-key-btn')?.addEventListener('click', async () => {
     const key = $('#macro-key-input').value.trim();
     if (!key) {
-      $('#statusbar-mid').textContent = 'Tapez une touche (ex: a ou enter)';
+      $('#statusbar-mid').textContent = 'Type a key (e.g. a or enter)';
       return;
     }
     syncFromApi(await window.api.macroAddKey(key));
@@ -1319,7 +1319,7 @@ function bindMacrosUI() {
   $('#macro-add-sequence-btn')?.addEventListener('click', async () => {
     const seq = $('#macro-sequence-input')?.value.trim();
     if (!seq) {
-      $('#statusbar-mid').textContent = 'Ex: a b enter  (plusieurs touches)';
+      $('#statusbar-mid').textContent = 'E.g. a b enter  (several keys)';
       return;
     }
     syncFromApi(await window.api.macroAddSequence(seq));
@@ -1335,21 +1335,21 @@ function bindMacrosUI() {
     if (r?.ok) {
       state.macros = r.macros;
       renderMacros();
-      $('#statusbar-mid').textContent = `Macro importée : ${r.macro?.name || ''}`;
+      $('#statusbar-mid').textContent = `Macro imported: ${r.macro?.name || ''}`;
     } else {
-      $('#statusbar-mid').textContent = `Import base64 échoué : ${r?.error || 'erreur'}`;
+      $('#statusbar-mid').textContent = `Base64 import failed: ${r?.error || 'error'}`;
     }
   });
   $('#export-macros-btn')?.addEventListener('click', async () => {
     const r = await window.api.exportMacros();
-    if (r?.ok) $('#statusbar-mid').textContent = 'Macros exportées';
+    if (r?.ok) $('#statusbar-mid').textContent = 'Macros exported';
   });
   $('#import-macros-btn')?.addEventListener('click', async () => {
     const r = await window.api.importMacros();
     if (r?.ok) {
       state.macros = r.macros;
       renderMacros();
-      $('#statusbar-mid').textContent = `Macros importées (+${r.added || 0})`;
+      $('#statusbar-mid').textContent = `Macros imported (+${r.added || 0})`;
     }
   });
 }
@@ -1387,17 +1387,17 @@ function updateMacroPreview() {
   const preview = $('#macro-steps-preview');
   if (preview) {
     preview.textContent = actions.length
-      ? `${actions.length} étape(s) prêtes — Sauvegarder pour les garder`
-      : 'Aucune étape — + Clic, + Touche ou + Touches (ex: a b enter).';
+      ? `${actions.length} step(s) ready — Save to keep them`
+      : 'No steps — + Click, + Key, or + Keys (e.g. a b enter).';
   }
   const list = $('#macro-steps-list');
   if (!list) return;
   if (!steps.length) { list.innerHTML = ''; return; }
   list.innerHTML = steps.slice(0, 40).map((s) => {
-    if (s.type === 'delay') return `<div class="macro-step-item"><span>Délai</span><b>${s.ms}ms</b></div>`;
-    if (s.type === 'click') return `<div class="macro-step-item"><span>Clic ${s.button || 'left'}</span><b>${s.x}, ${s.y}</b></div>`;
-    if (s.type === 'key') return `<div class="macro-step-item"><span>Touche</span><b>${s.key}</b></div>`;
-    if (s.type === 'sequence') return `<div class="macro-step-item"><span>Touches</span><b>${(s.keys || []).join(' → ')}</b></div>`;
+    if (s.type === 'delay') return `<div class="macro-step-item"><span>Delay</span><b>${s.ms}ms</b></div>`;
+    if (s.type === 'click') return `<div class="macro-step-item"><span>Click ${s.button || 'left'}</span><b>${s.x}, ${s.y}</b></div>`;
+    if (s.type === 'key') return `<div class="macro-step-item"><span>Key</span><b>${s.key}</b></div>`;
+    if (s.type === 'sequence') return `<div class="macro-step-item"><span>Keys</span><b>${(s.keys || []).join(' → ')}</b></div>`;
     return `<div class="macro-step-item"><span>${s.type}</span><b>…</b></div>`;
   }).join('');
 }
@@ -1414,11 +1414,11 @@ async function saveMacro() {
   const name = $('#macro-name-input').value.trim() || `Macro ${state.macros.length + 1}`;
   const hotkey = $('#macro-hotkey-input').value.trim();
   if (!recordedSteps.length) {
-    $('#macro-steps-preview').textContent = 'Ajoutez au moins une étape (+ Clic ou + Touches) avant de sauvegarder.';
+    $('#macro-steps-preview').textContent = 'Add at least one step (+ Click or + Keys) before saving.';
     return;
   }
   if (!hotkey) {
-    $('#statusbar-mid').textContent = 'Astuce : capturez un raccourci, sinon utilisez ▶ dans la liste';
+    $('#statusbar-mid').textContent = 'Tip: capture a hotkey, or use ▶ in the list';
   }
   const macro = { id: editingMacroId || ('m_' + Date.now()), name, hotkey, steps: recordedSteps };
   state.macros = await window.api.saveMacro(macro);
@@ -1429,36 +1429,36 @@ async function saveMacro() {
   recordedSteps = [];
   await window.api.macroClearSteps();
   updateMacroPreview();
-  $('#statusbar-mid').textContent = `Macro sauvegardée: ${name}${hotkey ? ' · ' + hotkey : ''}`;
+  $('#statusbar-mid').textContent = `Macro saved: ${name}${hotkey ? ' · ' + hotkey : ''}`;
 }
 
 function renderMacros() {
   const list = $('#macros-list');
   if (!list) return;
-  if (!state.macros.length) { list.innerHTML = '<div class="empty-hint">Aucune macro enregistrée.</div>'; return; }
+  if (!state.macros.length) { list.innerHTML = '<div class="empty-hint">No saved macros.</div>'; return; }
   list.innerHTML = state.macros.map(m => `
     <div class="preset-card">
-      <div class="preset-top"><b>${m.name}</b><span class="preset-date">${m.hotkey || 'aucun raccourci'}</span></div>
-      <div class="hint">${(m.steps || []).filter(s => s.type !== 'delay').length} étape(s)</div>
+      <div class="preset-top"><b>${m.name}</b><span class="preset-date">${m.hotkey || 'no hotkey'}</span></div>
+      <div class="hint">${(m.steps || []).filter(s => s.type !== 'delay').length} step(s)</div>
       <div class="preset-actions">
-        <button class="apply" data-act="run" data-id="${m.id}">▶ Jouer</button>
-        <button data-act="edit" data-id="${m.id}">Modifier</button>
-        <button data-act="share" data-id="${m.id}">Partager</button>
-        <button class="delete" data-act="del" data-id="${m.id}">Supprimer</button>
+        <button class="apply" data-act="run" data-id="${m.id}">▶ Play</button>
+        <button data-act="edit" data-id="${m.id}">Edit</button>
+        <button data-act="share" data-id="${m.id}">Share</button>
+        <button class="delete" data-act="del" data-id="${m.id}">Delete</button>
       </div>
     </div>`).join('');
   list.querySelectorAll('button').forEach(b => b.addEventListener('click', async () => {
     const id = b.dataset.id, act = b.dataset.act;
     if (act === 'run') {
       const macro = state.macros.find((x) => x.id === id);
-      $('#statusbar-mid').textContent = 'Exécution macro…';
+      $('#statusbar-mid').textContent = 'Running macro…';
       const ok = await window.api.runMacro(id);
-      $('#statusbar-mid').textContent = ok ? `Macro jouée : ${macro?.name || ''}` : 'Macro échouée — vérifiez les étapes / moteur';
+      $('#statusbar-mid').textContent = ok ? `Macro played: ${macro?.name || ''}` : 'Macro failed — check steps / engine';
     }
     if (act === 'del') { state.macros = await window.api.deleteMacro(id); renderMacros(); }
     if (act === 'share') {
       const r = await window.api.macroShareEncode(id);
-      $('#statusbar-mid').textContent = r?.ok ? 'Macro copiée (base64)' : (r?.error || 'Échec partage');
+      $('#statusbar-mid').textContent = r?.ok ? 'Macro copied (base64)' : (r?.error || 'Share failed');
     }
     if (act === 'edit') {
       const m = state.macros.find(x => x.id === id);
@@ -1474,7 +1474,7 @@ function renderMacros() {
       editingMacroId = id;
       await window.api.macroSetSteps?.(recordedSteps);
       updateMacroPreview();
-      $('#statusbar-mid').textContent = `Édition : ${m.name}`;
+      $('#statusbar-mid').textContent = `Editing: ${m.name}`;
     }
   }));
 }
@@ -1501,7 +1501,7 @@ function renderProcessList() {
   if (!list) return;
   const selected = state.settings?.processList?.selected || [];
   if (!selected.length) {
-    list.innerHTML = '<div class="empty-hint">Aucun processus.</div>';
+    list.innerHTML = '<div class="empty-hint">No processes.</div>';
     return;
   }
   list.innerHTML = selected.map((name, i) => `
@@ -1519,7 +1519,7 @@ function renderChangelog(items) {
   if (!list) return;
   const data = items?.length ? items : (state.changelog || []);
   if (!data.length) {
-    list.innerHTML = '<div class="empty-hint">Changelog vide.</div>';
+    list.innerHTML = '<div class="empty-hint">Changelog empty.</div>';
     return;
   }
   list.innerHTML = data.map((c) => `
@@ -1570,8 +1570,8 @@ function bindBehaviorAppearanceKeybinds() {
     });
     if (clientId) syncSegment('discordrpc-toggle', 'on');
     $('#statusbar-mid').textContent = clientId
-      ? 'Discord RPC : Client ID OK — pense à renommer l’app en LuLuneAutoClicker + asset logo'
-      : 'Discord RPC : Client ID vidé';
+      ? 'Discord RPC: Client ID OK — rename the app to LuLuneAutoClicker + logo asset'
+      : 'Discord RPC: Client ID cleared';
   });
   $('#discord-open-portal')?.addEventListener('click', () => {
     window.api.openExternal('https://discord.com/developers/applications');
@@ -1579,8 +1579,8 @@ function bindBehaviorAppearanceKeybinds() {
   $('#discord-open-logo')?.addEventListener('click', async () => {
     const r = await window.api.revealDiscordLogo?.();
     $('#statusbar-mid').textContent = r?.ok
-      ? 'Logo Discord ouvert — uploade-le comme asset « logo »'
-      : (r?.error || 'Logo introuvable');
+      ? 'Discord logo opened — upload it as asset "logo"'
+      : (r?.error || 'Logo not found');
   });
   bindSegmented('language-segment', (v) => pushSettings({ language: v === 'en' ? 'en' : 'fr' }));
   bindSegmented('uimode-segment', (v) => {
@@ -1626,7 +1626,7 @@ function bindBehaviorAppearanceKeybinds() {
     let val = e.target.value.trim();
     if (val && !/^data:image\//i.test(val) && !/^file:/i.test(val)) {
       if (!/^https?:\/\//i.test(val) || !/\.(png|jpe?g|webp|gif|bmp)(\?|#|$)/i.test(val)) {
-        $('#statusbar-mid').textContent = 'URL refusée — image uniquement (.png .jpg .webp .gif .bmp)';
+        $('#statusbar-mid').textContent = 'URL rejected — images only (.png .jpg .webp .gif .bmp)';
         e.target.value = state.settings?.appearance?.backgroundImage || '';
         return;
       }
@@ -1637,15 +1637,15 @@ function bindBehaviorAppearanceKeybinds() {
   $('#appearance-pick-image')?.addEventListener('click', async () => {
     const url = await window.api.pickBackgroundImage();
     if (!url) {
-      $('#statusbar-mid').textContent = 'Aucune image sélectionnée (PNG/JPG/WEBP/GIF/BMP)';
+      $('#statusbar-mid').textContent = 'No image selected (PNG/JPG/WEBP/GIF/BMP)';
       return;
     }
     if ($('#appearance-bgimage')) $('#appearance-bgimage').value = url;
     await pushSettings({ appearance: { ...state.settings.appearance, backgroundImage: url } });
     applyAppearance();
     $('#statusbar-mid').textContent = /\.gif($|\?)/i.test(url) || url.includes('.gif')
-      ? 'GIF de fond appliqué'
-      : 'Image de fond appliquée';
+      ? 'Background GIF applied'
+      : 'Background image applied';
   });
   $('#appearance-clear-image')?.addEventListener('click', async () => {
     if ($('#appearance-bgimage')) $('#appearance-bgimage').value = '';
@@ -1776,7 +1776,7 @@ function bindEngineSettings() {
   $('#pixel-capture-btn')?.addEventListener('click', async () => {
     const c = await window.api.samplePixelColor();
     if (!c) {
-      $('#statusbar-mid').textContent = lang() === 'en' ? 'Could not sample pixel' : 'Impossible de capturer le pixel';
+      $('#statusbar-mid').textContent = 'Could not sample pixel';
       return;
     }
     if ($('#pixel-r')) $('#pixel-r').value = c.r;
@@ -1816,7 +1816,7 @@ function renderSlots() {
   if (!list) return;
   const slots = state.slots || [];
   if (!slots.length) {
-    list.innerHTML = `<div class="empty-hint">${lang() === 'en' ? 'No slots yet.' : 'Aucune sauvegarde.'}</div>`;
+    list.innerHTML = `<div class="empty-hint">No slots yet.</div>`;
     return;
   }
   list.innerHTML = slots.map((name) => `
@@ -1854,8 +1854,8 @@ function bindMaintenance() {
   const check = async () => {
     const r = await window.api.checkUpdates();
     $('#statusbar-mid').textContent = r?.upToDate
-      ? `À jour (v${r.current})`
-      : `Version locale v${r?.current} · dernière connue v${r?.latest}`;
+      ? `Up to date (v${r.current})`
+      : `Local version v${r?.current} · latest known v${r?.latest}`;
   };
   $('#check-updates-btn')?.addEventListener('click', check);
   $('#check-updates-btn-2')?.addEventListener('click', check);
@@ -1874,11 +1874,11 @@ function bindPresetsUI() {
     const r = await window.api.seedGamePresets();
     state.presets = r.presets;
     renderPresets();
-    $('#statusbar-mid').textContent = r.added ? `+${r.added} préréglages jeux` : 'Préréglages jeux déjà présents';
+    $('#statusbar-mid').textContent = r.added ? `+${r.added} game presets` : 'Game presets already present';
   });
   $('#export-presets-btn')?.addEventListener('click', async () => {
     const r = await window.api.exportPresets();
-    if (r?.ok) $('#statusbar-mid').textContent = 'Préréglages exportés';
+    if (r?.ok) $('#statusbar-mid').textContent = 'Presets exported';
   });
   $('#import-presets-btn')?.addEventListener('click', async () => {
     const r = await window.api.importPresets();
@@ -1890,30 +1890,30 @@ function bindPresetsUI() {
   });
   $('#copy-presets-btn')?.addEventListener('click', async () => {
     const ok = await window.api.clipboardWriteJson({ type: 'lulune-presets', presets: state.presets });
-    $('#statusbar-mid').textContent = ok ? 'JSON préréglages copié' : 'Copie échouée';
+    $('#statusbar-mid').textContent = ok ? 'Presets JSON copied' : 'Copy failed';
   });
 }
 function renderPresets() {
   const list = $('#presets-list');
   if (!list) return;
-  if (!state.presets.length) { list.innerHTML = '<div class="empty-hint">Aucun préréglage.</div>'; return; }
+  if (!state.presets.length) { list.innerHTML = '<div class="empty-hint">No presets.</div>'; return; }
   list.innerHTML = state.presets.map(p => `
     <div class="preset-card">
-      <div class="preset-top"><b>${p.name}</b><span class="preset-date">${p.game ? 'Jeu · ' : ''}${p.date || ''}</span></div>
+      <div class="preset-top"><b>${p.name}</b><span class="preset-date">${p.game ? 'Game · ' : ''}${p.date || ''}</span></div>
       <div class="preset-actions">
-        <button class="apply" data-act="apply" data-name="${p.name}">Appliquer</button>
-        <button data-act="rename" data-name="${p.name}">Renommer</button>
-        <button data-act="dup" data-name="${p.name}">Dupliquer</button>
-        <button class="delete" data-act="del" data-name="${p.name}">Supprimer</button>
+        <button class="apply" data-act="apply" data-name="${p.name}">Apply</button>
+        <button data-act="rename" data-name="${p.name}">Rename</button>
+        <button data-act="dup" data-name="${p.name}">Duplicate</button>
+        <button class="delete" data-act="del" data-name="${p.name}">Delete</button>
       </div>
     </div>`).join('');
   list.querySelectorAll('button').forEach(b => b.addEventListener('click', async () => {
     const name = b.dataset.name, act = b.dataset.act;
-    if (act === 'apply') { state.settings = await window.api.applyPreset(name); applySettingsToUI(); $('#statusbar-left').textContent = `Préréglage actif: ${name}`; }
+    if (act === 'apply') { state.settings = await window.api.applyPreset(name); applySettingsToUI(); $('#statusbar-left').textContent = `Active preset: ${name}`; }
     if (act === 'del') { state.presets = await window.api.deletePreset(name); renderPresets(); }
     if (act === 'dup') { state.presets = await window.api.duplicatePreset(name); renderPresets(); }
     if (act === 'rename') {
-      const newName = prompt('Nouveau nom :', name);
+      const newName = prompt('New name:', name);
       if (newName) { state.presets = await window.api.renamePreset({ oldName: name, newName }); renderPresets(); }
     }
   }));
@@ -2012,7 +2012,7 @@ function applySettingsToUI() {
   syncSegment('custom-zones-toggle', s.stopZones?.customZones?.enabled ? 'on' : 'off');
   syncSegment('corner-stop-toggle', s.stopZones?.cornerStop?.enabled ? 'on' : 'off');
   syncSegment('edge-stop-toggle', s.stopZones?.edgeStop?.enabled ? 'on' : 'off');
-  syncSegment('language-segment', s.language === 'en' ? 'en' : 'fr');
+  syncSegment('language-segment', s.language === 'fr' ? 'fr' : 'en');
   syncSegment('uimode-segment', s.appearance?.uiMode || 'normal');
   syncSegment('overlay-position-segment', s.appearance?.overlayPosition || 'top-right');
   syncSegment('discordrpc-toggle', s.discordRpc?.enabled ? 'on' : 'off');

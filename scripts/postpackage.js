@@ -34,9 +34,9 @@ if (platform === 'win') {
     writeReadme(dir, [
       'LuLune AutoClicker — Windows',
       '',
-      '1. Dézippez le dossier',
-      '2. Double-cliquez Launch-Windows.vbs (recommandé, sans terminal)',
-      '3. Ou LuLuneAutoClicker.exe directement',
+      '1. Unzip the folder',
+      '2. Double-click Launch-Windows.vbs (recommended, no terminal)',
+      '3. Or run LuLuneAutoClicker.exe directly',
       '',
       'Discord: LuLune0193'
     ]);
@@ -49,11 +49,11 @@ if (platform === 'win') {
     writeReadme(dir, [
       'LuLune AutoClicker — macOS',
       '',
-      '1. Double-cliquez Open-macOS.command (retire la quarantaine Gatekeeper)',
-      '2. Ou clic droit sur LuLuneAutoClicker.app → Ouvrir',
-      '3. Réglages → Confidentialité et sécurité → Accessibilité → autorisez l’app',
+      '1. Double-click Open-macOS.command (removes Gatekeeper quarantine)',
+      '2. Or right-click LuLuneAutoClicker.app → Open',
+      '3. Settings → Privacy & Security → Accessibility → allow the app',
       '',
-      'Apple Silicon: préférez le build arm64 (npm run package:mac:arm64)',
+      'Apple Silicon: prefer the arm64 build (npm run package:mac:arm64)',
       'Intel: build x64 (npm run package:mac)',
       '',
       'Discord: LuLune0193'
@@ -70,8 +70,8 @@ if (platform === 'win') {
       'LuLune AutoClicker — Linux',
       '',
       '1. chmod +x Launch-Linux.sh && ./Launch-Linux.sh',
-      '2. Session X11 recommandée (Wayland peut bloquer les clics)',
-      '3. Dépendances utiles: libX11, libXtst, xdotool (optionnel pour détection fenêtre)',
+      '2. X11 session recommended (Wayland may block clicks)',
+      '3. Useful dependencies: libX11, libXtst, xdotool (optional for window detection)',
       '',
       'Discord: LuLune0193'
     ]);

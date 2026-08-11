@@ -1,178 +1,178 @@
 ================================================================================
-  LuLune AutoClicker — NOTES DE MISE À JOUR DÉTAILLÉES
-  Version 1.4.1  ·  11 août 2026
-  Discord : LuLune0193
+  LuLune AutoClicker — DETAILED RELEASE NOTES
+  Version 1.4.1  ·  August 11, 2026
+  Discord: LuLune0193
 ================================================================================
 
-COMMENT INSTALLER (court)
--------------------------
-  1. Téléchargez le ZIP de votre OS
-  2. Dézippez entièrement (pas depuis l’intérieur de l’archive)
-  3. Lancez :
-       Windows → Launch-Windows.vbs  (ou LuLuneAutoClicker.exe)
+HOW TO INSTALL (short)
+----------------------
+  1. Download the ZIP for your OS
+  2. Unzip fully (not from inside the archive)
+  3. Launch:
+       Windows → Launch-Windows.vbs  (or LuLuneAutoClicker.exe)
        macOS   → Open-macOS.command
        Linux   → ./Launch-Linux.sh
 
-IMPORTANT — DONNÉES PERSONNELLES
---------------------------------
-  Le ZIP ne contient PAS vos stats, macros, fonds d’écran ni settings.
-  Tout ça reste dans le dossier utilisateur de chaque PC (AppData sur Windows).
-  Donner le ZIP à un pote = app propre avec les réglages par défaut.
+IMPORTANT — PERSONAL DATA
+-------------------------
+  The ZIP does NOT contain your stats, macros, wallpapers, or settings.
+  All of that stays in each PC's user folder (AppData on Windows).
+  Sharing the ZIP with a friend = a clean app with default settings.
 
 
-STATUT DES ARCHIVES (cette machine = Windows)
----------------------------------------------
-  ✓ LuLuneAutoClicker-Windows.zip  →  v1.4.1 (généré ici)
-  ○ LuLuneAutoClicker-macOS.zip    →  à générer SUR un Mac
-       npm run package:mac   (ou package:mac:arm64) && npm run zip:downloads
-  ○ LuLuneAutoClicker-Linux.zip    →  à générer SUR Linux
+ARCHIVE STATUS (this machine = Windows)
+---------------------------------------
+  ✓ LuLuneAutoClicker-Windows.zip  →  v1.4.1 (built here)
+  ○ LuLuneAutoClicker-macOS.zip    →  build ON a Mac
+       npm run package:mac   (or package:mac:arm64) && npm run zip:downloads
+  ○ LuLuneAutoClicker-Linux.zip    →  build ON Linux
        npm run package:linux && npm run zip:downloads
 
-  Pourquoi ? Les modules souris/clavier (libnut, uiohook) sont natifs :
-  un build Mac/Linux fait depuis Windows ne cliquerait pas correctement.
+  Why? Mouse/keyboard modules (libnut, uiohook) are native:
+  a Mac/Linux build made from Windows would not click correctly.
 
 
 ================================================================================
-  v1.4.1 — POLISH UI · DISCORD · OPACITÉ · RACCOURCIS
+  v1.4.1 — UI POLISH · DISCORD · OPACITY · SHORTCUTS
 ================================================================================
 
-OPACITÉ DE L’INTERFACE (10 % → 100 %)
-  Nouveau curseur dans Réglages → Apparence.
-  Il contrôle l’opacité réelle des panneaux, de la barre de titre et de la
-  barre de statut (variables CSS --panel-alpha / --chrome-alpha).
-  • 10 %  = UI très translucide, fond ultra visible
-  • 100 % = panneaux solides
-  Combinable avec le flou des panneaux et la visibilité de l’image de fond.
+UI OPACITY (10% → 100%)
+  New slider in Settings → Appearance.
+  It controls the real opacity of panels, the title bar, and the
+  status bar (CSS variables --panel-alpha / --chrome-alpha).
+  • 10%  = very translucent UI, background ultra visible
+  • 100% = solid panels
+  Combines with panel blur and background image visibility.
 
-COULEURS DEPUIS L’IMAGE (CORRECTIF MAJEUR)
-  Avant : une photo grise pouvait laisser le bouton « Démarrer », les bordures
-  et certains accents en vert « en dur » à cause des thèmes CSS.
-  Maintenant :
-  • Photo grise  → toute l’UI suit le gris (boutons, toggles, lueurs, bordures)
-  • Photo colorée → accents extraits de la palette
-  Option « Couleur personnalisée » : cercle chromatique + teinte + hex pour
-  forcer une couleur d’accent prioritaire sur le thème et l’image.
+COLORS FROM IMAGE (MAJOR FIX)
+  Before: a gray photo could leave the “Start” button, borders,
+  and some accents in hard-coded green because of CSS themes.
+  Now:
+  • Gray photo  → entire UI follows gray (buttons, toggles, glows, borders)
+  • Colored photo → accents extracted from the palette
+  “Custom color” option: color wheel + hue + hex to
+  force an accent color that overrides theme and image.
 
-DISCORD RICH PRESENCE (CLARIFIÉ)
-  Dans l’app (Comportement) :
-  • Un seul champ : Client ID
-  • Bouton « Ouvrir le portail » → Discord Developer Portal
-  • Bouton « Ouvrir le fichier logo » → assets/discord-logo.png
-  Ce que Discord lit hors de l’app (à régler dans le Portal) :
-  • Nom de l’application = LuLuneAutoClicker  → titre « Joue à … »
-  • Art Asset nommé exactement « logo »      → image à la place du « ? »
-  Statut live : Idle  /  Clicking · CPS
-  Le bouton lien site sera branché plus tard (pas encore dans cette build).
+DISCORD RICH PRESENCE (CLARIFIED)
+  In the app (Behavior):
+  • Single field: Client ID
+  • “Open portal” button → Discord Developer Portal
+  • “Open logo file” button → assets/discord-logo.png
+  What Discord reads outside the app (set in the Portal):
+  • Application name = LuLuneAutoClicker  → “Playing …” title
+  • Art Asset named exactly “logo”         → image instead of “?”
+  Live status: Idle  /  Clicking · CPS
+  The site link button will be wired later (not yet in this build).
 
-CAPTURE DE RACCOURCI SÉCURISÉE
-  Quand vous cliquez pour assigner F6 / Panic / Pause / une macro :
-  les raccourcis globaux sont temporairement désenregistrés.
-  Ainsi F6 ne démarre plus le clicker pendant que vous tapez la touche.
-  Échap = annuler la capture et restaurer les hotkeys.
+SAFE SHORTCUT CAPTURE
+  When you click to assign F6 / Panic / Pause / a macro:
+  global shortcuts are temporarily unregistered.
+  So F6 no longer starts the clicker while you are typing the key.
+  Esc = cancel capture and restore hotkeys.
 
-FENÊTRE COMPACTE (VUE AUTOCLICK UNIQUEMENT)
-  La vue AutoClick (icône souris, 3e bouton de nav) utilise une fenêtre
-  plus petite (~800×620) pour rester légère.
-  Les autres vues (macros, stats, réglages…) repassent en grand format
-  (~920×760) automatiquement.
+COMPACT WINDOW (AUTOCLICK VIEW ONLY)
+  The AutoClick view (mouse icon, 3rd nav button) uses a
+  smaller window (~800×620) to stay light.
+  Other views (macros, stats, settings…) return to large format
+  (~920×760) automatically.
 
-ICÔNES & TEXTES PLATEFORME
-  • AutoClick = icône souris (plus de trombone Clippy)
-  • Macros = icône liste
-  • Hints de touches : Ctrl sur Windows/Linux, Cmd sur macOS
-    (plus de ligne « Windows / Linux / macOS » mélangée)
+ICONS & PLATFORM TEXT
+  • AutoClick = mouse icon (no more Clippy paperclip)
+  • Macros = list icon
+  • Key hints: Ctrl on Windows/Linux, Cmd on macOS
+    (no more mixed “Windows / Linux / macOS” line)
 
-STATS & BOUTONS
-  • Liste « Utilisation » : label à gauche, valeur à droite, alignée
-  • Graphique clics/jour : barres HTML (fini le canvas coupé / bugué)
-  • Boutons Maintenance / Apparence stylés comme le reste de l’UI
-    (plus de boutons blancs système « Ouvrir le dossier », « Vérifier »…)
+STATS & BUTTONS
+  • “Usage” list: label on the left, value on the right, aligned
+  • Clicks/day chart: HTML bars (no more clipped / buggy canvas)
+  • Maintenance / Appearance buttons styled like the rest of the UI
+    (no more white system buttons “Open folder”, “Check”…)
 
 MACROS
-  Tutoriel en 4 étapes + bouton ▶ Jouer.
-  Message clair si aucun raccourci n’est défini.
+  4-step tutorial + ▶ Play button.
+  Clear message if no shortcut is defined.
 
-SIDEBAR RÉGLAGES
-  Les onglets ne s’écrasent plus ; scroll correct.
-  La carte communauté a été retirée de la colonne (plus de crush).
+SETTINGS SIDEBAR
+  Tabs no longer crush; correct scroll.
+  Community card removed from the column (no more crush).
 
 
 ================================================================================
-  v1.4.0 — MOTEUR AVANCÉ (inclus dans cette build)
+  v1.4.0 — ADVANCED ENGINE (included in this build)
 ================================================================================
 
-RAMPE CPS
-  Démarrez à un CPS bas, montez automatiquement jusqu’à un CPS cible
-  sur N secondes. Idéal warm-up PVP / idle.
+CPS RAMP
+  Start at a low CPS, automatically rise to a target CPS
+  over N seconds. Ideal PVP / idle warm-up.
 
-MODE RAFALE (BURST)
-  N clics rapides, puis pause, en boucle. Salves contrôlées.
+BURST MODE
+  N rapid clicks, then pause, in a loop. Controlled salvos.
 
-FILTRE COULEUR PIXEL
-  Ne clique que si la couleur sous le curseur correspond
-  (échantillon + tolérance). Utile pour cliquer un bouton précis à l’écran.
+PIXEL COLOR FILTER
+  Only clicks if the color under the cursor matches
+  (sample + tolerance). Useful for clicking a specific on-screen button.
 
-FAILSAFE CURSEUR
-  Arrêt auto si la souris ne bouge plus pendant N secondes.
+CURSOR FAILSAFE
+  Auto-stop if the mouse does not move for N seconds.
 
-MINUTEUR DE SESSION
-  Stop après X minutes — évite de cliquer toute la nuit.
+SESSION TIMER
+  Stop after X minutes — avoids clicking all night.
 
-CONFIRMATION CPS ÉLEVÉ
-  Dialogue avant de démarrer au-dessus d’un seuil (ex. 100 CPS).
+HIGH CPS CONFIRMATION
+  Dialog before starting above a threshold (e.g. 100 CPS).
 
-HOTKEYS SYSTÈME
-  Panic (F12) et Pause (F7), configurables, indépendants des préréglages.
+SYSTEM HOTKEYS
+  Panic (F12) and Pause (F7), configurable, independent of presets.
 
 OVERLAY
-  Position (4 coins) + opacité ; masquable en pause.
+  Position (4 corners) + opacity; hideable on pause.
 
-MODE INTERFACE MINIMAL
-  Garde l’essentiel : start / CPS / hotkey.
+MINIMAL UI MODE
+  Keeps the essentials: start / CPS / hotkey.
 
-LANGUE FR / EN
-  Libellés principaux de l’interface.
+LANGUAGE FR / EN
+  Main interface labels.
 
-OBJECTIFS
-  Clics quotidiens et/ou de session + barre de progression.
+GOALS
+  Daily and/or session clicks + progress bar.
 
-SAUVEGARDES MULTIPLES (SLOTS)
-  Plusieurs configs complètes sans écraser la courante.
+MULTIPLE BACKUPS (SLOTS)
+  Several full configs without overwriting the current one.
 
-SONS / AUTO-HIDE
-  Volume des sons, réduction auto de la fenêtre au démarrage du clic.
+SOUNDS / AUTO-HIDE
+  Sound volume, auto-minimize window when clicking starts.
 
 
 ================================================================================
-  v1.3.0 — RAPPEL (toujours inclus)
+  v1.3.0 — REMINDER (still included)
 ================================================================================
 
-  CPS live · badge overlay ON·CPS · mode Maintien réel · zones dessinables
-  Arrêt coin/bord · liste processus (blanc/noir) · préréglages jeux
+  Live CPS · overlay badge ON·CPS · real Hold mode · drawable zones
+  Corner/edge stop · process list (allow/deny) · game presets
   (Minecraft PVP, Cookie Clicker, Idle/AFK, Burst 60 CPS)
-  Import/export presets & macros · thèmes Vert/Bleu/Rouge/Clair
-  Image de fond + teinte · sons · anti-détection légère
-  Tutoriel premier lancement · changelog intégré · stats 14 jours
+  Import/export presets & macros · Green/Blue/Red/Light themes
+  Background image + tint · sounds · light anti-detection
+  First-launch tutorial · built-in changelog · 14-day stats
   Windows · macOS · Linux
 
 
 ================================================================================
-  CHEMINS UTILES (développeur / local)
+  USEFUL PATHS (developer / local)
 ================================================================================
 
-  Site HTML :
+  HTML site:
     C:\Users\Victor\Projects\LuLuneAutoClicker\website\index.html
 
-  ZIP Windows (site) :
+  Windows ZIP (site):
     C:\Users\Victor\Projects\LuLuneAutoClicker\website\downloads\LuLuneAutoClicker-Windows.zip
 
-  Build dézippé Windows :
+  Unpacked Windows build:
     C:\Users\Victor\Projects\LuLuneAutoClicker\dist\LuLuneAutoClicker-win32-x64\
 
-  Données utilisateur (ne pas zipper) :
+  User data (do not zip):
     %APPDATA%\lulune-autoclicker\
 
 
-GitHub : https://github.com/lulunee19
-Discord : LuLune0193
+GitHub: https://github.com/lulunee19
+Discord: LuLune0193
 ================================================================================
