@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<style>
+  html, body { margin: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.32); cursor: crosshair; overflow: hidden; font-family: Segoe UI, sans-serif; }
+  #hint {
+    position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+    background: rgba(12,16,22,0.92); color: #e8fff0; border: 1px solid rgba(74,222,128,0.45);
+    padding: 10px 16px; border-radius: 12px; font-size: 13px; z-index: 2; pointer-events: none;
+  }
+  #box {
+    position: fixed; border: 2px solid #4ade80; background: rgba(34,197,94,0.18);
+    display: none; pointer-events: none; z-index: 1;
+  }
+</style>
+</head>
+<body>
+  <div id="hint">Glissez pour dessiner · Entrée = valider · Échap = annuler</div>
+  <div id="box"></div>
+  <script>
+    const { ipcRenderer } = require('electron');
+    const box = document.getElementById('box');
+    let startC = null, curC = null, startS = null, curS = null;
+    function paint() {
+      if (!startC || !curC) { box.style.display = 'none'; return; }
+      const x = Math.min(startC.x, curC.x), y = Math.min(startC.y, curC.y);
+      const w = Math.abs(curC.x - startC.x), h = Math.abs(curC.y - startC.y);
+      if (w < 2 || h < 2) { box.style.display = 'none'; return; }
+      box.style.display = 'block';
+      box.style.left = x + 'px'; box.style.top = y + 'px';
+      box.style.width = w + 'px'; box.style.height = h + 'px';
+    }
+    function screenRect() {
+      if (!startS || !curS) return null;
+      const x = Math.min(startS.x, curS.x), y = Math.min(startS.y, curS.y);
+      return { x, y, w: Math.abs(curS.x - startS.x), h: Math.abs(curS.y - startS.y) };
+    }
+    window.addEventListener('mousedown', (e) => {
+      startC = { x: e.clientX, y: e.clientY }; curC = startC;
+      startS = { x: e.screenX, y: e.screenY }; curS = startS; paint();
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!startC) return;
+      curC = { x: e.clientX, y: e.clientY };
+      curS = { x: e.screenX, y: e.screenY }; paint();
+    });
+    window.addEventListener('mouseup', (e) => {
+      curC = { x: e.clientX, y: e.clientY };
+      curS = { x: e.screenX, y: e.screenY }; paint();
+    });
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') ipcRenderer.send('zone-draw-cancel');
+      if (e.key === 'Enter') {
+        const r = screenRect();
+        if (r && r.w > 8 && r.h > 8) ipcRenderer.send('zone-draw-done', r);
+        else ipcRenderer.send('zone-draw-cancel');
+      }
+    });
+  </script>
+</body>
+</html>

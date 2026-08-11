@@ -1,0 +1,178 @@
+================================================================================
+  LuLune AutoClicker — NOTES DE MISE À JOUR DÉTAILLÉES
+  Version 1.4.1  ·  11 août 2026
+  Discord : LuLune0193
+================================================================================
+
+COMMENT INSTALLER (court)
+-------------------------
+  1. Téléchargez le ZIP de votre OS
+  2. Dézippez entièrement (pas depuis l’intérieur de l’archive)
+  3. Lancez :
+       Windows → Launch-Windows.vbs  (ou LuLuneAutoClicker.exe)
+       macOS   → Open-macOS.command
+       Linux   → ./Launch-Linux.sh
+
+IMPORTANT — DONNÉES PERSONNELLES
+--------------------------------
+  Le ZIP ne contient PAS vos stats, macros, fonds d’écran ni settings.
+  Tout ça reste dans le dossier utilisateur de chaque PC (AppData sur Windows).
+  Donner le ZIP à un pote = app propre avec les réglages par défaut.
+
+
+STATUT DES ARCHIVES (cette machine = Windows)
+---------------------------------------------
+  ✓ LuLuneAutoClicker-Windows.zip  →  v1.4.1 (généré ici)
+  ○ LuLuneAutoClicker-macOS.zip    →  à générer SUR un Mac
+       npm run package:mac   (ou package:mac:arm64) && npm run zip:downloads
+  ○ LuLuneAutoClicker-Linux.zip    →  à générer SUR Linux
+       npm run package:linux && npm run zip:downloads
+
+  Pourquoi ? Les modules souris/clavier (libnut, uiohook) sont natifs :
+  un build Mac/Linux fait depuis Windows ne cliquerait pas correctement.
+
+
+================================================================================
+  v1.4.1 — POLISH UI · DISCORD · OPACITÉ · RACCOURCIS
+================================================================================
+
+OPACITÉ DE L’INTERFACE (10 % → 100 %)
+  Nouveau curseur dans Réglages → Apparence.
+  Il contrôle l’opacité réelle des panneaux, de la barre de titre et de la
+  barre de statut (variables CSS --panel-alpha / --chrome-alpha).
+  • 10 %  = UI très translucide, fond ultra visible
+  • 100 % = panneaux solides
+  Combinable avec le flou des panneaux et la visibilité de l’image de fond.
+
+COULEURS DEPUIS L’IMAGE (CORRECTIF MAJEUR)
+  Avant : une photo grise pouvait laisser le bouton « Démarrer », les bordures
+  et certains accents en vert « en dur » à cause des thèmes CSS.
+  Maintenant :
+  • Photo grise  → toute l’UI suit le gris (boutons, toggles, lueurs, bordures)
+  • Photo colorée → accents extraits de la palette
+  Option « Couleur personnalisée » : cercle chromatique + teinte + hex pour
+  forcer une couleur d’accent prioritaire sur le thème et l’image.
+
+DISCORD RICH PRESENCE (CLARIFIÉ)
+  Dans l’app (Comportement) :
+  • Un seul champ : Client ID
+  • Bouton « Ouvrir le portail » → Discord Developer Portal
+  • Bouton « Ouvrir le fichier logo » → assets/discord-logo.png
+  Ce que Discord lit hors de l’app (à régler dans le Portal) :
+  • Nom de l’application = LuLuneAutoClicker  → titre « Joue à … »
+  • Art Asset nommé exactement « logo »      → image à la place du « ? »
+  Statut live : Idle  /  Clicking · CPS
+  Le bouton lien site sera branché plus tard (pas encore dans cette build).
+
+CAPTURE DE RACCOURCI SÉCURISÉE
+  Quand vous cliquez pour assigner F6 / Panic / Pause / une macro :
+  les raccourcis globaux sont temporairement désenregistrés.
+  Ainsi F6 ne démarre plus le clicker pendant que vous tapez la touche.
+  Échap = annuler la capture et restaurer les hotkeys.
+
+FENÊTRE COMPACTE (VUE AUTOCLICK UNIQUEMENT)
+  La vue AutoClick (icône souris, 3e bouton de nav) utilise une fenêtre
+  plus petite (~800×620) pour rester légère.
+  Les autres vues (macros, stats, réglages…) repassent en grand format
+  (~920×760) automatiquement.
+
+ICÔNES & TEXTES PLATEFORME
+  • AutoClick = icône souris (plus de trombone Clippy)
+  • Macros = icône liste
+  • Hints de touches : Ctrl sur Windows/Linux, Cmd sur macOS
+    (plus de ligne « Windows / Linux / macOS » mélangée)
+
+STATS & BOUTONS
+  • Liste « Utilisation » : label à gauche, valeur à droite, alignée
+  • Graphique clics/jour : barres HTML (fini le canvas coupé / bugué)
+  • Boutons Maintenance / Apparence stylés comme le reste de l’UI
+    (plus de boutons blancs système « Ouvrir le dossier », « Vérifier »…)
+
+MACROS
+  Tutoriel en 4 étapes + bouton ▶ Jouer.
+  Message clair si aucun raccourci n’est défini.
+
+SIDEBAR RÉGLAGES
+  Les onglets ne s’écrasent plus ; scroll correct.
+  La carte communauté a été retirée de la colonne (plus de crush).
+
+
+================================================================================
+  v1.4.0 — MOTEUR AVANCÉ (inclus dans cette build)
+================================================================================
+
+RAMPE CPS
+  Démarrez à un CPS bas, montez automatiquement jusqu’à un CPS cible
+  sur N secondes. Idéal warm-up PVP / idle.
+
+MODE RAFALE (BURST)
+  N clics rapides, puis pause, en boucle. Salves contrôlées.
+
+FILTRE COULEUR PIXEL
+  Ne clique que si la couleur sous le curseur correspond
+  (échantillon + tolérance). Utile pour cliquer un bouton précis à l’écran.
+
+FAILSAFE CURSEUR
+  Arrêt auto si la souris ne bouge plus pendant N secondes.
+
+MINUTEUR DE SESSION
+  Stop après X minutes — évite de cliquer toute la nuit.
+
+CONFIRMATION CPS ÉLEVÉ
+  Dialogue avant de démarrer au-dessus d’un seuil (ex. 100 CPS).
+
+HOTKEYS SYSTÈME
+  Panic (F12) et Pause (F7), configurables, indépendants des préréglages.
+
+OVERLAY
+  Position (4 coins) + opacité ; masquable en pause.
+
+MODE INTERFACE MINIMAL
+  Garde l’essentiel : start / CPS / hotkey.
+
+LANGUE FR / EN
+  Libellés principaux de l’interface.
+
+OBJECTIFS
+  Clics quotidiens et/ou de session + barre de progression.
+
+SAUVEGARDES MULTIPLES (SLOTS)
+  Plusieurs configs complètes sans écraser la courante.
+
+SONS / AUTO-HIDE
+  Volume des sons, réduction auto de la fenêtre au démarrage du clic.
+
+
+================================================================================
+  v1.3.0 — RAPPEL (toujours inclus)
+================================================================================
+
+  CPS live · badge overlay ON·CPS · mode Maintien réel · zones dessinables
+  Arrêt coin/bord · liste processus (blanc/noir) · préréglages jeux
+  (Minecraft PVP, Cookie Clicker, Idle/AFK, Burst 60 CPS)
+  Import/export presets & macros · thèmes Vert/Bleu/Rouge/Clair
+  Image de fond + teinte · sons · anti-détection légère
+  Tutoriel premier lancement · changelog intégré · stats 14 jours
+  Windows · macOS · Linux
+
+
+================================================================================
+  CHEMINS UTILES (développeur / local)
+================================================================================
+
+  Site HTML :
+    C:\Users\Victor\Projects\LuLuneAutoClicker\website\index.html
+
+  ZIP Windows (site) :
+    C:\Users\Victor\Projects\LuLuneAutoClicker\website\downloads\LuLuneAutoClicker-Windows.zip
+
+  Build dézippé Windows :
+    C:\Users\Victor\Projects\LuLuneAutoClicker\dist\LuLuneAutoClicker-win32-x64\
+
+  Données utilisateur (ne pas zipper) :
+    %APPDATA%\lulune-autoclicker\
+
+
+GitHub : https://github.com/lulunee19
+Discord : LuLune0193
+================================================================================

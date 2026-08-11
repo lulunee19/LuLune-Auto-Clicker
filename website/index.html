@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LuLune AutoClicker v1.4.1 — autoclicker Windows, macOS et Linux. Discord Rich Presence, rampe CPS, rafales, opacité UI, macros, zones." />
+  <title>LuLune AutoClicker — Télécharger v1.4.1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/discord-logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="stage" aria-hidden="true">
+    <div class="stage-photo"></div>
+    <div class="stage-veil"></div>
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <div class="grid-fx"></div>
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="#">LuLune <span>AutoClicker</span></a>
+    <nav>
+      <a href="#download">Télécharger</a>
+      <a href="#nouveautes">Nouveautés</a>
+      <a href="#install">Lancer</a>
+      <a href="#tuto">Tutoriels</a>
+      <a href="#communaute">Communauté</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="brand-mark reveal">LuLune</p>
+      <h1 class="reveal d1">AutoClicker</h1>
+      <p class="lead reveal d2">Cliquez plus vite, plus propre — sur Windows, macOS et Linux. Macros, Discord Rich Presence, zones d’arrêt et thèmes.</p>
+      <div class="cta-row reveal d3">
+        <a class="btn primary" href="#download">Télécharger v1.4.1</a>
+        <a class="btn ghost" href="#nouveautes">Notes de mise à jour</a>
+      </div>
+    </section>
+
+    <section id="download" class="section">
+      <h2 class="reveal">Télécharger</h2>
+      <p class="section-lead reveal d1">Choisissez votre système. Windows est prêt ; macOS et Linux se packagent sur la machine cible (modules natifs).</p>
+      <div class="dl-grid">
+        <article class="dl-card reveal d1">
+          <div class="dl-top">
+            <span class="os-pill win">Windows</span>
+            <span class="ver">v1.4.1 · x64</span>
+          </div>
+          <h3>Windows 10 / 11</h3>
+          <p>Archive ZIP avec l’exe et le lanceur silencieux.</p>
+          <ul>
+            <li><code>Launch-Windows.vbs</code> (recommandé)</li>
+            <li><code>LuLuneAutoClicker.exe</code></li>
+            <li>Windows 10 / 11 · x64</li>
+          </ul>
+          <a class="btn primary full" href="downloads/LuLuneAutoClicker-Windows.zip" download="LuLuneAutoClicker-Windows-v1.4.1.zip">Télécharger Windows</a>
+        </article>
+
+        <article class="dl-card reveal d2">
+          <div class="dl-top">
+            <span class="os-pill mac">macOS</span>
+            <span class="ver">v1.4.1 · Intel / Apple Silicon</span>
+          </div>
+          <h3>macOS 11+</h3>
+          <p>Build .app à générer sur un Mac. Gatekeeper géré via le script inclus.</p>
+          <ul>
+            <li><code>Open-macOS.command</code> retire la quarantaine</li>
+            <li>Autorisez Accessibilité dans Réglages</li>
+            <li><code>npm run package:mac</code> ou <code>package:mac:arm64</code></li>
+          </ul>
+          <a class="btn primary full" href="downloads/LuLuneAutoClicker-macOS.zip" download>Télécharger macOS</a>
+        </article>
+
+        <article class="dl-card reveal d3">
+          <div class="dl-top">
+            <span class="os-pill linux">Linux</span>
+            <span class="ver">v1.4.1 · x64</span>
+          </div>
+          <h3>Ubuntu · Debian · Fedora…</h3>
+          <p>Binaire Electron + script. Session X11 recommandée pour les clics.</p>
+          <ul>
+            <li><code>./Launch-Linux.sh</code> (chmod +x auto)</li>
+            <li>Préfère X11 / XWayland</li>
+            <li><code>npm run package:linux</code> sur Linux</li>
+          </ul>
+          <a class="btn primary full" href="downloads/LuLuneAutoClicker-Linux.zip" download>Télécharger Linux</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="nouveautes" class="section">
+      <h2 class="reveal">Notes de mise à jour · v1.4.1</h2>
+      <p class="section-lead reveal d1">Grosse passe moteur (v1.4.0) + polish d’interface, Discord Presence, opacité et stabilité des raccourcis (v1.4.1). Vos stats personnelles restent dans AppData — le ZIP est propre pour vos potes.</p>
+      <div class="news-list">
+        <article class="news-item reveal d1">
+          <h3>v1.4.1 — Opacité d’interface (10→100 %)</h3>
+          <p>Nouveau curseur dans Apparence : baissez l’opacité des panneaux, de la barre de titre et de la barre de statut pour laisser vraiment transparaitre votre image de fond. À 10 % l’UI devient très translucide ; à 100 % elle reste solide. Combinable avec flou des panneaux et visibilité de l’image.</p>
+        </article>
+        <article class="news-item reveal d2">
+          <h3>v1.4.1 — Couleurs depuis l’image (vrai gris / vraie teinte)</h3>
+          <p>Bug corrigé : les thèmes écrasaient la palette de l’image et les boutons gardaient du vert en dur. Maintenant une photo grise colore <em>toute</em> l’interface (Démarrer, bordures, toggles, lueurs). Image colorée → accents de la photo. Option « Couleur personnalisée » avec cercle chromatique, teinte et hex pour forcer une couleur.</p>
+        </article>
+        <article class="news-item reveal d3">
+          <h3>v1.4.1 — Discord Rich Presence (LuLuneAutoClicker + logo)</h3>
+          <p>Dans l’app : Client ID uniquement + boutons « Ouvrir le portail » / « Ouvrir le fichier logo ». Le titre « Joue à LuLuneAutoClicker » et le logo se règlent dans le Discord Developer Portal (nom de l’app + Art Asset nommé exactement <code>logo</code>). Le lien du site sera branché plus tard. Statut Idle / Clicking · CPS en live.</p>
+        </article>
+        <article class="news-item reveal d1">
+          <h3>v1.4.1 — Raccourcis, fenêtre AutoClick, macros</h3>
+          <p>Pendant la capture d’une nouvelle touche, F6 / Panic / Pause / macros sont désactivés (Échap annule). Fenêtre plus compacte uniquement sur la vue AutoClick (icône souris). Macros : tutoriel en 4 étapes + ▶ Jouer. Hints Ctrl/Cmd selon Windows, macOS ou Linux — plus de texte mélangé.</p>
+        </article>
+        <article class="news-item reveal d2">
+          <h3>v1.4.0 — Moteur : rampe, rafale, pixel, failsafe, timer</h3>
+          <p>Rampe CPS (monte de X à Y sur N secondes). Rafales (N clics puis pause). Filtre pixel (ne clique que si la couleur sous le curseur match). Failsafe si souris immobile. Minuteur de session. Confirmation avant un CPS trop élevé. Panic F12 / Pause F7.</p>
+        </article>
+        <article class="news-item reveal d3">
+          <h3>v1.4.0 — Sauvegardes, objectifs, overlay, FR/EN, minimal</h3>
+          <p>Plusieurs slots de réglages complets. Objectifs jour / session. Overlay 4 coins + opacité, masquable en pause. Mode interface Minimal. Langue FR/EN. Sons, réduction auto au démarrage du clic. Discord : <strong>LuLune0193</strong>.</p>
+        </article>
+        <article class="news-item reveal d1">
+          <h3>Toujours inclus depuis v1.3</h3>
+          <p>CPS live, badge overlay, mode Maintien, zones dessinables, liste de processus, préréglages jeux (Minecraft PVP, Cookie Clicker…), import/export macros &amp; presets, thèmes Vert/Bleu/Rouge/Clair, image de fond, tutoriel, changelog intégré. Windows · macOS · Linux.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="install" class="section">
+      <h2 class="reveal">Lancer l’app</h2>
+      <p class="section-lead reveal d1">Téléchargez le ZIP de votre système, dézippez, puis lancez.</p>
+      <div class="install-rows">
+        <div class="reveal d1">
+          <h3>Windows</h3>
+          <ol>
+            <li>Téléchargez <code>LuLuneAutoClicker-Windows.zip</code></li>
+            <li>Dézippez l’archive</li>
+            <li>Lancez <code>Launch-Windows.vbs</code> (recommandé) ou <code>LuLuneAutoClicker.exe</code></li>
+            <li>Si SmartScreen : Infos complémentaires → Exécuter quand même</li>
+          </ol>
+        </div>
+        <div class="reveal d2">
+          <h3>macOS</h3>
+          <ol>
+            <li>Téléchargez <code>LuLuneAutoClicker-macOS.zip</code></li>
+            <li>Dézippez, puis double-cliquez <code>Open-macOS.command</code></li>
+            <li>Réglages → Confidentialité → Accessibilité → autorisez LuLune AutoClicker</li>
+          </ol>
+        </div>
+        <div class="reveal d3">
+          <h3>Linux</h3>
+          <ol>
+            <li>Téléchargez <code>LuLuneAutoClicker-Linux.zip</code></li>
+            <li>Dézippez, puis <code>chmod +x Launch-Linux.sh</code> et <code>./Launch-Linux.sh</code></li>
+            <li>Préférez une session X11 / XWayland</li>
+          </ol>
+        </div>
+      </div>
+      <p class="note reveal">Les builds macOS et Linux doivent être générés sur la machine cible (modules natifs souris / clavier).</p>
+    </section>
+
+    <section id="tuto" class="section">
+      <h2 class="reveal">Tutoriels</h2>
+      <p class="section-lead reveal d1">Discord Rich Presence, logo avec majuscules, et lancement sur chaque OS.</p>
+
+      <article class="tuto-card reveal d1">
+        <div class="tuto-head">
+          <img src="assets/discord-logo.png" alt="Logo LuLune AutoClicker" width="72" height="72" />
+          <div>
+            <h3>Discord Rich Presence (nom + logo)</h3>
+            <p>Pour voir <strong>LuLuneAutoClicker</strong> (avec majuscules) et le logo vert à la place du « ? ».</p>
+          </div>
+        </div>
+        <ol class="tuto-steps">
+          <li>Ouvrez le <a href="https://discord.com/developers/applications" target="_blank" rel="noopener">Discord Developer Portal</a> → votre application.</li>
+          <li>Nommez l’application exactement <strong>LuLuneAutoClicker</strong> (General Information → Name). C’est le titre « Joue à … » — Discord ne le lit pas depuis l’app.</li>
+          <li>Copiez l’<strong>Application ID</strong> (= Client ID).</li>
+          <li>Onglet <strong>Rich Presence</strong> → <strong>Art Assets</strong> → Upload Image. Fichier : <code>assets/discord-logo.png</code>.</li>
+          <li>Nommez l’asset exactement <code>logo</code> (minuscules). Attendez 1–2 min que Discord propage l’image.</li>
+          <li>Dans l’app → Comportement → Discord Rich Presence : ON + collez le Client ID.</li>
+          <li>Relancez Discord et l’app. Statut : logo + LuLuneAutoClicker + Idle / Clicking.</li>
+        </ol>
+        <p class="tuto-tip">Toujours en minuscules ? Renomme l’app dans le Portal. Toujours « ? » ? L’asset <code>logo</code> n’est pas uploadé ou mal nommé.</p>
+      </article>
+
+      <article class="tuto-card reveal d2">
+        <h3>Lancer sur Windows</h3>
+        <ol class="tuto-steps">
+          <li>Téléchargez <code>LuLuneAutoClicker-Windows.zip</code> puis dézippez</li>
+          <li>Double-cliquez <code>Launch-Windows.vbs</code> (sans console) ou <code>LuLuneAutoClicker.exe</code></li>
+          <li>Hotkeys : <strong>F6</strong> start/stop · <strong>F12</strong> panic · <strong>F7</strong> pause</li>
+        </ol>
+      </article>
+
+      <article class="tuto-card reveal d3">
+        <h3>Lancer sur macOS</h3>
+        <ol class="tuto-steps">
+          <li>Téléchargez <code>LuLuneAutoClicker-macOS.zip</code> puis dézippez</li>
+          <li>Double-cliquez <code>Open-macOS.command</code></li>
+          <li>Réglages → Confidentialité → Accessibilité → autorisez LuLune AutoClicker</li>
+        </ol>
+      </article>
+
+      <article class="tuto-card reveal d1">
+        <h3>Lancer sur Linux</h3>
+        <ol class="tuto-steps">
+          <li>Téléchargez <code>LuLuneAutoClicker-Linux.zip</code> puis dézippez</li>
+          <li><code>chmod +x Launch-Linux.sh</code> puis <code>./Launch-Linux.sh</code></li>
+          <li>Préférez une session <strong>X11</strong> (Wayland peut bloquer les clics)</li>
+        </ol>
+      </article>
+    </section>
+
+    <section id="fonctions" class="section">
+      <h2 class="reveal">Fonctions</h2>
+      <p class="section-lead reveal d1">Tout ce dont vous avez besoin pour cliquer sérieusement — sans usine à gaz.</p>
+      <div class="feat-strip">
+        <div class="reveal d1"><h3>Jusqu’à 1000 CPS</h3><p>Moteur libnut / nut-js, délais à zéro, timing haute précision.</p></div>
+        <div class="reveal d2"><h3>Macros F8</h3><p>Clics, touches, délais, séquences. Raccourcis multi-touches (Shift+F, Ctrl+1…).</p></div>
+        <div class="reveal d3"><h3>Discord Presence</h3><p>Logo, majuscules, CPS live sur le profil. Lien site prêt pour plus tard.</p></div>
+        <div class="reveal d4"><h3>3 systèmes</h3><p>Même interface sur Windows, macOS et Linux — lanceurs dédiés inclus.</p></div>
+      </div>
+    </section>
+
+    <section id="communaute" class="section">
+      <div class="community reveal">
+        <div>
+          <p class="eyebrow">Communauté</p>
+          <h2>Soutenez <em>LuLune</em></h2>
+          <p>Chaînes, lives, code open source. Sur Discord, ajoutez <strong>LuLune0193</strong>.</p>
+        </div>
+        <div class="community-links">
+          <a class="support-btn yt" href="https://www.youtube.com/@Ang3lGD" target="_blank" rel="noopener">YouTube</a>
+          <a class="support-btn tw" href="https://www.twitch.tv/ang3lgd_" target="_blank" rel="noopener">Twitch</a>
+          <a class="support-btn gh" href="https://github.com/lulunee19" target="_blank" rel="noopener">GitHub</a>
+          <button type="button" class="support-btn dc" id="copy-discord" data-user="LuLune0193">Discord · LuLune0193</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>LuLune AutoClicker · v1.4.1</span>
+    <div class="footer-links">
+      <a href="https://www.youtube.com/@Ang3lGD" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.twitch.tv/ang3lgd_" target="_blank" rel="noopener">Twitch</a>
+      <a href="https://github.com/lulunee19" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <span>Windows · macOS · Linux</span>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+    const btn = document.getElementById('copy-discord');
+    if (btn) {
+      btn.addEventListener('click', async () => {
+        const user = btn.getAttribute('data-user') || 'LuLune0193';
+        try {
+          await navigator.clipboard.writeText(user);
+          const old = btn.textContent;
+          btn.textContent = 'Copié · ' + user;
+          setTimeout(() => { btn.textContent = old; }, 1600);
+        } catch (_) {
+          prompt('Copiez le pseudo Discord :', user);
+        }
+      });
+    }
+  </script>
+</body>
+</html>

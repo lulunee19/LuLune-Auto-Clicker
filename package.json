@@ -1,0 +1,27 @@
+{
+  "name": "lulune-autoclicker",
+  "version": "1.4.1",
+  "description": "LuLune AutoClicker - autoclicker avance multiplateforme (Windows, macOS, Linux)",
+  "main": "main.js",
+  "author": "LuLune",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "package:win": "electron-packager . LuLuneAutoClicker --platform=win32 --arch=x64 --out=dist --overwrite --asar --win32metadata.CompanyName=LuLune --win32metadata.FileDescription=LuLune AutoClicker --win32metadata.ProductName=LuLune AutoClicker --win32metadata.InternalName=LuLuneAutoClicker --win32metadata.OriginalFilename=LuLuneAutoClicker.exe && node scripts/postpackage.js win",
+    "package:mac": "electron-packager . LuLuneAutoClicker --platform=darwin --arch=x64 --out=dist --overwrite --asar --app-bundle-id=com.lulune.autoclicker --app-category-type=public.app-category.utilities && node scripts/postpackage.js mac",
+    "package:mac:arm64": "electron-packager . LuLuneAutoClicker --platform=darwin --arch=arm64 --out=dist --overwrite --asar --app-bundle-id=com.lulune.autoclicker --app-category-type=public.app-category.utilities && node scripts/postpackage.js mac",
+    "package:linux": "electron-packager . LuLuneAutoClicker --platform=linux --arch=x64 --out=dist --overwrite --asar && node scripts/postpackage.js linux",
+    "package:linux:arm64": "electron-packager . LuLuneAutoClicker --platform=linux --arch=arm64 --out=dist --overwrite --asar && node scripts/postpackage.js linux",
+    "package:all": "npm run package:win && npm run package:mac && npm run package:linux",
+    "zip:downloads": "node scripts/zip-downloads.js"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "@nut-tree-fork/nut-js": "4.2.6",
+    "discord-rpc": "^4.0.1",
+    "uiohook-napi": "^1.5.5"
+  }
+}

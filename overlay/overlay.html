@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<style>
+  html, body { margin: 0; background: transparent; overflow: hidden; font-family: Sora, Segoe UI, sans-serif; }
+  #badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin: 6px; padding: 8px 12px; border-radius: 999px;
+    background: rgba(12, 16, 22, 0.82); color: #e8fff0;
+    border: 1px solid rgba(74, 222, 128, 0.45);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+    backdrop-filter: blur(10px);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.02em;
+    -webkit-app-region: drag; user-select: none;
+  }
+  #dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 10px #22c55e; animation: pulse 1s infinite; }
+  #badge.off #dot { background: #6b7280; box-shadow: none; animation: none; }
+  #cps { font-family: Consolas, monospace; color: #86efac; }
+  @keyframes pulse { 50% { transform: scale(1.25); opacity: 0.7; } }
+</style>
+</head>
+<body>
+  <div id="badge" class="off"><span id="dot"></span><span id="label">OFF</span><span id="cps">0 CPS</span></div>
+  <script>
+    const { ipcRenderer } = require('electron');
+    const badge = document.getElementById('badge');
+    const label = document.getElementById('label');
+    const cps = document.getElementById('cps');
+    ipcRenderer.on('overlay-update', (_e, d) => {
+      const on = !!(d && d.clicking);
+      const paused = !!(d && d.paused);
+      badge.classList.toggle('off', !on || paused);
+      label.textContent = paused ? 'PAUSE' : (on ? 'ON' : 'OFF');
+      cps.textContent = `${Math.round((d && d.liveCps) || 0)} CPS`;
+      if (d && d.opacity != null) {
+        const op = Math.max(0, Math.min(100, Number(d.opacity))) / 100;
+        badge.style.opacity = String(op);
+      }
+    });
+  </script>
+</body>
+</html>
