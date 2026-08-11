@@ -161,13 +161,13 @@ SOUNDS / AUTO-HIDE
 ================================================================================
 
   HTML site:
-    C:\Users\Victor\Projects\LuLuneAutoClicker\website\index.html
+    %USERPROFILE%\Projects\LuLuneAutoClicker\website\index.html
 
   Windows ZIP (site):
-    C:\Users\Victor\Projects\LuLuneAutoClicker\website\downloads\LuLuneAutoClicker-Windows.zip
+    %USERPROFILE%\Projects\LuLuneAutoClicker\website\downloads\LuLuneAutoClicker-Windows.zip
 
   Unpacked Windows build:
-    C:\Users\Victor\Projects\LuLuneAutoClicker\dist\LuLuneAutoClicker-win32-x64\
+    %USERPROFILE%\Projects\LuLuneAutoClicker\dist\LuLuneAutoClicker-win32-x64\
 
   User data (do not zip):
     %APPDATA%\lulune-autoclicker\

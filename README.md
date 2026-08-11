@@ -6,7 +6,7 @@ Cross-platform Electron autoclicker (**Windows · macOS · Linux**) — live CPS
 
 | What | Path |
 |------|------|
-| **Source project** | `C:\Users\Victor\Projects\LuLuneAutoClicker` |
+| **Source project** | `%USERPROFILE%\Projects\LuLuneAutoClicker` |
 | Main code | `main.js`, `preload.js`, `extras.js` |
 | UI | `renderer\index.html`, `renderer\renderer.js`, `renderer\style.css` |
 | Overlays | `overlay\overlay.html`, `overlay\zone-draw.html` |
@@ -14,7 +14,7 @@ Cross-platform Electron autoclicker (**Windows · macOS · Linux**) — live CPS
 | Packaging | `scripts\postpackage.js`, `scripts\zip-downloads.js` |
 | Download page | `website\index.html`, `website\styles.css` |
 | Site zips | `website\downloads\` |
-| **Windows build** | `C:\Users\Victor\Downloads\LuLuneAutoClicker-Windows\LuLuneAutoClicker-win32-x64\LuLuneAutoClicker.exe` |
+| **Windows build** | `%USERPROFILE%\Downloads\LuLuneAutoClicker-Windows\LuLuneAutoClicker-win32-x64\LuLuneAutoClicker.exe` |
 | User data | `%APPDATA%\lulune-autoclicker\` (Windows) · `~/Library/Application Support/lulune-autoclicker/` (macOS) · `~/.config/lulune-autoclicker/` (Linux) |
 
 ## Development
