@@ -1,10 +1,11 @@
 LuLune AutoClicker — builds site
 
-Windows zip: prêt si généré sur Windows (npm run package:win && npm run zip:downloads)
-macOS zip:   générer SUR un Mac (npm run package:mac ou package:mac:arm64)
-Linux zip:   générer SUR Linux (npm run package:linux)
+Windows zip:  LuLuneAutoClicker-Windows.zip (x64)
+macOS zip:     LuLuneAutoClicker-macOS.zip (Apple Silicon arm64)
+               LuLuneAutoClicker-macOS-Intel.zip (x64)
+Linux zip:     LuLuneAutoClicker-Linux.zip (x64)
 
-Les modules natifs (libnut, uiohook) doivent être compilés sur l’OS cible.
-Ne pas cross-compiler mac/linux depuis Windows.
+Tous les builds sont assembles sur le serveur a partir de binaires
+Electron officiels + modules natifs prebuilds (uiohook-napi, libnut).
 
 Discord: LuLune0193
