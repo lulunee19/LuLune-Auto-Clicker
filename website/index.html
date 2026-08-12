@@ -45,7 +45,7 @@
 
     <section id="download" class="section">
       <h2 class="reveal">Download</h2>
-      <p class="section-lead reveal d1">Pick your system. Windows is ready; macOS and Linux need to be packaged on the target machine (native modules).</p>
+      <p class="section-lead reveal d1">Pick your system. Ready-to-use builds for Windows, macOS (Apple Silicon &amp; Intel), and Linux.</p>
       <div class="dl-grid">
         <article class="dl-card reveal d1">
           <div class="dl-top">
@@ -68,13 +68,14 @@
             <span class="ver">v1.4.1 · Intel / Apple Silicon</span>
           </div>
           <h3>macOS 11+</h3>
-          <p>.app build to generate on a Mac. Gatekeeper handled via the included script.</p>
+          <p>Ready to use. Gatekeeper handled via the included <code>Open-macOS.command</code>.</p>
           <ul>
             <li><code>Open-macOS.command</code> removes quarantine</li>
             <li>Allow Accessibility in Settings</li>
-            <li><code>npm run package:mac</code> or <code>package:mac:arm64</code></li>
+            <li>Apple Silicon (M1+) recommended</li>
           </ul>
-          <a class="btn primary full" href="downloads/LuLuneAutoClicker-macOS.zip" download>Download macOS</a>
+          <a class="btn primary full" href="downloads/LuLuneAutoClicker-macOS.zip" download>Download macOS (Apple Silicon)</a>
+          <a class="btn ghost full" href="downloads/LuLuneAutoClicker-macOS-Intel.zip" download>Download macOS (Intel)</a>
         </article>
 
         <article class="dl-card reveal d3">
@@ -87,7 +88,7 @@
           <ul>
             <li><code>./Launch-Linux.sh</code> (chmod +x auto)</li>
             <li>Prefer X11 / XWayland</li>
-            <li><code>npm run package:linux</code> on Linux</li>
+            <li>x64 · needs X server</li>
           </ul>
           <a class="btn primary full" href="downloads/LuLuneAutoClicker-Linux.zip" download>Download Linux</a>
         </article>
@@ -159,7 +160,7 @@
           </ol>
         </div>
       </div>
-      <p class="note reveal">macOS and Linux builds must be generated on the target machine (native mouse / keyboard modules).</p>
+      <p class="note reveal">All builds are ready to use — no compiling needed. Just unzip and launch.</p>
     </section>
 
     <section id="tuto" class="section">
