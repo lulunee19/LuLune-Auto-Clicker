@@ -20,7 +20,7 @@ Cross-platform Electron autoclicker for **Windows**, macOS, and Linux.
 Personal stats/settings stay in AppData — the ZIP does not include your data.
 
 ### Notes
-- macOS / Linux builds must be packaged on those OSes (`npm run package:mac` / `package:linux`).
+- macOS (Apple Silicon + Intel) and Linux (x64) builds are ready to use — no compiling needed.
 - Discord contact: **LuLune0193**
 
 **Full changelog:** see in-app Settings → Changelog, or `website/downloads/RELEASE-NOTES-v1.4.1.txt`.
