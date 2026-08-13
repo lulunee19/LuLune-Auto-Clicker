@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lulunee19.github.io/LuLune-Auto-Clicker/sitemap.xml
