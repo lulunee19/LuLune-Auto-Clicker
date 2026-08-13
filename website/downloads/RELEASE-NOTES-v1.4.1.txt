@@ -20,16 +20,16 @@ IMPORTANT — PERSONAL DATA
   Sharing the ZIP with a friend = a clean app with default settings.
 
 
-ARCHIVE STATUS (this machine = Windows)
----------------------------------------
-  ✓ LuLuneAutoClicker-Windows.zip  →  v1.4.1 (built here)
-  ○ LuLuneAutoClicker-macOS.zip    →  build ON a Mac
-       npm run package:mac   (or package:mac:arm64) && npm run zip:downloads
-  ○ LuLuneAutoClicker-Linux.zip    →  build ON Linux
-       npm run package:linux && npm run zip:downloads
+ARCHIVE STATUS (server builds)
+------------------------------
+  ✓ LuLuneAutoClicker-Windows.zip   →  v1.4.1 (x64)
+  ✓ LuLuneAutoClicker-macOS.zip     →  v1.4.1 (Apple Silicon / arm64)
+  ✓ LuLuneAutoClicker-macOS-Intel.zip → v1.4.1 (Intel / x64)
+  ✓ LuLuneAutoClicker-Linux.zip     →  v1.4.1 (x64)
 
-  Why? Mouse/keyboard modules (libnut, uiohook) are native:
-  a Mac/Linux build made from Windows would not click correctly.
+  All builds are assembled on the server from official Electron
+  binaries + prebuilt native modules (libnut, uiohook). Just unzip
+  and launch — no compiling needed.
 
 
 ================================================================================
