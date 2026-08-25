@@ -421,8 +421,8 @@
                 <div class="pixel-swatch" id="pixel-swatch" title="Target color"></div>
               </div>
               <div class="panel">
-                <div class="panel-head-row"><span data-i18n="engine.failsafe">Cursor failsafe</span><div class="segmented small" id="failsafe-toggle"><button data-val="off">OFF</button><button data-val="on" class="active">ON</button></div></div>
-                <p class="hint" data-i18n="engine.failsafe.hint">Stops if the mouse does not move for N seconds.</p>
+                <div class="panel-head-row"><span data-i18n="engine.failsafe">Cursor failsafe</span><div class="segmented small" id="failsafe-toggle"><button data-val="off" class="active">OFF</button><button data-val="on">ON</button></div></div>
+                <p class="hint" data-i18n="engine.failsafe.hint">Optional: stop if the mouse stays still for N seconds. Leave OFF for normal clicking.</p>
                 <div class="row"><label>Seconds</label><input type="number" id="failsafe-idle" min="1" value="10" /></div>
               </div>
               <div class="panel">
@@ -512,26 +512,18 @@
               <div class="panel">
                 <div class="panel-head"><span>Background image</span></div>
                 <p class="hint">PNG, JPG, WEBP, <b>GIF</b>, or BMP only. Animated GIFs are supported.</p>
-                <div class="bg-preview" id="bg-preview"><span class="bg-preview-empty" id="bg-preview-label">No image</span></div>
+                <div class="bg-preview" id="bg-preview" title="Drag to place">
+                  <span class="bg-preview-empty" id="bg-preview-label">No image</span>
+                  <span class="bg-preview-hint" id="bg-preview-hint" hidden>Drag to place · like a Discord avatar</span>
+                </div>
                 <div class="row bg-actions">
                   <button type="button" id="appearance-pick-image">Choose an image / GIF…</button>
                   <button type="button" id="appearance-clear-image" class="ghost-btn">Remove</button>
+                  <button type="button" id="appearance-reset-bgpos" class="ghost-btn">Reset place</button>
                 </div>
                 <input type="text" id="appearance-bgimage" placeholder="Image URL only (https://… .png/.jpg/.gif…)" />
-                <div class="panel-head" style="margin-top:12px"><span>Position</span></div>
-                <div class="segmented small wrap" id="bg-position-segment">
-                  <button type="button" data-val="center" class="active">Center</button>
-                  <button type="button" data-val="top">Top</button>
-                  <button type="button" data-val="bottom">Bottom</button>
-                  <button type="button" data-val="left">Left</button>
-                  <button type="button" data-val="right">Right</button>
-                </div>
-                <div class="panel-head" style="margin-top:10px"><span>Fit</span></div>
-                <div class="segmented small" id="bg-fit-segment">
-                  <button type="button" data-val="cover" class="active">Fill</button>
-                  <button type="button" data-val="contain">Fit (full)</button>
-                </div>
-                <p class="hint">Fill = zoom to cover. Fit (full) = whole image centered.</p>
+                <div class="slider-row"><label>Zoom</label><input type="range" id="appearance-bgzoom" min="100" max="250" value="100" /><span id="appearance-bgzoom-val">100%</span></div>
+                <p class="hint">Drag the preview to place the image. Zoom in, then pan — same idea as a Discord profile picture.</p>
                 <div class="slider-row"><label>Theme strength (colored background)</label><input type="range" id="appearance-bgopacity" min="0" max="100" value="100" /><span id="appearance-bgopacity-val">100%</span></div>
                 <div class="slider-row"><label>Image visibility</label><input type="range" id="appearance-bgimgopacity" min="0" max="100" value="70" /><span id="appearance-bgimgopacity-val">70%</span></div>
                 <div class="slider-row"><label>Interface opacity</label><input type="range" id="appearance-panelopacity" min="10" max="100" value="100" /><span id="appearance-panelopacity-val">100%</span></div>

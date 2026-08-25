@@ -121,7 +121,7 @@ const DEFAULT_SETTINGS = {
   cpsProfile: { enabled: false, fromCps: 10, toCps: 60, rampSeconds: 30 },
   burst: { enabled: false, clicks: 5, pauseMs: 200 },
   pixelClick: { enabled: false, r: 255, g: 255, b: 255, tolerance: 30 },
-  failsafe: { enabled: true, idleSeconds: 10 },
+  failsafe: { enabled: false, idleSeconds: 10 },
   sessionTimer: { enabled: false, minutes: 30 },
   hotkeys: { panic: 'F12', pause: 'F7' },
   confirmHighCps: { enabled: true, threshold: 100 },
@@ -148,7 +148,10 @@ const DEFAULT_SETTINGS = {
     backgroundImage: '',
     backgroundOpacity: 100,
     backgroundImageOpacity: 70,
-    backgroundPosition: 'center',
+    backgroundPosition: '50% 50%',
+    backgroundPosX: 50,
+    backgroundPosY: 50,
+    backgroundZoom: 100,
     backgroundFit: 'cover',
     panelOpacity: 100,
     panelBlur: 0,
@@ -238,16 +241,20 @@ function applyPartialSettings(partial) {
 }
 
 let settings = mergeLoadedSettings(loadJSON(SETTINGS_FILE, {}));
-// One-shot migration: old builds spun the CPU (duty 45%) and UI often desynced the mouse button
-if (settings._engineVersion !== 2) {
-  settings.mouseButton = 'left';
-  settings.dutyCycle = 0;
-  settings.speedRandomization = { enabled: false, percent: 0 };
-  settings._engineVersion = 2;
+const ENGINE_VERSION = 4;
+const loadedEngine = Number(settings._engineVersion) || 0;
+if (loadedEngine < ENGINE_VERSION) {
+  if (loadedEngine < 2) {
+    settings.mouseButton = 'left';
+    settings.dutyCycle = 0;
+    settings.speedRandomization = { enabled: false, percent: 0 };
+  }
+  settings.rateMode = 'rate';
+  if (settings.failsafe) settings.failsafe.enabled = false;
+  settings._engineVersion = ENGINE_VERSION;
   try { saveJSON(SETTINGS_FILE, settings); } catch (_) {}
-} else {
-  settings.mouseButton = mouseBtnName();
 }
+settings.mouseButton = mouseBtnName();
 
 let presets = loadJSON(PRESETS_FILE, []);
 if (!Array.isArray(presets) || presets.length === 0) {
@@ -433,7 +440,10 @@ function getEffectiveCps() {
 }
 
 function computeIntervalMs() {
-  if (settings.rateMode === 'interval') return Math.max(1, settings.intervalMs);
+  if (settings.rateMode === 'interval') {
+    const ms = Number(settings.intervalMs);
+    if (Number.isFinite(ms) && ms >= 1) return ms;
+  }
   return 1000 / getEffectiveCps();
 }
 
@@ -675,15 +685,17 @@ async function clickLoop() {
       if (pauseMs > 0) await sleep(pauseMs);
       nextClickAt = performance.now();
     } else {
-      const intervalMs = randomizedInterval(computeIntervalMs());
-      nextClickAt += intervalMs;
+      const intervalMs = Math.max(1, randomizedInterval(computeIntervalMs()));
+      const now = performance.now();
+      if (now < nextClickAt) {
+        await sleep(nextClickAt - now);
+        if (!clicking || paused) continue;
+      }
       if (pixelGateAllowsClick()) doClick();
       if (!clicking) break;
       const lim = checkSessionLimits();
       if (lim) { stopClicking(lim); break; }
-      const wait = nextClickAt - performance.now();
-      if (wait > 1) await sleep(wait);
-      else if (wait < -intervalMs * 2) nextClickAt = performance.now();
+      nextClickAt = performance.now() + intervalMs;
     }
 
     maybeSendStats(false);
@@ -1190,6 +1202,12 @@ ipcMain.handle('update-settings', (e, partial) => {
   if (partial && partial.mouseButton != null) {
     settings.mouseButton = mouseBtnName();
   }
+  if (partial && partial.cps != null) {
+    const cps = Math.max(0.001, Number(partial.cps) || 0.001);
+    settings.cps = cps;
+    settings.rateMode = 'rate';
+    settings.intervalMs = 1000 / getEffectiveCps();
+  }
   if (partial && typeof partial.dutyCycle === 'number') {
     settings.dutyCycle = Math.max(0, Math.min(100, partial.dutyCycle));
   }
@@ -1410,7 +1428,7 @@ ipcMain.handle('macro-get-recording', () => ({
 
 ipcMain.handle('reset-settings', () => {
   settings = JSON.parse(JSON.stringify(DEFAULT_SETTINGS));
-  settings._engineVersion = 2;
+  settings._engineVersion = 4;
   saveJSON(SETTINGS_FILE, settings);
   registerMainHotkey();
   syncOverlay();

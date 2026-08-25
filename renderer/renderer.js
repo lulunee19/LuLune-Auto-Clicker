@@ -167,6 +167,30 @@ function toCssBackgroundUrl(raw) {
   return url;
 }
 
+function clampPct(n, fallback = 50) {
+  const v = Number(n);
+  return Number.isFinite(v) ? Math.max(0, Math.min(100, v)) : fallback;
+}
+
+function parseBgPos(a) {
+  if (a && a.backgroundPosX != null && a.backgroundPosY != null) {
+    return { x: clampPct(a.backgroundPosX), y: clampPct(a.backgroundPosY) };
+  }
+  const s = String(a?.backgroundPosition || '50% 50%').trim();
+  const m = s.match(/^(\d+(?:\.\d+)?)%\s+(\d+(?:\.\d+)?)%$/);
+  if (m) return { x: clampPct(m[1]), y: clampPct(m[2]) };
+  if (s === 'top') return { x: 50, y: 0 };
+  if (s === 'bottom') return { x: 50, y: 100 };
+  if (s === 'left') return { x: 0, y: 50 };
+  if (s === 'right') return { x: 100, y: 50 };
+  return { x: 50, y: 50 };
+}
+
+function bgSizeCss(zoom) {
+  const z = Math.max(100, Math.min(250, Number(zoom) || 100));
+  return z <= 100 ? 'cover' : z + '%';
+}
+
 let appearanceApplyToken = 0;
 let lastTintUrl = '';
 let lastTintPalette = null;
@@ -353,12 +377,13 @@ async function applyAppearance(livePartial) {
   const matchColors = a.matchImageColors !== false;
   const customOn = !!a.customAccentEnabled;
   const customRgb = hexToRgb(a.customAccent);
-  const bgPos = String(a.backgroundPosition || 'center').trim() || 'center';
-  const bgFit = a.backgroundFit === 'contain' ? 'contain' : 'cover';
+  const pos = parseBgPos(a);
+  const bgPos = `${pos.x}% ${pos.y}%`;
+  const bgSize = bgSizeCss(a.backgroundZoom);
 
   root.style.setProperty('--theme-bg-opacity', String(themeOpacity));
   root.style.setProperty('--bg-position', bgPos);
-  root.style.setProperty('--bg-fit', bgFit);
+  root.style.setProperty('--bg-size', bgSize);
   // Mapping large : 10% → très transparent, 100% → opaque
   if ((a.theme || 'green') === 'light') {
     root.style.setProperty('--panel-alpha', String(0.08 + panelSlider * 0.88));
@@ -396,6 +421,7 @@ async function applyAppearance(livePartial) {
       preview.classList.add('has-image');
     }
     if (previewLabel) previewLabel.textContent = '';
+    if ($('#bg-preview-hint')) $('#bg-preview-hint').hidden = false;
   } else {
     if (layer) layer.style.backgroundImage = 'none';
     root.style.setProperty('--bg-image-opacity', '0');
@@ -405,6 +431,7 @@ async function applyAppearance(livePartial) {
       preview.classList.remove('has-image');
     }
     if (previewLabel) previewLabel.textContent = 'No image';
+    if ($('#bg-preview-hint')) $('#bg-preview-hint').hidden = true;
   }
 
   // Accent priority: custom picker > image palette > theme presets
@@ -961,6 +988,11 @@ function bindSegmented(containerId, onSelect) {
   });
 }
 
+function pushCps(val) {
+  const cps = Math.max(1, Number(val) || 1);
+  return pushSettings({ cps, rateMode: 'rate' });
+}
+
 async function pushSettings(partial) {
   state.settings = await window.api.updateSettings(partial);
   updateStartStopUI(state.stats.clicking, state.stats.paused);
@@ -985,7 +1017,8 @@ async function pushSettings(partial) {
 
 // ---------- SIMPLE ----------
 function bindSimple() {
-  $('#cps-input').addEventListener('change', (e) => pushSettings({ cps: Number(e.target.value) }));
+  $('#cps-input').addEventListener('input', (e) => pushCps(e.target.value));
+  $('#cps-input').addEventListener('change', (e) => pushCps(e.target.value));
   $('#hotkey-input').addEventListener('change', (e) => pushSettings({ hotkey: e.target.value }));
   $('#hotkey-capture-btn')?.addEventListener('click', () => {
     captureNextKey('#hotkey-input', (combo) => pushSettings({ hotkey: combo }));
@@ -1009,7 +1042,8 @@ function bindSimple() {
 
 // ---------- ADVANCED ----------
 function bindAdvanced() {
-  $('#adv-cps-input').addEventListener('change', (e) => { pushSettings({ cps: Number(e.target.value) }); syncAdvIntervalDisplay(); });
+  $('#adv-cps-input').addEventListener('input', (e) => { pushCps(e.target.value); syncAdvIntervalDisplay(); });
+  $('#adv-cps-input').addEventListener('change', (e) => { pushCps(e.target.value); syncAdvIntervalDisplay(); });
   bindSegmented('adv-limits-toggle', (v) => pushSettings({ limits: { ...state.settings.limits, enabled: v === 'on' } }));
   bindSegmented('adv-limits-mode', (v) => pushSettings({ limits: { ...state.settings.limits, mode: v } }));
   $('#adv-limits-value').addEventListener('change', (e) => {
@@ -1652,14 +1686,78 @@ function bindBehaviorAppearanceKeybinds() {
     await pushSettings({ appearance: { ...state.settings.appearance, backgroundImage: '' } });
     applyAppearance();
   });
-  bindSegmented('bg-position-segment', (v) => {
-    pushSettings({ appearance: { ...state.settings.appearance, backgroundPosition: v } });
-    applyAppearance({ backgroundPosition: v });
+  const saveBgPlace = (x, y, zoom, live) => {
+    const posX = clampPct(x);
+    const posY = clampPct(y);
+    const z = Math.max(100, Math.min(250, Number(zoom) || 100));
+    const css = `${posX}% ${posY}%`;
+    applyAppearance({
+      backgroundPosX: posX,
+      backgroundPosY: posY,
+      backgroundPosition: css,
+      backgroundZoom: z
+    });
+    if ($('#appearance-bgzoom')) $('#appearance-bgzoom').value = z;
+    if ($('#appearance-bgzoom-val')) $('#appearance-bgzoom-val').textContent = Math.round(z) + '%';
+    if (!live) {
+      pushSettings({
+        appearance: {
+          ...state.settings.appearance,
+          backgroundPosX: posX,
+          backgroundPosY: posY,
+          backgroundPosition: css,
+          backgroundZoom: z,
+          backgroundFit: 'cover'
+        }
+      });
+    }
+  };
+  $('#appearance-bgzoom')?.addEventListener('input', () => {
+    const pos = parseBgPos(state.settings?.appearance || {});
+    saveBgPlace(pos.x, pos.y, $('#appearance-bgzoom').value, true);
   });
-  bindSegmented('bg-fit-segment', (v) => {
-    pushSettings({ appearance: { ...state.settings.appearance, backgroundFit: v } });
-    applyAppearance({ backgroundFit: v });
+  $('#appearance-bgzoom')?.addEventListener('change', () => {
+    const pos = parseBgPos(state.settings?.appearance || {});
+    saveBgPlace(pos.x, pos.y, $('#appearance-bgzoom').value, false);
   });
+  $('#appearance-reset-bgpos')?.addEventListener('click', () => saveBgPlace(50, 50, 100, false));
+  const preview = $('#bg-preview');
+  if (preview) {
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+    let origin = { x: 50, y: 50 };
+    let lastPos = { x: 50, y: 50 };
+    preview.addEventListener('pointerdown', (ev) => {
+      if (!preview.classList.contains('has-image')) return;
+      dragging = true;
+      preview.classList.add('is-dragging');
+      $('#app')?.classList.add('is-bg-dragging');
+      preview.setPointerCapture(ev.pointerId);
+      startX = ev.clientX;
+      startY = ev.clientY;
+      origin = parseBgPos(state.settings?.appearance || {});
+      lastPos = { ...origin };
+      ev.preventDefault();
+    });
+    preview.addEventListener('pointermove', (ev) => {
+      if (!dragging) return;
+      const r = preview.getBoundingClientRect();
+      const dx = r.width ? ((ev.clientX - startX) / r.width) * 100 : 0;
+      const dy = r.height ? ((ev.clientY - startY) / r.height) * 100 : 0;
+      lastPos = { x: clampPct(origin.x - dx), y: clampPct(origin.y - dy) };
+      saveBgPlace(lastPos.x, lastPos.y, $('#appearance-bgzoom')?.value || 100, true);
+    });
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      preview.classList.remove('is-dragging');
+      $('#app')?.classList.remove('is-bg-dragging');
+      saveBgPlace(lastPos.x, lastPos.y, $('#appearance-bgzoom')?.value || 100, false);
+    };
+    preview.addEventListener('pointerup', endDrag);
+    preview.addEventListener('pointercancel', endDrag);
+  }
   [['appearance-activeicon', 'activeIcon'], ['appearance-statusbar', 'statusBar'], ['appearance-footer', 'footer']].forEach(([id, key]) => {
     const el = $('#' + id);
     if (!el) return;
@@ -1939,8 +2037,10 @@ function applySettingsToUI() {
   if ($('#appearance-bgimgopacity')) $('#appearance-bgimgopacity').value = s.appearance?.backgroundImageOpacity ?? 70;
   if ($('#appearance-panelopacity')) $('#appearance-panelopacity').value = s.appearance?.panelOpacity ?? 100;
   if ($('#appearance-panelblur')) $('#appearance-panelblur').value = s.appearance?.panelBlur ?? 0;
-  syncSegment('bg-position-segment', s.appearance?.backgroundPosition || 'center');
-  syncSegment('bg-fit-segment', s.appearance?.backgroundFit === 'contain' ? 'contain' : 'cover');
+  const pos = parseBgPos(s.appearance || {});
+  const zoom = Math.max(100, Math.min(250, Number(s.appearance?.backgroundZoom) || 100));
+  if ($('#appearance-bgzoom')) $('#appearance-bgzoom').value = zoom;
+  if ($('#appearance-bgzoom-val')) $('#appearance-bgzoom-val').textContent = Math.round(zoom) + '%';
   applyAppearance();
 
   const setChk = (id, val) => { const el = $('#' + id); if (el) el.checked = !!val; };
@@ -2020,7 +2120,7 @@ function applySettingsToUI() {
   syncSegment('cpsprofile-toggle', s.cpsProfile?.enabled ? 'on' : 'off');
   syncSegment('burst-toggle', s.burst?.enabled ? 'on' : 'off');
   syncSegment('pixel-toggle', s.pixelClick?.enabled ? 'on' : 'off');
-  syncSegment('failsafe-toggle', s.failsafe?.enabled !== false ? 'on' : 'off');
+  syncSegment('failsafe-toggle', s.failsafe?.enabled ? 'on' : 'off');
   syncSegment('sessiontimer-toggle', s.sessionTimer?.enabled ? 'on' : 'off');
 
   if (s.hotkeyMode === 'hold') {
