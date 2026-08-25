@@ -76,7 +76,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.event.release.tag_name || inputs.tag || github.ref_name }}
-          generate_release_notes: true
+          name: LuLune AutoClicker ${{ github.event.release.tag_name || inputs.tag || github.ref_name }}
+          body_path: .github/release-body.md
+          generate_release_notes: false
           files: ${{ matrix.assets }}
           fail_on_unmatched_files: false
         env:
