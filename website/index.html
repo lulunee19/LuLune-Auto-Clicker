@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="LuLune AutoClicker v1.4.1 — Windows, macOS, and Linux autoclicker. Discord Rich Presence, CPS ramp, bursts, UI opacity, macros, zones." />
+  <meta name="description" content="LuLune AutoClicker v1.4.1 — Windows, macOS, and Linux autoclicker. Discord-style background, Discord Rich Presence, CPS ramp, bursts, UI opacity, macros, zones." />
   <title>LuLune AutoClicker — Download v1.4.1</title>
+  <link rel="canonical" href="https://lulunee19.github.io/LuLune-Auto-Clicker/" />
+  <meta property="og:title" content="LuLune AutoClicker — Download v1.4.1" />
+  <meta property="og:description" content="Free autoclicker for Windows, macOS, and Linux. Native installers, Discord-style background, macros, and Rich Presence." />
+  <meta property="og:url" content="https://lulunee19.github.io/LuLune-Auto-Clicker/" />
+  <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
@@ -36,7 +41,7 @@
     <section class="hero">
       <p class="brand-mark reveal">LuLune</p>
       <h1 class="reveal d1">AutoClicker</h1>
-      <p class="lead reveal d2">Click faster, cleaner — on Windows, macOS, and Linux. Macros, Discord Rich Presence, stop zones, and themes.</p>
+      <p class="lead reveal d2">Click faster, cleaner — on Windows, macOS, and Linux. Native installers, Discord-style background, macros, Rich Presence, stop zones, and themes.</p>
       <div class="cta-row reveal d3">
         <a class="btn primary" href="#download">Download v1.4.1</a>
         <a class="btn ghost" href="#nouveautes">Release notes</a>
@@ -45,7 +50,7 @@
 
     <section id="download" class="section">
       <h2 class="reveal">Download</h2>
-      <p class="section-lead reveal d1">Pick your system. Ready-to-use builds for Windows, macOS (Apple Silicon &amp; Intel), and Linux.</p>
+      <p class="section-lead reveal d1">Official builds from GitHub Releases — Windows installer, macOS DMG (Apple Silicon &amp; Intel), Linux AppImage, plus ZIP fallbacks.</p>
       <div class="dl-grid">
         <article class="dl-card reveal d1">
           <div class="dl-top">
@@ -53,29 +58,31 @@
             <span class="ver">v1.4.1 · x64</span>
           </div>
           <h3>Windows 10 / 11</h3>
-          <p>ZIP archive with the exe and silent launcher.</p>
+          <p>One-click Setup installer. Shortcuts on the desktop and Start menu.</p>
           <ul>
-            <li><code>Launch-Windows.vbs</code> (recommended)</li>
-            <li><code>LuLuneAutoClicker.exe</code></li>
+            <li><code>LuLuneAutoClicker-Setup.exe</code></li>
+            <li>ZIP portable if you prefer not to install</li>
             <li>Windows 10 / 11 · x64</li>
           </ul>
-          <a class="btn primary full" href="downloads/LuLuneAutoClicker-Windows.zip" download="LuLuneAutoClicker-Windows-v1.4.1.zip">Download Windows</a>
+          <a class="btn primary full" href="https://github.com/lulunee19/LuLune-Auto-Clicker/releases/latest/download/LuLuneAutoClicker-Setup.exe">Download Setup</a>
+          <a class="btn ghost full" href="https://github.com/lulunee19/LuLune-Auto-Clicker/releases/latest/download/LuLuneAutoClicker-Windows.zip">Download ZIP</a>
         </article>
 
         <article class="dl-card reveal d2">
           <div class="dl-top">
             <span class="os-pill mac">macOS</span>
-            <span class="ver">v1.4.1 · Intel / Apple Silicon</span>
+            <span class="ver">v1.4.1 · Apple Silicon / Intel</span>
           </div>
           <h3>macOS 11+</h3>
-          <p>Ready to use. Gatekeeper handled via the included <code>Open-macOS.command</code>.</p>
+          <p>DMG installer. Unsigned build: right-click the app → Open the first time. Allow Accessibility.</p>
           <ul>
-            <li><code>Open-macOS.command</code> removes quarantine</li>
-            <li>Allow Accessibility in Settings</li>
-            <li>Apple Silicon (M1+) recommended</li>
+            <li>Apple Silicon (M1+) DMG recommended</li>
+            <li>Intel Macs use the x64 DMG / ZIP</li>
+            <li>Settings → Privacy → Accessibility</li>
           </ul>
-          <a class="btn primary full" href="downloads/LuLuneAutoClicker-macOS.zip" download>Download macOS (Apple Silicon)</a>
-          <a class="btn ghost full" href="downloads/LuLuneAutoClicker-macOS-Intel.zip" download>Download macOS (Intel)</a>
+          <a class="btn primary full" href="https://github.com/lulunee19/LuLune-Auto-Clicker/releases/latest/download/LuLuneAutoClicker-macOS-arm64.dmg">Download DMG (Apple Silicon)</a>
+          <a class="btn ghost full" href="https://github.com/lulunee19/LuLune-Auto-Clicker/releases/latest/download/LuLuneAutoClicker-macOS-x64.dmg">Download DMG (Intel)</a>
+          <a class="btn ghost full" href="https://github.com/lulunee19/LuLune-Auto-Clicker/releases/latest/download/LuLuneAutoClicker-macOS.zip">Download ZIP (legacy)</a>
         </article>
 
         <article class="dl-card reveal d3">
@@ -84,21 +91,26 @@
             <span class="ver">v1.4.1 · x64</span>
           </div>
           <h3>Ubuntu · Debian · Fedora…</h3>
-          <p>Electron binary + script. X11 session recommended for clicks.</p>
+          <p>AppImage — chmod +x, then run. Prefer an X11 session so clicks are not blocked.</p>
           <ul>
-            <li><code>./Launch-Linux.sh</code> (chmod +x auto)</li>
-            <li>Prefer X11 / XWayland</li>
-            <li>x64 · needs X server</li>
+            <li><code>LuLuneAutoClicker-Linux.AppImage</code></li>
+            <li>ZIP portable with <code>Launch-Linux.sh</code></li>
+            <li>x64 · X11 / XWayland</li>
           </ul>
-          <a class="btn primary full" href="downloads/LuLuneAutoClicker-Linux.zip" download>Download Linux</a>
+          <a class="btn primary full" href="https://github.com/lulunee19/LuLune-Auto-Clicker/releases/latest/download/LuLuneAutoClicker-Linux.AppImage">Download AppImage</a>
+          <a class="btn ghost full" href="https://github.com/lulunee19/LuLune-Auto-Clicker/releases/latest/download/LuLuneAutoClicker-Linux.zip">Download ZIP</a>
         </article>
       </div>
     </section>
 
     <section id="nouveautes" class="section">
       <h2 class="reveal">Release notes · v1.4.1</h2>
-      <p class="section-lead reveal d1">Major engine pass (v1.4.0) plus UI polish, Discord Presence, opacity, and shortcut stability (v1.4.1). Your personal stats stay in AppData — the ZIP is clean for your friends.</p>
+      <p class="section-lead reveal d1">Major engine pass (v1.4.0) plus UI polish, Discord-style background, native Windows / macOS / Linux installers, Discord Presence, and shortcut stability (v1.4.1). Your personal stats stay in AppData.</p>
       <div class="news-list">
+        <article class="news-item reveal d1">
+          <h3>v1.4.1 — Discord-style background + 3-OS installers</h3>
+          <p>In Appearance, pick a photo then <strong>drag the round preview</strong> like a Discord profile picture. Zoom with the slider or the mouse wheel — the whole app wallpaper follows. Downloads are now a Windows Setup, macOS DMG (Apple Silicon + Intel), and Linux AppImage, with ZIP fallbacks.</p>
+        </article>
         <article class="news-item reveal d1">
           <h3>v1.4.1 — UI opacity (10→100%)</h3>
           <p>New slider in Appearance: lower the opacity of panels, the title bar, and the status bar so your background image really shows through. At 10% the UI becomes very translucent; at 100% it stays solid. Combines with panel blur and image visibility.</p>
@@ -132,35 +144,37 @@
 
     <section id="install" class="section">
       <h2 class="reveal">Launch the app</h2>
-      <p class="section-lead reveal d1">Download your system's ZIP, unzip, then launch.</p>
+      <p class="section-lead reveal d1">Installers first. ZIP archives still work if you want a portable folder.</p>
       <div class="install-rows">
         <div class="reveal d1">
           <h3>Windows</h3>
           <ol>
-            <li>Download <code>LuLuneAutoClicker-Windows.zip</code></li>
-            <li>Unzip the archive</li>
-            <li>Run <code>Launch-Windows.vbs</code> (recommended) or <code>LuLuneAutoClicker.exe</code></li>
-            <li>If SmartScreen: More info → Run anyway</li>
+            <li>Download <code>LuLuneAutoClicker-Setup.exe</code></li>
+            <li>Run the installer (SmartScreen: More info → Run anyway)</li>
+            <li>Launch <strong>LuLune AutoClicker</strong> from the desktop or Start menu</li>
+            <li>Or unzip the ZIP and run <code>Launch-Windows.vbs</code></li>
           </ol>
         </div>
         <div class="reveal d2">
           <h3>macOS</h3>
           <ol>
-            <li>Download <code>LuLuneAutoClicker-macOS.zip</code></li>
-            <li>Unzip, then double-click <code>Open-macOS.command</code></li>
-            <li>Settings → Privacy → Accessibility → allow LuLune AutoClicker</li>
+            <li>Download the Apple Silicon or Intel <code>.dmg</code></li>
+            <li>Open the DMG and drag the app to Applications</li>
+            <li>First launch: right-click the app → Open (unsigned build)</li>
+            <li>Settings → Privacy &amp; Security → Accessibility → allow LuLune AutoClicker</li>
           </ol>
         </div>
         <div class="reveal d3">
           <h3>Linux</h3>
           <ol>
-            <li>Download <code>LuLuneAutoClicker-Linux.zip</code></li>
-            <li>Unzip, then <code>chmod +x Launch-Linux.sh</code> and <code>./Launch-Linux.sh</code></li>
-            <li>Prefer an X11 / XWayland session</li>
+            <li>Download <code>LuLuneAutoClicker-Linux.AppImage</code></li>
+            <li><code>chmod +x LuLuneAutoClicker-Linux.AppImage</code> then run it</li>
+            <li>Prefer an X11 / XWayland session (Wayland may block clicks)</li>
+            <li>AppImage needs FUSE (<code>libfuse2</code> on Ubuntu)</li>
           </ol>
         </div>
       </div>
-      <p class="note reveal">All builds are ready to use — no compiling needed. Just unzip and launch.</p>
+      <p class="note reveal">All builds are ready to use — no compiling needed. Files come from <a href="https://github.com/lulunee19/LuLune-Auto-Clicker/releases/latest" target="_blank" rel="noopener">GitHub Releases</a>.</p>
     </section>
 
     <section id="tuto" class="section">
@@ -187,11 +201,11 @@
         <p class="tuto-tip">Still lowercase? Rename the app in the Portal. Still “?”? The <code>logo</code> asset is not uploaded or is misnamed.</p>
       </article>
 
-      <article class="tuto-card reveal d2">
+        <article class="tuto-card reveal d2">
         <h3>Launch on Windows</h3>
         <ol class="tuto-steps">
-          <li>Download <code>LuLuneAutoClicker-Windows.zip</code> then unzip</li>
-          <li>Double-click <code>Launch-Windows.vbs</code> (no console) or <code>LuLuneAutoClicker.exe</code></li>
+          <li>Download <code>LuLuneAutoClicker-Setup.exe</code> from GitHub Releases</li>
+          <li>Install, then open LuLune AutoClicker from the desktop shortcut</li>
           <li>Hotkeys: <strong>F6</strong> start/stop · <strong>F12</strong> panic · <strong>F7</strong> pause</li>
         </ol>
       </article>
@@ -199,17 +213,17 @@
       <article class="tuto-card reveal d3">
         <h3>Launch on macOS</h3>
         <ol class="tuto-steps">
-          <li>Download <code>LuLuneAutoClicker-macOS.zip</code> then unzip</li>
-          <li>Double-click <code>Open-macOS.command</code></li>
-          <li>Settings → Privacy → Accessibility → allow LuLune AutoClicker</li>
+          <li>Download the Apple Silicon or Intel <code>.dmg</code>, drag the app to Applications</li>
+          <li>Right-click → Open the first time (the build is unsigned)</li>
+          <li>Settings → Privacy &amp; Security → Accessibility → allow LuLune AutoClicker</li>
         </ol>
       </article>
 
       <article class="tuto-card reveal d1">
         <h3>Launch on Linux</h3>
         <ol class="tuto-steps">
-          <li>Download <code>LuLuneAutoClicker-Linux.zip</code> then unzip</li>
-          <li><code>chmod +x Launch-Linux.sh</code> then <code>./Launch-Linux.sh</code></li>
+          <li>Download <code>LuLuneAutoClicker-Linux.AppImage</code></li>
+          <li><code>chmod +x</code> the AppImage, then run it (install <code>libfuse2</code> if needed)</li>
           <li>Prefer an <strong>X11</strong> session (Wayland may block clicks)</li>
         </ol>
       </article>
@@ -220,9 +234,9 @@
       <p class="section-lead reveal d1">Everything you need to click seriously — without overkill.</p>
       <div class="feat-strip">
         <div class="reveal d1"><h3>Up to 1000 CPS</h3><p>libnut / nut-js engine, zero delays, high-precision timing.</p></div>
-        <div class="reveal d2"><h3>F8 macros</h3><p>Clicks, keys, delays, sequences. Multi-key shortcuts (Shift+F, Ctrl+1…).</p></div>
-        <div class="reveal d3"><h3>Discord Presence</h3><p>Logo, capital letters, live CPS on your profile. Site link ready for later.</p></div>
-        <div class="reveal d4"><h3>3 systems</h3><p>Same interface on Windows, macOS, and Linux — dedicated launchers included.</p></div>
+        <div class="reveal d2"><h3>Discord wallpaper</h3><p>Round crop like a profile picture: drag to place, wheel to zoom. The whole app background follows.</p></div>
+        <div class="reveal d3"><h3>F8 macros</h3><p>Clicks, keys, delays, sequences. Multi-key shortcuts (Shift+F, Ctrl+1…).</p></div>
+        <div class="reveal d4"><h3>3 systems</h3><p>Same app on Windows, macOS, and Linux — Setup, DMG, and AppImage, plus ZIP fallbacks.</p></div>
       </div>
     </section>
 
@@ -236,7 +250,7 @@
         <div class="community-links">
           <a class="support-btn yt" href="https://www.youtube.com/@Ang3lGD" target="_blank" rel="noopener">YouTube</a>
           <a class="support-btn tw" href="https://www.twitch.tv/ang3lgd_" target="_blank" rel="noopener">Twitch</a>
-          <a class="support-btn gh" href="https://github.com/lulunee19" target="_blank" rel="noopener">GitHub</a>
+          <a class="support-btn gh" href="https://github.com/lulunee19/LuLune-Auto-Clicker" target="_blank" rel="noopener">GitHub</a>
           <button type="button" class="support-btn dc" id="copy-discord" data-user="LuLune0193">Discord · LuLune0193</button>
         </div>
       </div>
@@ -248,7 +262,7 @@
     <div class="footer-links">
       <a href="https://www.youtube.com/@Ang3lGD" target="_blank" rel="noopener">YouTube</a>
       <a href="https://www.twitch.tv/ang3lgd_" target="_blank" rel="noopener">Twitch</a>
-      <a href="https://github.com/lulunee19" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/lulunee19/LuLune-Auto-Clicker" target="_blank" rel="noopener">GitHub</a>
     </div>
     <span>Windows · macOS · Linux</span>
   </footer>

@@ -430,7 +430,7 @@ async function applyAppearance(livePartial) {
       preview.style.backgroundImage = 'none';
       preview.classList.remove('has-image');
     }
-    if (previewLabel) previewLabel.textContent = 'No image';
+    if (previewLabel) previewLabel.textContent = 'Choose an image, then drag';
     if ($('#bg-preview-hint')) $('#bg-preview-hint').hidden = true;
   }
 
@@ -1691,6 +1691,15 @@ function bindBehaviorAppearanceKeybinds() {
     const posY = clampPct(y);
     const z = Math.max(100, Math.min(250, Number(zoom) || 100));
     const css = `${posX}% ${posY}%`;
+    if (state.settings?.appearance) {
+      Object.assign(state.settings.appearance, {
+        backgroundPosX: posX,
+        backgroundPosY: posY,
+        backgroundPosition: css,
+        backgroundZoom: z,
+        backgroundFit: 'cover'
+      });
+    }
     applyAppearance({
       backgroundPosX: posX,
       backgroundPosY: posY,
@@ -1757,6 +1766,14 @@ function bindBehaviorAppearanceKeybinds() {
     };
     preview.addEventListener('pointerup', endDrag);
     preview.addEventListener('pointercancel', endDrag);
+    preview.addEventListener('wheel', (ev) => {
+      if (!preview.classList.contains('has-image')) return;
+      ev.preventDefault();
+      const cur = Number($('#appearance-bgzoom')?.value || 100);
+      const next = Math.max(100, Math.min(250, cur + (ev.deltaY < 0 ? 10 : -10)));
+      const pos = parseBgPos(state.settings?.appearance || {});
+      saveBgPlace(pos.x, pos.y, next, false);
+    }, { passive: false });
   }
   [['appearance-activeicon', 'activeIcon'], ['appearance-statusbar', 'statusBar'], ['appearance-footer', 'footer']].forEach(([id, key]) => {
     const el = $('#' + id);

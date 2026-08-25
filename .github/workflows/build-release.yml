@@ -1,12 +1,15 @@
 name: Build & Release
 
 on:
+  push:
+    tags:
+      - "v*"
   release:
     types: [published]
   workflow_dispatch:
     inputs:
       tag:
-        description: Release tag to upload assets to
+        description: Release tag to upload assets to (e.g. v1.4.1)
         required: true
         default: v1.4.1
 
@@ -20,14 +23,23 @@ jobs:
       matrix:
         include:
           - os: windows-latest
-            script: package:win
-            zip: LuLuneAutoClicker-Windows.zip
+            script: dist:win
+            assets: |
+              release/LuLuneAutoClicker-Setup.exe
+              release/LuLuneAutoClicker-Windows.zip
+              release/latest.yml
           - os: macos-latest
-            script: package:mac:arm64
-            zip: LuLuneAutoClicker-macOS.zip
+            script: dist:mac
+            assets: |
+              release/LuLuneAutoClicker-macOS-*.dmg
+              release/LuLuneAutoClicker-macOS-*.zip
+              release/latest-mac.yml
           - os: ubuntu-latest
-            script: package:linux
-            zip: LuLuneAutoClicker-Linux.zip
+            script: dist:linux
+            assets: |
+              release/LuLuneAutoClicker-Linux.AppImage
+              release/LuLuneAutoClicker-Linux.zip
+              release/latest-linux.yml
 
     runs-on: ${{ matrix.os }}
 
@@ -45,7 +57,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential libx11-dev libxtst-dev libpng-dev
+          sudo apt-get install -y build-essential libx11-dev libxtst-dev libpng-dev libfuse2
 
       - name: Install dependencies
         run: npm ci
@@ -53,21 +65,19 @@ jobs:
       - name: Package app
         run: npm run ${{ matrix.script }}
 
-      - name: Zip for downloads
-        run: npm run zip:downloads
-
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.zip }}
-          path: website/downloads/${{ matrix.zip }}
+          name: ${{ runner.os }}-build
+          path: ${{ matrix.assets }}
           if-no-files-found: error
 
       - name: Attach to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.event.release.tag_name || inputs.tag }}
-          files: website/downloads/${{ matrix.zip }}
-          fail_on_unmatched_files: true
+          tag_name: ${{ github.event.release.tag_name || inputs.tag || github.ref_name }}
+          generate_release_notes: true
+          files: ${{ matrix.assets }}
+          fail_on_unmatched_files: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

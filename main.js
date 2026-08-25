@@ -23,7 +23,7 @@ const IS_MAC = process.platform === 'darwin';
 const IS_LINUX = process.platform === 'linux';
 const APP_VERSION = require('./package.json').version;
 const LATEST_VERSION = APP_VERSION;
-const GITHUB_URL = 'https://github.com/lulunee19';
+const GITHUB_URL = 'https://github.com/lulunee19/LuLune-Auto-Clicker';
 
 app.commandLine.appendSwitch('disable-renderer-backgrounding');
 if (IS_LINUX) {

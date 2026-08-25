@@ -39,7 +39,9 @@ const CHANGELOG = [
       'Usage stats realigned (label / value list) and clicks/day chart rebuilt as HTML bars (no more clipped / broken canvas tile).',
       'Maintenance / Appearance buttons restyled (no more system-white "Open folder", "Check", "Remove" buttons).',
       'Macros: 4-step tutorial + ▶ Play button; clear message when there is no hotkey.',
-      'Settings sidebar: tabs no longer crush each other (correct scroll, community card removed from the column).'
+      'Settings sidebar: tabs no longer crush each other (correct scroll, community card removed from the column).',
+      'Background placement like a Discord profile picture: round crop, drag to move, mouse wheel / Zoom slider to scale.',
+      'Native installers: Windows Setup.exe, macOS DMG (Apple Silicon + Intel), Linux AppImage — plus ZIP fallbacks.'
     ]
   },
   {

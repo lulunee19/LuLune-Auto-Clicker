@@ -1,8 +1,13 @@
 node_modules/
 dist/
+release/
 .DS_Store
 *.log
+website/*.zip
 website/downloads/*.zip
 website/downloads/*.dmg
 website/downloads/*.AppImage
+website/downloads/*.exe
+website/downloads/*.yml
+website/downloads/*.blockmap
 !website/downloads/.gitkeep

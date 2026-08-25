@@ -313,6 +313,9 @@ strong { color: var(--green-2); font-weight: 700; }
   flex: 1;
   font-size: 0.9rem;
 }
+.dl-card .btn + .btn {
+  margin-top: 8px;
+}
 
 /* What's new */
 .news-list {

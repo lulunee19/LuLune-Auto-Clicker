@@ -511,19 +511,21 @@
               </div>
               <div class="panel">
                 <div class="panel-head"><span>Background image</span></div>
-                <p class="hint">PNG, JPG, WEBP, <b>GIF</b>, or BMP only. Animated GIFs are supported.</p>
-                <div class="bg-preview" id="bg-preview" title="Drag to place">
-                  <span class="bg-preview-empty" id="bg-preview-label">No image</span>
-                  <span class="bg-preview-hint" id="bg-preview-hint" hidden>Drag to place · like a Discord avatar</span>
+                <p class="hint">PNG, JPG, WEBP, <b>GIF</b>, or BMP. Drag the round preview to place it — same as a Discord profile picture.</p>
+                <div class="bg-crop-wrap">
+                  <div class="bg-preview" id="bg-preview" title="Drag to place">
+                    <span class="bg-preview-empty" id="bg-preview-label">Choose an image, then drag</span>
+                  </div>
                 </div>
+                <p class="bg-drag-help" id="bg-preview-hint" hidden>Drag the photo · use Zoom below</p>
                 <div class="row bg-actions">
                   <button type="button" id="appearance-pick-image">Choose an image / GIF…</button>
                   <button type="button" id="appearance-clear-image" class="ghost-btn">Remove</button>
-                  <button type="button" id="appearance-reset-bgpos" class="ghost-btn">Reset place</button>
+                  <button type="button" id="appearance-reset-bgpos" class="ghost-btn">Reset</button>
                 </div>
                 <input type="text" id="appearance-bgimage" placeholder="Image URL only (https://… .png/.jpg/.gif…)" />
                 <div class="slider-row"><label>Zoom</label><input type="range" id="appearance-bgzoom" min="100" max="250" value="100" /><span id="appearance-bgzoom-val">100%</span></div>
-                <p class="hint">Drag the preview to place the image. Zoom in, then pan — same idea as a Discord profile picture.</p>
+                <p class="hint">Zoom in, then drag. The whole app background follows the preview.</p>
                 <div class="slider-row"><label>Theme strength (colored background)</label><input type="range" id="appearance-bgopacity" min="0" max="100" value="100" /><span id="appearance-bgopacity-val">100%</span></div>
                 <div class="slider-row"><label>Image visibility</label><input type="range" id="appearance-bgimgopacity" min="0" max="100" value="70" /><span id="appearance-bgimgopacity-val">70%</span></div>
                 <div class="slider-row"><label>Interface opacity</label><input type="range" id="appearance-panelopacity" min="10" max="100" value="100" /><span id="appearance-panelopacity-val">100%</span></div>
@@ -593,7 +595,7 @@
                 <div class="support-links wide">
                   <button type="button" class="support-link yt" data-url="https://www.youtube.com/@Ang3lGD"><span class="support-ico">▶</span><span>YouTube · @Ang3lGD</span></button>
                   <button type="button" class="support-link tw" data-url="https://www.twitch.tv/ang3lgd_"><span class="support-ico">◈</span><span>Twitch · ang3lgd_</span></button>
-                  <button type="button" class="support-link gh" data-url="https://github.com/lulunee19"><span class="support-ico">⌥</span><span>GitHub · lulunee19</span></button>
+                  <button type="button" class="support-link gh" data-url="https://github.com/lulunee19/LuLune-Auto-Clicker"><span class="support-ico">⌥</span><span>GitHub · LuLune-Auto-Clicker</span></button>
                   <button type="button" class="support-link dc" id="discord-copy-btn"><span class="support-ico">◉</span><span>Discord · LuLune0193</span></button>
                 </div>
               </div>

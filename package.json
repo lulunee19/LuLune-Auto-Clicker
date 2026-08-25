@@ -13,10 +13,14 @@
     "package:linux": "electron-packager . LuLuneAutoClicker --platform=linux --arch=x64 --out=dist --overwrite --asar && node scripts/postpackage.js linux",
     "package:linux:arm64": "electron-packager . LuLuneAutoClicker --platform=linux --arch=arm64 --out=dist --overwrite --asar && node scripts/postpackage.js linux",
     "package:all": "npm run package:win && npm run package:mac && npm run package:linux",
-    "zip:downloads": "node scripts/zip-downloads.js"
+    "zip:downloads": "node scripts/zip-downloads.js",
+    "dist:win": "electron-builder --win nsis zip --publish never && node scripts/copy-setup.js",
+    "dist:mac": "electron-builder --mac dmg zip --publish never && node scripts/copy-setup.js",
+    "dist:linux": "electron-builder --linux AppImage zip --publish never && node scripts/copy-setup.js"
   },
   "devDependencies": {
     "electron": "^31.0.0",
+    "electron-builder": "^25.1.8",
     "electron-packager": "^17.1.2"
   },
   "dependencies": {
@@ -26,5 +30,112 @@
   },
   "overrides": {
     "register-scheme": "0.0.2"
+  },
+  "build": {
+    "appId": "com.lulune.autoclicker",
+    "productName": "LuLune AutoClicker",
+    "copyright": "LuLune",
+    "directories": {
+      "output": "release"
+    },
+    "npmRebuild": false,
+    "files": [
+      "**/*",
+      "!dist/**",
+      "!release/**",
+      "!website/**",
+      "!.ci-artifacts/**",
+      "!**/*.zip",
+      "!**/*.md"
+    ],
+    "asarUnpack": [
+      "**/*.node",
+      "node_modules/uiohook-napi/**",
+      "node_modules/@nut-tree-fork/**"
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "lulunee19",
+        "repo": "LuLune-Auto-Clicker"
+      }
+    ],
+    "win": {
+      "executableName": "LuLuneAutoClicker",
+      "signAndEditExecutable": false,
+      "artifactName": "LuLuneAutoClicker-Windows.${ext}",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "LuLune AutoClicker",
+      "uninstallDisplayName": "LuLune AutoClicker",
+      "artifactName": "LuLuneAutoClicker-Setup.exe",
+      "deleteAppDataOnUninstall": false,
+      "runAfterFinish": true
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "identity": null,
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "arm64",
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "LuLuneAutoClicker-macOS-${arch}.${ext}"
+    },
+    "dmg": {
+      "title": "LuLune AutoClicker"
+    },
+    "linux": {
+      "category": "Utility",
+      "executableName": "LuLuneAutoClicker",
+      "synopsis": "LuLune AutoClicker",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "LuLuneAutoClicker-Linux.${ext}"
+    }
   }
 }
